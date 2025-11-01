@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:moviez_app/presentation/home/home_page.dart';
+import 'package:moviez_app/presentation/search/search_page.dart';
 
 final goRouter = GoRouter(
   initialLocation: AppRoutes.home,
@@ -7,6 +8,10 @@ final goRouter = GoRouter(
     GoRoute(
       path: AppRoutes.home,
       builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      path: AppRoutes.search,
+      builder: (context, state) => const SearchPage(),
     ),
     // GoRoute(
     //   path: AppRoutes.productDetails,
@@ -21,5 +26,5 @@ final goRouter = GoRouter(
 
 class AppRoutes {
   static const String home = '/home';
-  static const String productDetails = '/product_details';
+  static const String search = '/search';
 }

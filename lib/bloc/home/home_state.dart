@@ -6,6 +6,7 @@ abstract class HomeState with _$HomeState {
 
   const factory HomeState() = _HomeState;
 
-  factory HomeState.initial() => HomeState(
-  );
+  factory HomeState.initial() => HomeState();
+
+  get moviesList => [];
 }

@@ -7,7 +7,8 @@ GetIt locator = GetIt.instance;
 
 void setupLocator() {
   locator.registerLazySingleton(() => Config());
-  // locator.registerLazySingleton(() => DataSourceExceptionHandler());
   locator.registerLazySingleton(() => HomeRepository(config: locator()));
-  locator.registerLazySingleton(() => HomeBloc(homeRepository: locator()));
+  locator.registerLazySingleton(
+    () => HomeBloc(homeRepository: locator<HomeRepository>()),
+  );
 }

@@ -3,7 +3,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 
 abstract class BaseTextStyles {
-  static TextStyle textSmallRegular = GoogleFonts.inter(
+  static TextStyle mulishTinyBold = GoogleFonts.mulish(
+    textStyle: const TextStyle(
+      fontSize: 8,
+      fontWeight: FontWeight.w700,
+      color: BaseColors.black,
+    ),
+  );
+
+  static TextStyle mulishExtraSmallBold = GoogleFonts.mulish(
+    textStyle: const TextStyle(
+      fontSize: 10,
+      fontWeight: FontWeight.w700,
+      color: BaseColors.black,
+    ),
+  );
+
+  static TextStyle mulishSmallRegular = GoogleFonts.mulish(
     textStyle: const TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w400,
@@ -11,7 +27,7 @@ abstract class BaseTextStyles {
     ),
   );
 
-  static TextStyle textSmallSemiBold = GoogleFonts.inter(
+  static TextStyle mulishSmallSemiBold = GoogleFonts.mulish(
     textStyle: const TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w500,
@@ -19,32 +35,39 @@ abstract class BaseTextStyles {
     ),
   );
 
-  // TODO: This should be Haffer Font, but not available in Google Fonts
-  static TextStyle textSmallBold = GoogleFonts.inter(
+  // static TextStyle mulishSmallBold = GoogleFonts.mulish(
+  //   textStyle: const TextStyle(
+  //     fontSize: 12,
+  //     fontWeight: FontWeight.w600,
+  //     color: BaseColors.black,
+  //   ),
+  // );
+
+  // static TextStyle mulishSemiMediumSemiBold = GoogleFonts.mulish(
+  //   textStyle: const TextStyle(
+  //     fontSize: 13,
+  //     fontWeight: FontWeight.w500,
+  //     color: BaseColors.black,
+  //   ),
+  // );
+
+  // static TextStyle mulishSemiMediumBold = GoogleFonts.mulish(
+  //   textStyle: const TextStyle(
+  //     fontSize: 13,
+  //     fontWeight: FontWeight.w600,
+  //     color: BaseColors.black,
+  //   ),
+  // );
+
+  static TextStyle mulishMediumRegular = GoogleFonts.mulish(
     textStyle: const TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
       color: BaseColors.black,
     ),
   );
 
-  static TextStyle textSemiMediumSemiBold = GoogleFonts.inter(
-    textStyle: const TextStyle(
-      fontSize: 13,
-      fontWeight: FontWeight.w500,
-      color: BaseColors.black,
-    ),
-  );
-
-  static TextStyle textSemiMediumBold = GoogleFonts.inter(
-    textStyle: const TextStyle(
-      fontSize: 13,
-      fontWeight: FontWeight.w600,
-      color: BaseColors.black,
-    ),
-  );
-
-  static TextStyle textMediumSemiBold = GoogleFonts.inter(
+  static TextStyle mulishMediumSemiBold = GoogleFonts.mulish(
     textStyle: const TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w500,
@@ -52,7 +75,7 @@ abstract class BaseTextStyles {
     ),
   );
 
-  static TextStyle textMediumBold = GoogleFonts.inter(
+  static TextStyle mulishMediumBold = GoogleFonts.mulish(
     textStyle: const TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w600,
@@ -60,7 +83,7 @@ abstract class BaseTextStyles {
     ),
   );
 
-  static TextStyle textLargeSemiBold = GoogleFonts.inter(
+  static TextStyle mulishLargeSemiBold = GoogleFonts.mulish(
     textStyle: const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w500,
@@ -68,7 +91,7 @@ abstract class BaseTextStyles {
     ),
   );
 
-  static TextStyle textLargeBold = GoogleFonts.inter(
+  static TextStyle merriLargeBold = GoogleFonts.merriweather(
     textStyle: const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w600,
@@ -76,8 +99,7 @@ abstract class BaseTextStyles {
     ),
   );
 
-  // TODO: This should be Haffer Font, but not available in Google Fonts
-  static TextStyle textExtraLargeBold = GoogleFonts.inter(
+  static TextStyle merriExtraLargeBold = GoogleFonts.merriweather(
     textStyle: const TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w600,
@@ -85,11 +107,11 @@ abstract class BaseTextStyles {
     ),
   );
 
-  static TextStyle textHugeBold = GoogleFonts.inter(
-    textStyle: const TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w600,
-      color: BaseColors.black,
-    ),
-  );
+  // static TextStyle mulishHugeBold = GoogleFonts.mulish(
+  //   textStyle: const TextStyle(
+  //     fontSize: 20,
+  //     fontWeight: FontWeight.w600,
+  //     color: BaseColors.black,
+  //   ),
+  // );
 }
