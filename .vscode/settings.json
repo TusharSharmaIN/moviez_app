@@ -1,0 +1,28 @@
+{
+    "git.autofetch": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.dcm.fixAll": "explicit"
+    },
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "dart.previewFlutterUiGuides": true,
+    "files.exclude": {
+      "**/*.freezed.dart": true,
+      "**/*.g.dart": true,
+      "**/*.gr.dart": true
+    },
+    "[dart]": {
+      "editor.formatOnType": true,
+      "editor.formatOnSave": true,
+      "editor.rulers": [80],
+      "editor.selectionHighlight": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggestSelection": "first",
+      "editor.tabCompletion": "onlySnippets",
+      "editor.wordBasedSuggestions": "off",
+      "editor.guides.indentation": true,
+      "editor.defaultFormatter": "Dart-Code.dart-code"
+    },
+    "dart.flutterSdkPath": ".fvm/versions/3.32.7",
+    "editor.wordWrap": "on"
+  }
