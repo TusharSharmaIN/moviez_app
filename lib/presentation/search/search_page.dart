@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moviez_app/presentation/core/widgets/custom_app_bar.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
 import 'package:moviez_app/presentation/search/search_field.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
@@ -15,9 +15,7 @@ class SearchPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            CustomAppBar.backAppBar(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-            ),
+            CustomAppBar.backAppBar(),
             const Expanded(child: _SearchPageContent()),
           ],
         ),

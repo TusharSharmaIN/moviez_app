@@ -47,52 +47,37 @@ class _TrendingTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 120,
-      margin: const EdgeInsets.only(right: 16),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CustomImageView(
-            height: 220,
-            width: 120,
-            fit: BoxFit.cover,
-            imageUrl:
-                'https://image.tmdb.org/t/p/w500/5Gr4amaB1xxeYAEMOdrVutaWwgz.jpg',
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'The Rats: A Witcher Tales',
-            style: BaseTextStyles.mulishSmallSemiBold.copyWith(
-              color: BaseColors.black,
+    return GestureDetector(
+      onTap: () {
+        context.push(AppRoutes.movieDetails);
+      },
+      child: Container(
+        width: 120,
+        margin: const EdgeInsets.only(right: 16),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomImageView(
+              height: 220,
+              width: 120,
+              fit: BoxFit.cover,
+              imageUrl:
+                  'https://image.tmdb.org/t/p/w500/5Gr4amaB1xxeYAEMOdrVutaWwgz.jpg',
             ),
-          ),
-          const SizedBox(height: 8),
-          _Ratings(),
-        ],
-      ),
-    );
-  }
-}
-
-class _Ratings extends StatelessWidget {
-  const _Ratings();
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(PhosphorIconsFill.star, size: 12, color: BaseColors.yellow),
-        const SizedBox(width: 4),
-        Text(
-          '9.1/10 IMDB',
-          style: BaseTextStyles.mulishSmallRegular.copyWith(
-            color: BaseColors.textGrey,
-          ),
+            const SizedBox(height: 8),
+            Text(
+              'The Rats: A Witcher Tales',
+              style: BaseTextStyles.mulishSmallSemiBold.copyWith(
+                color: BaseColors.black,
+              ),
+            ),
+            const SizedBox(height: 8),
+            MovieRatings(),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

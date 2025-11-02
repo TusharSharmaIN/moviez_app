@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:moviez_app/bloc/home/home_bloc.dart';
-import 'package:moviez_app/presentation/core/widgets/custom_app_bar.dart';
-import 'package:moviez_app/presentation/core/widgets/custom_image_view.dart';
+import 'package:moviez_app/presentation/core/widgets/common/movie_tags.dart';
+import 'package:moviez_app/presentation/core/widgets/common/movie_ratings.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/custom_image_view.dart';
+import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/search/search_box.dart';
 
 import 'package:moviez_app/presentation/theme/base_colors.dart';

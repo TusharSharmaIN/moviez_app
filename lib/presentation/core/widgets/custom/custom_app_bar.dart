@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/custom_icon_button.dart';
+import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
@@ -27,6 +29,10 @@ class CustomAppBar extends StatelessWidget {
               child: AppBarMenuCTA(),
             ),
             Center(child: title),
+            const Align(
+              alignment: Alignment.centerRight,
+              child: AppBarWatchlistCTA(),
+            ),
           ],
         ),
       );
@@ -36,7 +42,7 @@ class CustomAppBar extends StatelessWidget {
       child: AppBarBackCTA(
         padding:
             padding ??
-            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
+            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
       ),
     );
   }
@@ -69,16 +75,22 @@ class AppBarMenuCTA extends StatelessWidget {
       padding: padding,
       child: IconButton(
         onPressed: onPressed,
-        icon: Icon(PhosphorIconsRegular.list, size: 28, weight: 8),
+        icon: Icon(PhosphorIconsRegular.list, size: 32, weight: 16),
       ),
     );
   }
 }
 
 class AppBarBackCTA extends StatelessWidget {
-  const AppBarBackCTA({super.key, required this.padding, this.onPressed});
+  const AppBarBackCTA({
+    super.key,
+    required this.padding,
+    this.onPressed,
+    this.iconColor = BaseColors.black,
+  });
   final EdgeInsets padding;
   final VoidCallback? onPressed;
+  final Color iconColor;
 
   void _onPressed(BuildContext context) {
     if (onPressed != null) {
@@ -92,9 +104,24 @@ class AppBarBackCTA extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding,
-      child: IconButton(
+      child: CustomIconButton(
         onPressed: () => _onPressed(context),
-        icon: Icon(PhosphorIconsRegular.arrowLeft, size: 28),
+        icon: Icon(PhosphorIconsRegular.arrowLeft, size: 28, color: iconColor),
+      ),
+    );
+  }
+}
+
+class AppBarWatchlistCTA extends StatelessWidget {
+  const AppBarWatchlistCTA({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: 16),
+      child: IconButton(
+        onPressed: () => context.push(AppRoutes.watchlist),
+        icon: Icon(PhosphorIconsRegular.bookmarkSimple, size: 28),
         constraints: const BoxConstraints(),
       ),
     );
