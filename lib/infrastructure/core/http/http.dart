@@ -16,9 +16,13 @@ class HttpService {
   }) {
     _dio = Dio(
       BaseOptions(
+        baseUrl: config.baseUrl,
         sendTimeout: config.httpSendTimeout,
         connectTimeout: config.httpConnectTimeout,
         receiveTimeout: config.httpReceiveTimeout,
+        validateStatus: (status) {
+          return status != null && status >= 200 && status < 500;
+        },
       ),
     );
     _dio.interceptors.addAll([
@@ -27,29 +31,31 @@ class HttpService {
         requestBody: true,
         responseBody: true,
         requestHeader: true,
+        error: true,
+        compact: true,
       ),
     ]);
   }
 
   Future<Response> request({
     required String method,
-    required Config config,
     required String url,
-    dynamic data = const {}, // can be Map<String, dynamic> or FormData
+    Map<String, dynamic>? queryParameters,
+    dynamic data,
     ResponseType responseType = ResponseType.json,
-    String apiEndpoint = '',
-    String cacheControl = '',
-    Map<String, dynamic> headers = const <String, dynamic>{},
+    Map<String, dynamic> headers = const {},
   }) async {
     try {
-      _dio.options.baseUrl = config.baseUrl;
-      _dio.options.method = method;
-      _dio.options.responseType = responseType;
-      for (final headerInfo in headers.entries) {
-        _dio.options.headers[headerInfo.key] = headerInfo.value;
-      }
-
-      return await _dio.request(url, data: data);
+      return await _dio.request(
+        url,
+        queryParameters: queryParameters,
+        data: data,
+        options: Options(
+          method: method,
+          responseType: responseType,
+          headers: headers,
+        ),
+      );
     } on DioException catch (e) {
       if (e.error is SocketException) {
         throw SocketException(e.message ?? 'Network Connection Error');

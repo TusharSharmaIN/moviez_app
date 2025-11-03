@@ -6,15 +6,9 @@ class AuthInterceptor extends Interceptor {
   AuthInterceptor({required this.config});
 
   @override
-  Future<void> onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
-    var token = config.tmdbAuthToken;
-    if (token.isNotEmpty) {
-      options.headers['Authorization'] = 'Bearer $token';
-    }
-    // options.headers['accept'] = 'application/json';
-    return super.onRequest(options, handler);
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    var token = config.tmdbAuthToken.trim();
+    options.headers.addAll({'Authorization': 'Bearer $token'});
+    handler.next(options);
   }
 }

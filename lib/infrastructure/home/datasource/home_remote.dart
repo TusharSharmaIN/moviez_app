@@ -20,13 +20,10 @@ class HomeRemoteDataSource {
 
   Future<MoviesData> getNowShowingMovies() async {
     return await dataSourceExceptionHandler.handle(() async {
-      final uri = Uri.parse(
-        ApiConstants.nowPlaying,
-      ).replace(queryParameters: {'language': 'en-US', 'page': '1'});
       final response = await httpService.request(
         method: 'GET',
-        url: uri.toString(),
-        config: config,
+        url: ApiConstants.nowPlaying,
+        queryParameters: {'language': 'en-US', 'page': '1'},
       );
 
       _exceptionChecker(res: response);
@@ -35,22 +32,32 @@ class HomeRemoteDataSource {
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {
-    if (res.statusCode != 200 && res.statusCode != 201) {
+    if (res.data == null) {
       throw ServerException(
-        code: res.statusCode ?? 0,
-        message: res.statusMessage ?? 'Server error occurred',
+        code: res.statusCode ?? 500,
+        message: 'Empty response received',
       );
     }
 
-    if (res.data == null ||
-        res.data is! List && res.data is! Map<String, dynamic>) {
-      throw ServerException(code: 500, message: 'Invalid response format');
+    if (res.data is! Map<String, dynamic>) {
+      throw ServerException(
+        code: 500,
+        message: 'Invalid response format: expected JSON object',
+      );
     }
 
-    if (res.data is Map<String, dynamic>) {
-      if (res.data['error'] != null && res.data['error'].isNotEmpty) {
-        throw ServerException(message: res.data['error']['message']);
-      }
+    if (res.data['success'] == false) {
+      throw ServerException(
+        code: res.statusCode ?? 500,
+        message: res.data['status_message'] ?? 'Unknown error occurred',
+      );
+    }
+
+    if (res.data['results'] == null) {
+      throw ServerException(
+        code: 500,
+        message: 'Invalid response format: missing results',
+      );
     }
   }
 }
