@@ -23,7 +23,7 @@ class MovieCast extends StatelessWidget {
             itemCount: 6,
             itemBuilder: (context, index) {
               // final movies = state.moviesList[index];
-              return _CastTile(
+              return const _CastTile(
                 // brand: brand,
                 // isSelectedAndCurrentBranchSame: state.selectedBrand == brand,
               );
@@ -48,7 +48,7 @@ class _CastTile extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CustomImageView(
+          const CustomImageView(
             height: 80,
             width: 80,
             fit: BoxFit.cover,

@@ -29,14 +29,14 @@ class _SearchPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         spacing: 16,
         children: [
-          const SearchField(),
-          const Expanded(child: _SearchResults()),
+          SearchField(),
+          Expanded(child: _SearchResults()),
         ],
       ),
     );

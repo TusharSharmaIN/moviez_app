@@ -59,7 +59,7 @@ class _SearchFieldState extends State<SearchField> {
           color: BaseColors.textGrey,
         ),
         contentPadding: const EdgeInsets.all(10),
-        prefixIcon: Icon(PhosphorIconsRegular.magnifyingGlass, size: 20),
+        prefixIcon: const Icon(PhosphorIconsRegular.magnifyingGlass, size: 20),
         prefixIconConstraints: const BoxConstraints(
           minWidth: 24,
           minHeight: 24,

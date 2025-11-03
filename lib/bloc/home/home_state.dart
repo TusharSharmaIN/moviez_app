@@ -18,5 +18,5 @@ abstract class HomeState with _$HomeState {
     apiFailureOrSuccess: none(),
   );
 
-  get moviesList => [];
+  List get moviesList => [];
 }

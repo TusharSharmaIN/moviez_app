@@ -24,7 +24,7 @@ class PopularMovies extends StatelessWidget {
             itemCount: 6,
             itemBuilder: (context, index) {
               // final movies = state.moviesList[index];
-              return _PopularTile(
+              return const _PopularTile(
                 // brand: brand,
                 // isSelectedAndCurrentBranchSame: state.selectedBrand == brand,
               );
@@ -49,7 +49,7 @@ class _PopularTile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: CustomImageView(
+            child: const CustomImageView(
               height: 120,
               width: 80,
               fit: BoxFit.cover,
@@ -68,11 +68,11 @@ class _PopularTile extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              MovieRatings(),
+              const MovieRatings(),
               const SizedBox(height: 8),
               const MovieTags(),
               const SizedBox(height: 8),
-              _Duration(),
+              const _Duration(),
             ],
           ),
         ],
@@ -89,7 +89,7 @@ class _Duration extends StatelessWidget {
     return Text.rich(
       TextSpan(
         children: [
-          WidgetSpan(
+          const WidgetSpan(
             child: Icon(
               PhosphorIconsRegular.clock,
               size: 12,

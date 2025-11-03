@@ -10,7 +10,7 @@ class MovieRatings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(PhosphorIconsFill.star, size: 12, color: BaseColors.yellow),
+        const Icon(PhosphorIconsFill.star, size: 12, color: BaseColors.yellow),
         const SizedBox(width: 4),
         Text(
           '9.1/10 IMDB',

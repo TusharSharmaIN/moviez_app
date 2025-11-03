@@ -9,7 +9,7 @@ class TrailerThumbnail extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         final youtubeUrl = 'https://www.youtube.com/watch?v=O-b2VfmmbyA';
-        final Uri url = Uri.parse(youtubeUrl);
+        final url = Uri.parse(youtubeUrl);
         if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
           throw 'Could not launch $url';
         }
@@ -27,7 +27,7 @@ class TrailerThumbnail extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 24),
-              child: Icon(
+              child: const Icon(
                 PhosphorIconsFill.playCircle,
                 size: 64,
                 color: BaseColors.white,

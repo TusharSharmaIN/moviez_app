@@ -23,7 +23,7 @@ class SearchBox extends StatelessWidget {
         child: Row(
           spacing: 6,
           children: [
-            Icon(PhosphorIconsRegular.magnifyingGlass, size: 20),
+            const Icon(PhosphorIconsRegular.magnifyingGlass, size: 20),
             Text(
               'Search movies...',
               style: BaseTextStyles.mulishLargeSemiBold.copyWith(

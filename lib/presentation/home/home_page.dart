@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -40,7 +39,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             spacing: 4,
-            children: [CustomAppBar.menuAppBar(), _HomePageContent()],
+            children: [CustomAppBar.menuAppBar(), const _HomePageContent()],
           ),
         ),
       ),
@@ -53,12 +52,12 @@ class _HomePageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         spacing: 16,
-        children: [const SearchBox(), TrendingMovies(), PopularMovies()],
+        children: [SearchBox(), TrendingMovies(), PopularMovies()],
       ),
     );
   }

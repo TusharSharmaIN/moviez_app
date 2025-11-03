@@ -37,7 +37,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
               TrailerThumbnail(height: screenSize.height * 0.4),
               Column(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: AppBarBackCTA(
                       padding: EdgeInsets.symmetric(
@@ -48,7 +48,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                     ),
                   ),
                   SizedBox(height: screenSize.height * 0.25),
-                  MovieDetailsContent(),
+                  const MovieDetailsContent(),
                 ],
               ),
             ],
@@ -72,8 +72,8 @@ class MovieDetailsContent extends StatelessWidget {
           topRight: Radius.circular(16),
         ),
       ),
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
+      child: const SingleChildScrollView(
+        padding: EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 12,
@@ -107,7 +107,7 @@ class MovieTitle extends StatelessWidget {
         ),
         CustomIconButton(
           onPressed: () {},
-          icon: Icon(PhosphorIconsRegular.bookmarkSimple),
+          icon: const Icon(PhosphorIconsRegular.bookmarkSimple),
         ),
       ],
     );

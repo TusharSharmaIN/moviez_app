@@ -7,7 +7,7 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    var token = config.tmdbAuthToken.trim();
+    final token = config.tmdbAuthToken.trim();
     options.headers.addAll({'Authorization': 'Bearer $token'});
     handler.next(options);
   }

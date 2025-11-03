@@ -28,7 +28,7 @@ class TrendingMovies extends StatelessWidget {
                 itemCount: 6,
                 itemBuilder: (context, index) {
                   // final movies = state.moviesList[index];
-                  return _TrendingTile(
+                  return const _TrendingTile(
                     // brand: brand,
                     // isSelectedAndCurrentBranchSame: state.selectedBrand == brand,
                   );
@@ -59,7 +59,7 @@ class _TrendingTile extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CustomImageView(
+            const CustomImageView(
               height: 220,
               width: 120,
               fit: BoxFit.cover,
@@ -74,7 +74,7 @@ class _TrendingTile extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            MovieRatings(),
+            const MovieRatings(),
           ],
         ),
       ),

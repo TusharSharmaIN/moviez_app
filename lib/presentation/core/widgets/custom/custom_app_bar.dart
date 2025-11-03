@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moviez_app/bloc/home/home_bloc.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_icon_button.dart';
-import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
@@ -13,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
   final Widget? title;
   final EdgeInsets? padding;
 
-  factory CustomAppBar.menuAppBar() => CustomAppBar(title: AppTitle());
+  factory CustomAppBar.menuAppBar() => const CustomAppBar(title: AppTitle());
 
   factory CustomAppBar.backAppBar({EdgeInsets? padding}) =>
       CustomAppBar(padding: padding);
@@ -77,7 +76,7 @@ class AppBarMenuCTA extends StatelessWidget {
       padding: padding,
       child: IconButton(
         onPressed: onPressed,
-        icon: Icon(PhosphorIconsRegular.list, size: 32, weight: 16),
+        icon: const Icon(PhosphorIconsRegular.list, size: 32, weight: 16),
       ),
     );
   }
@@ -120,13 +119,13 @@ class AppBarWatchlistCTA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 16),
+      padding: const EdgeInsets.only(right: 16),
       child: IconButton(
         // onPressed: () => context.push(AppRoutes.watchlist),
         onPressed: () {
           context.read<HomeBloc>().add(const HomeEvent.loadNowShowingMovies());
         },
-        icon: Icon(PhosphorIconsRegular.bookmarkSimple, size: 28),
+        icon: const Icon(PhosphorIconsRegular.bookmarkSimple, size: 28),
         constraints: const BoxConstraints(),
       ),
     );
