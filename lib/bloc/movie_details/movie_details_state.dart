@@ -5,16 +5,20 @@ abstract class MovieDetailsState with _$MovieDetailsState {
   const MovieDetailsState._();
 
   const factory MovieDetailsState({
-    required bool isLoadingMovieDetails,
     required int movieId,
+    required bool isLoadingMovieDetails,
     required MovieDetails movieDetails,
+    required bool isLoadingTrailerDetails,
+    required Video trailer,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess,
   }) = _MovieDetailsState;
 
   factory MovieDetailsState.initial() => MovieDetailsState(
-    isLoadingMovieDetails: false,
     movieId: 100,
+    isLoadingMovieDetails: false,
     movieDetails: MovieDetails.empty(),
+    isLoadingTrailerDetails: false,
+    trailer: Video.empty(),
     apiFailureOrSuccess: none(),
   );
 }

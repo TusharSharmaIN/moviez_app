@@ -6,4 +6,5 @@ abstract class ApiConstants {
 
   //  movie details api
   static const String movieDetails = 'movie/';
+  static String movieVideos(int movieId) => 'movie/$movieId/videos';
 }

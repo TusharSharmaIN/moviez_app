@@ -8,4 +8,6 @@ class MovieDetailsEvent with _$MovieDetailsEvent {
       _SetMovieId;
 
   const factory MovieDetailsEvent.loadMovieDetails() = _LoadMovieDetails;
+
+  const factory MovieDetailsEvent.loadTrailerDetails() = _LoadTrailerDetails;
 }

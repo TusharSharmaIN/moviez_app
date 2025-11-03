@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
+import 'package:moviez_app/domain/movie_details/entities/video.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
 
 part 'movie_details_event.dart';
@@ -52,6 +53,34 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
                 isLoadingMovieDetails: false,
                 movieDetails: movieDetails,
               ),
+            );
+          },
+        );
+        add(const _LoadTrailerDetails());
+      },
+      loadTrailerDetails: (_) async {
+        emit(
+          state.copyWith(
+            isLoadingMovieDetails: true,
+            apiFailureOrSuccess: none(),
+          ),
+        );
+
+        final result = await movieDetailsRepository.getMovieVideos(
+          movieId: state.movieId,
+        );
+        result.fold(
+          (failure) {
+            emit(
+              state.copyWith(
+                isLoadingMovieDetails: false,
+                apiFailureOrSuccess: none(),
+              ),
+            );
+          },
+          (trailer) {
+            emit(
+              state.copyWith(isLoadingMovieDetails: false, trailer: trailer),
             );
           },
         );

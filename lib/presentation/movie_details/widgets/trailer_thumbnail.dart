@@ -8,14 +8,18 @@ class TrailerThumbnail extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
       buildWhen: (previous, current) =>
-          previous.movieDetails != current.movieDetails,
+          previous.movieDetails != current.movieDetails ||
+          previous.trailer != current.trailer,
       builder: (context, state) {
         return GestureDetector(
           onTap: () async {
-            final youtubeUrl = 'https://www.youtube.com/watch?v=O-b2VfmmbyA';
-            final url = Uri.parse(youtubeUrl);
-            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-              throw 'Could not launch $url';
+            //*Improvemnt* can open on youtube url on app
+            final youtubeUrl = state.trailer.youtubeUrl;
+            if (youtubeUrl != null) {
+              final url = Uri.parse(youtubeUrl);
+              if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+                throw 'Could not launch $url';
+              }
             }
           },
           child: SizedBox(
