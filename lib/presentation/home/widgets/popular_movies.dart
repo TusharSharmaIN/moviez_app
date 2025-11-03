@@ -46,9 +46,9 @@ class _PopularTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(
+        context.push(
           AppRoutes.movieDetails,
-          // params: {'movieId': movie.id.toString()},
+          extra: {'movieId': movie.id.toString()},
         );
       },
       child: Container(

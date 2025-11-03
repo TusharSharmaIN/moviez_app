@@ -316,7 +316,7 @@ String toString() {
 /// @nodoc
 mixin _$MovieDetailsState {
 
- bool get isLoadingMovieDetails; int get movieId; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
+ bool get isLoadingMovieDetails; int get movieId; MovieDetails get movieDetails; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
 /// Create a copy of MovieDetailsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -327,16 +327,16 @@ $MovieDetailsStateCopyWith<MovieDetailsState> get copyWith => _$MovieDetailsStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieDetailsState&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieDetailsState&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.movieDetails, movieDetails) || other.movieDetails == movieDetails)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoadingMovieDetails,movieId,apiFailureOrSuccess);
+int get hashCode => Object.hash(runtimeType,isLoadingMovieDetails,movieId,movieDetails,apiFailureOrSuccess);
 
 @override
 String toString() {
-  return 'MovieDetailsState(isLoadingMovieDetails: $isLoadingMovieDetails, movieId: $movieId, apiFailureOrSuccess: $apiFailureOrSuccess)';
+  return 'MovieDetailsState(isLoadingMovieDetails: $isLoadingMovieDetails, movieId: $movieId, movieDetails: $movieDetails, apiFailureOrSuccess: $apiFailureOrSuccess)';
 }
 
 
@@ -347,11 +347,11 @@ abstract mixin class $MovieDetailsStateCopyWith<$Res>  {
   factory $MovieDetailsStateCopyWith(MovieDetailsState value, $Res Function(MovieDetailsState) _then) = _$MovieDetailsStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoadingMovieDetails, int movieId, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ bool isLoadingMovieDetails, int movieId, MovieDetails movieDetails, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
-
+$MovieDetailsCopyWith<$Res> get movieDetails;
 
 }
 /// @nodoc
@@ -364,15 +364,25 @@ class _$MovieDetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of MovieDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoadingMovieDetails = null,Object? movieId = null,Object? apiFailureOrSuccess = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoadingMovieDetails = null,Object? movieId = null,Object? movieDetails = null,Object? apiFailureOrSuccess = null,}) {
   return _then(_self.copyWith(
 isLoadingMovieDetails: null == isLoadingMovieDetails ? _self.isLoadingMovieDetails : isLoadingMovieDetails // ignore: cast_nullable_to_non_nullable
 as bool,movieId: null == movieId ? _self.movieId : movieId // ignore: cast_nullable_to_non_nullable
-as int,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+as int,movieDetails: null == movieDetails ? _self.movieDetails : movieDetails // ignore: cast_nullable_to_non_nullable
+as MovieDetails,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,
   ));
 }
-
+/// Create a copy of MovieDetailsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MovieDetailsCopyWith<$Res> get movieDetails {
+  
+  return $MovieDetailsCopyWith<$Res>(_self.movieDetails, (value) {
+    return _then(_self.copyWith(movieDetails: value));
+  });
+}
 }
 
 
@@ -454,10 +464,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoadingMovieDetails,  int movieId,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoadingMovieDetails,  int movieId,  MovieDetails movieDetails,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieDetailsState() when $default != null:
-return $default(_that.isLoadingMovieDetails,_that.movieId,_that.apiFailureOrSuccess);case _:
+return $default(_that.isLoadingMovieDetails,_that.movieId,_that.movieDetails,_that.apiFailureOrSuccess);case _:
   return orElse();
 
 }
@@ -475,10 +485,10 @@ return $default(_that.isLoadingMovieDetails,_that.movieId,_that.apiFailureOrSucc
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoadingMovieDetails,  int movieId,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoadingMovieDetails,  int movieId,  MovieDetails movieDetails,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetailsState():
-return $default(_that.isLoadingMovieDetails,_that.movieId,_that.apiFailureOrSuccess);case _:
+return $default(_that.isLoadingMovieDetails,_that.movieId,_that.movieDetails,_that.apiFailureOrSuccess);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -495,10 +505,10 @@ return $default(_that.isLoadingMovieDetails,_that.movieId,_that.apiFailureOrSucc
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoadingMovieDetails,  int movieId,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoadingMovieDetails,  int movieId,  MovieDetails movieDetails,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetailsState() when $default != null:
-return $default(_that.isLoadingMovieDetails,_that.movieId,_that.apiFailureOrSuccess);case _:
+return $default(_that.isLoadingMovieDetails,_that.movieId,_that.movieDetails,_that.apiFailureOrSuccess);case _:
   return null;
 
 }
@@ -510,11 +520,12 @@ return $default(_that.isLoadingMovieDetails,_that.movieId,_that.apiFailureOrSucc
 
 
 class _MovieDetailsState extends MovieDetailsState {
-  const _MovieDetailsState({required this.isLoadingMovieDetails, required this.movieId, required this.apiFailureOrSuccess}): super._();
+  const _MovieDetailsState({required this.isLoadingMovieDetails, required this.movieId, required this.movieDetails, required this.apiFailureOrSuccess}): super._();
   
 
 @override final  bool isLoadingMovieDetails;
 @override final  int movieId;
+@override final  MovieDetails movieDetails;
 @override final  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess;
 
 /// Create a copy of MovieDetailsState
@@ -527,16 +538,16 @@ _$MovieDetailsStateCopyWith<_MovieDetailsState> get copyWith => __$MovieDetailsS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieDetailsState&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieDetailsState&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.movieDetails, movieDetails) || other.movieDetails == movieDetails)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoadingMovieDetails,movieId,apiFailureOrSuccess);
+int get hashCode => Object.hash(runtimeType,isLoadingMovieDetails,movieId,movieDetails,apiFailureOrSuccess);
 
 @override
 String toString() {
-  return 'MovieDetailsState(isLoadingMovieDetails: $isLoadingMovieDetails, movieId: $movieId, apiFailureOrSuccess: $apiFailureOrSuccess)';
+  return 'MovieDetailsState(isLoadingMovieDetails: $isLoadingMovieDetails, movieId: $movieId, movieDetails: $movieDetails, apiFailureOrSuccess: $apiFailureOrSuccess)';
 }
 
 
@@ -547,11 +558,11 @@ abstract mixin class _$MovieDetailsStateCopyWith<$Res> implements $MovieDetailsS
   factory _$MovieDetailsStateCopyWith(_MovieDetailsState value, $Res Function(_MovieDetailsState) _then) = __$MovieDetailsStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoadingMovieDetails, int movieId, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ bool isLoadingMovieDetails, int movieId, MovieDetails movieDetails, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
-
+@override $MovieDetailsCopyWith<$Res> get movieDetails;
 
 }
 /// @nodoc
@@ -564,16 +575,26 @@ class __$MovieDetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of MovieDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoadingMovieDetails = null,Object? movieId = null,Object? apiFailureOrSuccess = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoadingMovieDetails = null,Object? movieId = null,Object? movieDetails = null,Object? apiFailureOrSuccess = null,}) {
   return _then(_MovieDetailsState(
 isLoadingMovieDetails: null == isLoadingMovieDetails ? _self.isLoadingMovieDetails : isLoadingMovieDetails // ignore: cast_nullable_to_non_nullable
 as bool,movieId: null == movieId ? _self.movieId : movieId // ignore: cast_nullable_to_non_nullable
-as int,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+as int,movieDetails: null == movieDetails ? _self.movieDetails : movieDetails // ignore: cast_nullable_to_non_nullable
+as MovieDetails,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,
   ));
 }
 
-
+/// Create a copy of MovieDetailsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MovieDetailsCopyWith<$Res> get movieDetails {
+  
+  return $MovieDetailsCopyWith<$Res>(_self.movieDetails, (value) {
+    return _then(_self.copyWith(movieDetails: value));
+  });
+}
 }
 
 // dart format on

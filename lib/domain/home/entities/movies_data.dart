@@ -40,8 +40,9 @@ abstract class Movie with _$Movie {
     title: StringValue(''),
   );
 
-  String get posterUrl =>
-      'https://image.tmdb.org/t/p/w500${posterPath.getValue()}';
+  String get posterUrl => posterPath.isValid()
+      ? 'https://image.tmdb.org/t/p/w500${posterPath.getValue()}'
+      : '';
 
   static List<Movie> get dummyMovies => [
     Movie.empty().copyWith(

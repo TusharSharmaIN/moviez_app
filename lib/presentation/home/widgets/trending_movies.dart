@@ -46,7 +46,10 @@ class _TrendingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRoutes.movieDetails);
+        context.push(
+          AppRoutes.movieDetails,
+          extra: {'movieId': movie.id.toString()},
+        );
       },
       child: Container(
         width: 120,

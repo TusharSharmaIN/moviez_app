@@ -35,11 +35,13 @@ abstract class MovieDetails with _$MovieDetails {
     video: false,
   );
 
-  String get posterUrl =>
-      'https://image.tmdb.org/t/p/w500${posterPath.getValue()}';
+  String get posterUrl => posterPath.isValid()
+      ? 'https://image.tmdb.org/t/p/w500${posterPath.getValue()}'
+      : '';
 
-  String get backdropUrl =>
-      'https://image.tmdb.org/t/p/original${backdropPath.getValue()}';
+  String get backdropUrl => backdropPath.isValid()
+      ? 'https://image.tmdb.org/t/p/w500${backdropPath.getValue()}'
+      : '';
 }
 
 @freezed

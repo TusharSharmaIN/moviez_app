@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/exception_handler.dart';
-import 'package:moviez_app/domain/core/error/exceptions.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/infrastructure/core/http/api_constants.dart';
 import 'package:moviez_app/infrastructure/core/http/http.dart';
@@ -31,32 +30,32 @@ class MovieDetailsRemoteDataSource {
   }
 
   void _exceptionChecker({required Response<dynamic> res}) {
-    if (res.data == null) {
-      throw ServerException(
-        code: res.statusCode ?? 500,
-        message: 'Empty response received',
-      );
-    }
+    // if (res.data == null) {
+    //   throw ServerException(
+    //     code: res.statusCode ?? 500,
+    //     message: 'Empty response received',
+    //   );
+    // }
 
-    if (res.data is! Map<String, dynamic>) {
-      throw ServerException(
-        code: 500,
-        message: 'Invalid response format: expected JSON object',
-      );
-    }
+    // if (res.data is! Map<String, dynamic>) {
+    //   throw ServerException(
+    //     code: 500,
+    //     message: 'Invalid response format: expected JSON object',
+    //   );
+    // }
 
-    if (res.data['success'] == false) {
-      throw ServerException(
-        code: res.statusCode ?? 500,
-        message: res.data['status_message'] ?? 'Unknown error occurred',
-      );
-    }
+    // if (res.data['success'] == false) {
+    //   throw ServerException(
+    //     code: res.statusCode ?? 500,
+    //     message: res.data['status_message'] ?? 'Unknown error occurred',
+    //   );
+    // }
 
-    if (res.data['results'] == null) {
-      throw ServerException(
-        code: 500,
-        message: 'Invalid response format: missing results',
-      );
-    }
+    // if (res.data['results'] == null) {
+    //   throw ServerException(
+    //     code: 500,
+    //     message: 'Invalid response format: missing results',
+    //   );
+    // }
   }
 }

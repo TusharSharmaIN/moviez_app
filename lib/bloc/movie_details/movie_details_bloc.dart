@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
+import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
 
 part 'movie_details_event.dart';
@@ -25,7 +26,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
       setMovieId: (e) async {
         emit(state.copyWith(movieId: int.tryParse(e.movieId) ?? state.movieId));
       },
-      loadMovieDetails: (e) async {
+      loadMovieDetails: (_) async {
         emit(
           state.copyWith(
             isLoadingMovieDetails: true,
@@ -45,11 +46,11 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
               ),
             );
           },
-          (_) {
+          (movieDetails) {
             emit(
               state.copyWith(
                 isLoadingMovieDetails: false,
-                // nowShowingMovies: moviesData,
+                movieDetails: movieDetails,
               ),
             );
           },

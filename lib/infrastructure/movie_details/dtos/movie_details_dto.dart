@@ -17,7 +17,6 @@ abstract class MovieDetailsDto with _$MovieDetailsDto {
     @JsonKey(name: 'imdb_id', defaultValue: '') required String imdbId,
     @JsonKey(name: 'original_language', defaultValue: '')
     required String originalLanguage,
-    
     @JsonKey(name: 'overview', defaultValue: '') required String overview,
     @JsonKey(name: 'poster_path', defaultValue: '') required String posterPath,
     @JsonKey(name: 'release_date', defaultValue: '')
