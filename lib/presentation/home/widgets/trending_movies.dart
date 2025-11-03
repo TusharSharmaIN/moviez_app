@@ -7,8 +7,9 @@ class TrendingMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (previous, current) =>
-          previous.moviesList != current.moviesList,
+          previous.nowShowingMovies != current.nowShowingMovies,
       builder: (context, state) {
+        final movies = state.nowShowingMovies.results;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -21,17 +22,12 @@ class TrendingMovies extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             SizedBox(
-              height: 300,
+              height: 260,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                // itemCount: state.moviesList.length,
-                itemCount: 6,
+                itemCount: movies.length,
                 itemBuilder: (context, index) {
-                  // final movies = state.moviesList[index];
-                  return const _TrendingTile(
-                    // brand: brand,
-                    // isSelectedAndCurrentBranchSame: state.selectedBrand == brand,
-                  );
+                  return _TrendingTile(movie: movies[index]);
                 },
               ),
             ),
@@ -43,7 +39,8 @@ class TrendingMovies extends StatelessWidget {
 }
 
 class _TrendingTile extends StatelessWidget {
-  const _TrendingTile();
+  const _TrendingTile({required this.movie});
+  final Movie movie;
 
   @override
   Widget build(BuildContext context) {
@@ -58,23 +55,21 @@ class _TrendingTile extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 4,
           children: [
-            const CustomImageView(
+            CustomImageView(
               height: 220,
               width: 120,
               fit: BoxFit.cover,
-              imageUrl:
-                  'https://image.tmdb.org/t/p/w500/5Gr4amaB1xxeYAEMOdrVutaWwgz.jpg',
+              imageUrl: movie.posterUrl,
             ),
-            const SizedBox(height: 8),
             Text(
-              'The Rats: A Witcher Tales',
+              movie.title.getValue(),
               style: BaseTextStyles.mulishSmallSemiBold.copyWith(
                 color: BaseColors.black,
               ),
             ),
-            const SizedBox(height: 8),
-            const MovieRatings(),
           ],
         ),
       ),

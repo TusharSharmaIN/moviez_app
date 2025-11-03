@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:moviez_app/bloc/home/home_bloc.dart';
+
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/locator.dart';
 import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/theme/theme_data.dart';
+import 'package:moviez_app/bloc/home/home_bloc.dart';
+import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
 
 Future<void> initialSetup({required Flavor flavor}) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +35,9 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(create: (context) => locator<HomeBloc>()),
+        BlocProvider<MovieDetailsBloc>(
+          create: (context) => locator<MovieDetailsBloc>(),
+        ),
       ],
       child: MaterialApp.router(
         routerConfig: goRouter,

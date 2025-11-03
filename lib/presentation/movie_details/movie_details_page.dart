@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
 import 'package:moviez_app/presentation/core/widgets/common/movie_tags.dart';
 import 'package:moviez_app/presentation/core/widgets/common/movie_ratings.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
@@ -14,7 +16,8 @@ part 'widgets/movie_meta_data.dart';
 part 'widgets/movie_cast.dart';
 
 class MovieDetailsPage extends StatefulWidget {
-  const MovieDetailsPage({super.key});
+  const MovieDetailsPage({super.key, required this.movieId});
+  final String movieId;
 
   @override
   State<MovieDetailsPage> createState() => _MovieDetailsPageState();
@@ -24,6 +27,12 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   void initState() {
     super.initState();
+    context.read<MovieDetailsBloc>().add(
+      MovieDetailsEvent.setMovieId(movieId: widget.movieId),
+    );
+    context.read<MovieDetailsBloc>().add(
+      const MovieDetailsEvent.loadMovieDetails(),
+    );
   }
 
   @override

@@ -21,4 +21,14 @@ class HomeRepository implements IHomeRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, MoviesData>> getPopularMovies() async {
+    try {
+      final result = await homeRemoteDataSource.getPopularMovies();
+      return Right(result);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }

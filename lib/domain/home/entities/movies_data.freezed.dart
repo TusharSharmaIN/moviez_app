@@ -274,4 +274,291 @@ as List<Movie>,
 
 }
 
+/// @nodoc
+mixin _$Movie {
+
+ bool get adult; StringValue get backdropPath; List<num> get genreIds; num get id; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; StringValue get title;
+/// Create a copy of Movie
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MovieCopyWith<Movie> get copyWith => _$MovieCopyWithImpl<Movie>(this as Movie, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Movie&&(identical(other.adult, adult) || other.adult == adult)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other.genreIds, genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,adult,backdropPath,const DeepCollectionEquality().hash(genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
+
+@override
+String toString() {
+  return 'Movie(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MovieCopyWith<$Res>  {
+  factory $MovieCopyWith(Movie value, $Res Function(Movie) _then) = _$MovieCopyWithImpl;
+@useResult
+$Res call({
+ bool adult, StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
+});
+
+
+
+
+}
+/// @nodoc
+class _$MovieCopyWithImpl<$Res>
+    implements $MovieCopyWith<$Res> {
+  _$MovieCopyWithImpl(this._self, this._then);
+
+  final Movie _self;
+  final $Res Function(Movie) _then;
+
+/// Create a copy of Movie
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? adult = null,Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
+  return _then(_self.copyWith(
+adult: null == adult ? _self.adult : adult // ignore: cast_nullable_to_non_nullable
+as bool,backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+as StringValue,genreIds: null == genreIds ? _self.genreIds : genreIds // ignore: cast_nullable_to_non_nullable
+as List<num>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as num,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
+as StringValue,overview: null == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
+as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
+as StringValue,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
+as DateTimeValue,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as StringValue,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [Movie].
+extension MoviePatterns on Movie {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Movie value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Movie() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Movie value)  $default,){
+final _that = this;
+switch (_that) {
+case _Movie():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Movie value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Movie() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool adult,  StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Movie() when $default != null:
+return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool adult,  StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)  $default,) {final _that = this;
+switch (_that) {
+case _Movie():
+return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool adult,  StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,) {final _that = this;
+switch (_that) {
+case _Movie() when $default != null:
+return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _Movie extends Movie {
+  const _Movie({required this.adult, required this.backdropPath, required final  List<num> genreIds, required this.id, required this.originalLanguage, required this.overview, required this.posterPath, required this.releaseDate, required this.title}): _genreIds = genreIds,super._();
+  
+
+@override final  bool adult;
+@override final  StringValue backdropPath;
+ final  List<num> _genreIds;
+@override List<num> get genreIds {
+  if (_genreIds is EqualUnmodifiableListView) return _genreIds;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_genreIds);
+}
+
+@override final  num id;
+@override final  StringValue originalLanguage;
+@override final  StringValue overview;
+@override final  StringValue posterPath;
+@override final  DateTimeValue releaseDate;
+@override final  StringValue title;
+
+/// Create a copy of Movie
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MovieCopyWith<_Movie> get copyWith => __$MovieCopyWithImpl<_Movie>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Movie&&(identical(other.adult, adult) || other.adult == adult)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other._genreIds, _genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,adult,backdropPath,const DeepCollectionEquality().hash(_genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
+
+@override
+String toString() {
+  return 'Movie(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
+  factory _$MovieCopyWith(_Movie value, $Res Function(_Movie) _then) = __$MovieCopyWithImpl;
+@override @useResult
+$Res call({
+ bool adult, StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
+});
+
+
+
+
+}
+/// @nodoc
+class __$MovieCopyWithImpl<$Res>
+    implements _$MovieCopyWith<$Res> {
+  __$MovieCopyWithImpl(this._self, this._then);
+
+  final _Movie _self;
+  final $Res Function(_Movie) _then;
+
+/// Create a copy of Movie
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? adult = null,Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
+  return _then(_Movie(
+adult: null == adult ? _self.adult : adult // ignore: cast_nullable_to_non_nullable
+as bool,backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+as StringValue,genreIds: null == genreIds ? _self._genreIds : genreIds // ignore: cast_nullable_to_non_nullable
+as List<num>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as num,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
+as StringValue,overview: null == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
+as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
+as StringValue,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
+as DateTimeValue,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as StringValue,
+  ));
+}
+
+
+}
+
 // dart format on

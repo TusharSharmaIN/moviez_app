@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:moviez_app/domain/core/error/value_error.dart';
 import 'package:moviez_app/domain/core/error/value_failure.dart';
 import 'package:moviez_app/domain/core/value/value_validator.dart';
@@ -56,4 +57,20 @@ class StringValue extends ValueObject<String> {
   bool get isNotEmpty => value.getOrElse(() => '').isNotEmpty;
 
   const StringValue._(this.value);
+}
+
+class DateTimeValue extends ValueObject<DateTime> {
+  @override
+  final Either<ValueFailure<DateTime>, DateTime> value;
+
+  /// Accepts only "YYYY-MM-DD" format.
+  factory DateTimeValue.fromYyyyMmDd(String input) {
+    return DateTimeValue._(validateDateYyyyMmDd(input));
+  }
+
+  const DateTimeValue._(this.value);
+
+  DateTime get dateTime => value.getOrElse(() => DateTime.now());
+
+  String get formattedDate => DateFormat('dd MMM yyyy').format(dateTime);
 }

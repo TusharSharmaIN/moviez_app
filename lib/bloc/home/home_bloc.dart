@@ -47,6 +47,34 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           },
         );
       },
+      loadPopularMovies: (e) async {
+        emit(
+          state.copyWith(
+            isLoadingPopularMovies: true,
+            apiFailureOrSuccess: none(),
+          ),
+        );
+
+        final result = await homeRepository.getPopularMovies();
+        result.fold(
+          (failure) {
+            emit(
+              state.copyWith(
+                isLoadingPopularMovies: false,
+                apiFailureOrSuccess: none(),
+              ),
+            );
+          },
+          (moviesData) {
+            emit(
+              state.copyWith(
+                isLoadingPopularMovies: false,
+                popularMovies: moviesData,
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

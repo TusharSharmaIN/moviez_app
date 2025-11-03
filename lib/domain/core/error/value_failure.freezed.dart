@@ -86,11 +86,12 @@ extension ValueFailurePatterns<T> on ValueFailure<T> {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Empty<T> value)?  empty,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Empty<T> value)?  empty,TResult Function( _InvalidDateFormat<T> value)?  invalidDateFormat,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Empty() when empty != null:
-return empty(_that);case _:
+return empty(_that);case _InvalidDateFormat() when invalidDateFormat != null:
+return invalidDateFormat(_that);case _:
   return orElse();
 
 }
@@ -108,11 +109,12 @@ return empty(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Empty<T> value)  empty,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Empty<T> value)  empty,required TResult Function( _InvalidDateFormat<T> value)  invalidDateFormat,}){
 final _that = this;
 switch (_that) {
 case _Empty():
-return empty(_that);case _:
+return empty(_that);case _InvalidDateFormat():
+return invalidDateFormat(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -129,11 +131,12 @@ return empty(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Empty<T> value)?  empty,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Empty<T> value)?  empty,TResult? Function( _InvalidDateFormat<T> value)?  invalidDateFormat,}){
 final _that = this;
 switch (_that) {
 case _Empty() when empty != null:
-return empty(_that);case _:
+return empty(_that);case _InvalidDateFormat() when invalidDateFormat != null:
+return invalidDateFormat(_that);case _:
   return null;
 
 }
@@ -150,10 +153,11 @@ return empty(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( T failedValue)?  empty,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( T failedValue)?  empty,TResult Function( T failedValue)?  invalidDateFormat,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Empty() when empty != null:
-return empty(_that.failedValue);case _:
+return empty(_that.failedValue);case _InvalidDateFormat() when invalidDateFormat != null:
+return invalidDateFormat(_that.failedValue);case _:
   return orElse();
 
 }
@@ -171,10 +175,11 @@ return empty(_that.failedValue);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( T failedValue)  empty,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( T failedValue)  empty,required TResult Function( T failedValue)  invalidDateFormat,}) {final _that = this;
 switch (_that) {
 case _Empty():
-return empty(_that.failedValue);case _:
+return empty(_that.failedValue);case _InvalidDateFormat():
+return invalidDateFormat(_that.failedValue);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +196,11 @@ return empty(_that.failedValue);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( T failedValue)?  empty,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( T failedValue)?  empty,TResult? Function( T failedValue)?  invalidDateFormat,}) {final _that = this;
 switch (_that) {
 case _Empty() when empty != null:
-return empty(_that.failedValue);case _:
+return empty(_that.failedValue);case _InvalidDateFormat() when invalidDateFormat != null:
+return invalidDateFormat(_that.failedValue);case _:
   return null;
 
 }
@@ -260,6 +266,72 @@ class __$EmptyCopyWithImpl<T,$Res>
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? failedValue = freezed,}) {
   return _then(_Empty<T>(
+failedValue: freezed == failedValue ? _self.failedValue : failedValue // ignore: cast_nullable_to_non_nullable
+as T,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _InvalidDateFormat<T> implements ValueFailure<T> {
+  const _InvalidDateFormat({required this.failedValue});
+  
+
+@override final  T failedValue;
+
+/// Create a copy of ValueFailure
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$InvalidDateFormatCopyWith<T, _InvalidDateFormat<T>> get copyWith => __$InvalidDateFormatCopyWithImpl<T, _InvalidDateFormat<T>>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InvalidDateFormat<T>&&const DeepCollectionEquality().equals(other.failedValue, failedValue));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(failedValue));
+
+@override
+String toString() {
+  return 'ValueFailure<$T>.invalidDateFormat(failedValue: $failedValue)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$InvalidDateFormatCopyWith<T,$Res> implements $ValueFailureCopyWith<T, $Res> {
+  factory _$InvalidDateFormatCopyWith(_InvalidDateFormat<T> value, $Res Function(_InvalidDateFormat<T>) _then) = __$InvalidDateFormatCopyWithImpl;
+@override @useResult
+$Res call({
+ T failedValue
+});
+
+
+
+
+}
+/// @nodoc
+class __$InvalidDateFormatCopyWithImpl<T,$Res>
+    implements _$InvalidDateFormatCopyWith<T, $Res> {
+  __$InvalidDateFormatCopyWithImpl(this._self, this._then);
+
+  final _InvalidDateFormat<T> _self;
+  final $Res Function(_InvalidDateFormat<T>) _then;
+
+/// Create a copy of ValueFailure
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? failedValue = freezed,}) {
+  return _then(_InvalidDateFormat<T>(
 failedValue: freezed == failedValue ? _self.failedValue : failedValue // ignore: cast_nullable_to_non_nullable
 as T,
   ));

@@ -5,100 +5,123 @@ class PopularMovies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          'Popular',
-          style: BaseTextStyles.merriExtraLargeBold.copyWith(
-            color: BaseColors.primaryBlack,
-          ),
-        ),
-        const SizedBox(height: 8),
-        SizedBox(
-          height: 300,
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            // itemCount: state.moviesList.length,
-            itemCount: 6,
-            itemBuilder: (context, index) {
-              // final movies = state.moviesList[index];
-              return const _PopularTile(
-                // brand: brand,
-                // isSelectedAndCurrentBranchSame: state.selectedBrand == brand,
-              );
-            },
-          ),
-        ),
-      ],
+    return BlocBuilder<HomeBloc, HomeState>(
+      buildWhen: (previous, current) =>
+          previous.popularMovies != current.popularMovies,
+      builder: (context, state) {
+        final movies = state.popularMovies.results;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Popular',
+              style: BaseTextStyles.merriExtraLargeBold.copyWith(
+                color: BaseColors.primaryBlack,
+              ),
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              height: 300,
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: movies.length,
+                itemBuilder: (context, index) {
+                  return _PopularTile(movie: movies[index]);
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
 
 class _PopularTile extends StatelessWidget {
-  const _PopularTile();
+  const _PopularTile({required this.movie});
+  final Movie movie;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: const CustomImageView(
-              height: 120,
-              width: 80,
-              fit: BoxFit.cover,
-              imageUrl:
-                  'https://image.tmdb.org/t/p/w500/rx9xTly73NssFHPg9gKrX9tJdDI.jpg',
-            ),
-          ),
-          const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'The Rats: A Witcher Tales',
-                style: BaseTextStyles.mulishMediumBold.copyWith(
-                  color: BaseColors.black,
-                ),
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(
+          AppRoutes.movieDetails,
+          // params: {'movieId': movie.id.toString()},
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: CustomImageView(
+                height: 160,
+                width: 100,
+                fit: BoxFit.cover,
+                imageUrl: movie.posterUrl,
               ),
-              const SizedBox(height: 8),
-              const MovieRatings(),
-              const SizedBox(height: 8),
-              const MovieTags(),
-              const SizedBox(height: 8),
-              const _Duration(),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(width: 16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 8,
+              children: [
+                Text(
+                  'The Rats: A Witcher Tales',
+                  style: BaseTextStyles.mulishMediumBold.copyWith(
+                    color: BaseColors.black,
+                  ),
+                ),
+                const MovieTags(),
+                DateAndLanguage(
+                  date: movie.releaseDate.formattedDate,
+                  languageCode: movie.originalLanguage.getValue(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class _Duration extends StatelessWidget {
-  const _Duration();
+class DateAndLanguage extends StatelessWidget {
+  const DateAndLanguage({
+    super.key,
+    required this.date,
+    required this.languageCode,
+  });
+  final String date;
+  final String languageCode;
 
   @override
   Widget build(BuildContext context) {
     return Text.rich(
+      textAlign: TextAlign.center,
       TextSpan(
         children: [
-          const WidgetSpan(
-            child: Icon(
-              PhosphorIconsRegular.clock,
-              size: 12,
+          TextSpan(
+            text: date,
+            style: BaseTextStyles.mulishSmallRegular.copyWith(
               color: BaseColors.black,
             ),
           ),
           const WidgetSpan(child: SizedBox(width: 4)),
           TextSpan(
-            text: '2h 30m',
+            text: ' • ',
+            style: BaseTextStyles.mulishSmallRegular.copyWith(
+              color: BaseColors.black,
+            ),
+          ),
+          const WidgetSpan(child: SizedBox(width: 4)),
+          TextSpan(
+            text: '${languageCode.toUpperCase()}',
             style: BaseTextStyles.mulishSmallRegular.copyWith(
               color: BaseColors.black,
             ),

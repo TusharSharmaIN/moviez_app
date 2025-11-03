@@ -17,8 +17,14 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.movieDetails,
-      builder: (context, state) => const MovieDetailsPage(),
+      // builder: (context, state) => const MovieDetailsPage(),
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>? ?? {};
+        final movieId = extra['movieId'] as String? ?? '';
+        return MovieDetailsPage(movieId: movieId);
+      },
     ),
+
     GoRoute(
       path: AppRoutes.watchlist,
       builder: (context, state) => const WatchlistPage(),

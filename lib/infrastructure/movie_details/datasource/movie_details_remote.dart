@@ -2,43 +2,31 @@ import 'package:dio/dio.dart';
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/exception_handler.dart';
 import 'package:moviez_app/domain/core/error/exceptions.dart';
-import 'package:moviez_app/domain/home/entities/movies_data.dart';
+import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/infrastructure/core/http/api_constants.dart';
 import 'package:moviez_app/infrastructure/core/http/http.dart';
-import 'package:moviez_app/infrastructure/home/dtos/movies_data_dto.dart';
+import 'package:moviez_app/infrastructure/movie_details/dtos/movie_details_dto.dart';
 
-class HomeRemoteDataSource {
+class MovieDetailsRemoteDataSource {
   final Config config;
   final DataSourceExceptionHandler dataSourceExceptionHandler;
   final HttpService httpService;
 
-  HomeRemoteDataSource({
+  MovieDetailsRemoteDataSource({
     required this.config,
     required this.dataSourceExceptionHandler,
     required this.httpService,
   });
 
-  Future<MoviesData> getNowShowingMovies() async {
+  Future<MovieDetails> getMovieDetails({required int movieId}) async {
     return await dataSourceExceptionHandler.handle(() async {
       final response = await httpService.request(
         method: 'GET',
-        url: ApiConstants.trending,
+        url: ApiConstants.movieDetails + movieId.toString(),
         queryParameters: {'language': 'en-US', 'page': '1'},
       );
       _exceptionChecker(res: response);
-      return MoviesDataDto.fromJson(response.data).toDomain();
-    });
-  }
-
-  Future<MoviesData> getPopularMovies() async {
-    return await dataSourceExceptionHandler.handle(() async {
-      final response = await httpService.request(
-        method: 'GET',
-        url: ApiConstants.popular,
-        queryParameters: {'language': 'en-US', 'page': '1'},
-      );
-      _exceptionChecker(res: response);
-      return MoviesDataDto.fromJson(response.data).toDomain();
+      return MovieDetailsDto.fromJson(response.data).toDomain();
     });
   }
 
