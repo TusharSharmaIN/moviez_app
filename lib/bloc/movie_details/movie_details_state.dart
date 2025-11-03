@@ -10,6 +10,8 @@ abstract class MovieDetailsState with _$MovieDetailsState {
     required MovieDetails movieDetails,
     required bool isLoadingTrailerDetails,
     required Video trailer,
+    required bool isLoadingCastDetails,
+    required List<Cast> cast,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess,
   }) = _MovieDetailsState;
 
@@ -19,6 +21,8 @@ abstract class MovieDetailsState with _$MovieDetailsState {
     movieDetails: MovieDetails.empty(),
     isLoadingTrailerDetails: false,
     trailer: Video.empty(),
+    isLoadingCastDetails: false,
+    cast: const <Cast>[],
     apiFailureOrSuccess: none(),
   );
 }

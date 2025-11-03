@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
 import 'package:moviez_app/domain/core/error/failure_handler.dart';
+import 'package:moviez_app/domain/movie_details/entities/cast.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/domain/movie_details/entities/video.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
@@ -39,6 +40,20 @@ class MovieDetailsRepository implements IMovieDetailsRepository {
         movieId: movieId,
       );
       return Right(result.last);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<ApiFailure, List<Cast>>> getMovieCast({
+    required int movieId,
+  }) async {
+    try {
+      final result = await movieDetailsRemoteDataSource.getMovieCast(
+        movieId: movieId,
+      );
+      return Right(result);
     } catch (e) {
       return Left(FailureHandler.handleFailure(e));
     }

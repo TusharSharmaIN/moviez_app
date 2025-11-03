@@ -10,4 +10,6 @@ class MovieDetailsEvent with _$MovieDetailsEvent {
   const factory MovieDetailsEvent.loadMovieDetails() = _LoadMovieDetails;
 
   const factory MovieDetailsEvent.loadTrailerDetails() = _LoadTrailerDetails;
+
+  const factory MovieDetailsEvent.loadCastDetails() = _LoadCastDetails;
 }

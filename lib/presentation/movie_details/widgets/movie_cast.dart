@@ -5,38 +5,41 @@ class MovieCast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      spacing: 8,
-      children: [
-        Text(
-          'Cast',
-          style: BaseTextStyles.merriExtraLargeBold.copyWith(
-            color: BaseColors.primaryBlack,
-          ),
-        ),
-        SizedBox(
-          height: 180,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 6,
-            itemBuilder: (context, index) {
-              // final movies = state.moviesList[index];
-              return const _CastTile(
-                // brand: brand,
-                // isSelectedAndCurrentBranchSame: state.selectedBrand == brand,
-              );
-            },
-          ),
-        ),
-      ],
+    return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+      buildWhen: (previous, current) => previous.cast != current.cast,
+      builder: (context, state) {
+        final cast = state.cast.take(10).toList();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          spacing: 8,
+          children: [
+            Text(
+              'Cast',
+              style: BaseTextStyles.merriExtraLargeBold.copyWith(
+                color: BaseColors.primaryBlack,
+              ),
+            ),
+            SizedBox(
+              height: 180,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: cast.length,
+                itemBuilder: (context, index) {
+                  return _CastTile(cast: cast[index]);
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
 
 class _CastTile extends StatelessWidget {
-  const _CastTile();
+  const _CastTile({required this.cast});
+  final Cast cast;
 
   @override
   Widget build(BuildContext context) {
@@ -44,20 +47,22 @@ class _CastTile extends StatelessWidget {
       width: 80,
       margin: const EdgeInsets.only(right: 16),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(4)),
-      clipBehavior: Clip.antiAlias,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const CustomImageView(
-            height: 80,
-            width: 80,
-            fit: BoxFit.cover,
-            imageUrl:
-                'https://image.tmdb.org/t/p/w500/1UXruA5cEqdMACjUMuem8jN1N9G.jpg',
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: CustomImageView(
+              height: 80,
+              width: 80,
+              fit: BoxFit.cover,
+              icon: PhosphorIconsRegular.user,
+              imageUrl: cast.profileImageUrl,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
-            'Christelle Elwin',
+            cast.name.getValue(),
             style: BaseTextStyles.mulishSmallSemiBold.copyWith(
               color: BaseColors.black,
             ),

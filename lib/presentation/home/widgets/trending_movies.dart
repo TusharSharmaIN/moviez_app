@@ -55,17 +55,19 @@ class _TrendingTile extends StatelessWidget {
         width: 120,
         margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-        clipBehavior: Clip.antiAlias,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 4,
           children: [
-            CustomImageView(
-              height: 220,
-              width: 120,
-              fit: BoxFit.cover,
-              imageUrl: movie.posterUrl,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: CustomImageView(
+                height: 220,
+                width: 120,
+                fit: BoxFit.cover,
+                imageUrl: movie.posterUrl,
+              ),
             ),
             Text(
               movie.title.getValue(),

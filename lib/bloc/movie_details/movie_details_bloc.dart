@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
+import 'package:moviez_app/domain/movie_details/entities/cast.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/domain/movie_details/entities/video.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
@@ -57,6 +58,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           },
         );
         add(const _LoadTrailerDetails());
+        add(const _LoadCastDetails());
       },
       loadTrailerDetails: (_) async {
         emit(
@@ -82,6 +84,31 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
             emit(
               state.copyWith(isLoadingMovieDetails: false, trailer: trailer),
             );
+          },
+        );
+      },
+      loadCastDetails: (_) async {
+        emit(
+          state.copyWith(
+            isLoadingCastDetails: true,
+            apiFailureOrSuccess: none(),
+          ),
+        );
+
+        final result = await movieDetailsRepository.getMovieCast(
+          movieId: state.movieId,
+        );
+        result.fold(
+          (failure) {
+            emit(
+              state.copyWith(
+                isLoadingCastDetails: false,
+                apiFailureOrSuccess: none(),
+              ),
+            );
+          },
+          (cast) {
+            emit(state.copyWith(isLoadingCastDetails: false, cast: cast));
           },
         );
       },
