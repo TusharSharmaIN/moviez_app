@@ -21,7 +21,7 @@ abstract class MovieDetailsDto with _$MovieDetailsDto {
     @JsonKey(name: 'poster_path', defaultValue: '') required String posterPath,
     @JsonKey(name: 'release_date', defaultValue: '')
     required String releaseDate,
-    @JsonKey(name: 'runtime', defaultValue: 0) required num runtime,
+    @JsonKey(name: 'runtime', defaultValue: 0) required int runtime,
     @JsonKey(name: 'title', defaultValue: '') required String title,
     @JsonKey(name: 'video', defaultValue: false) required bool video,
   }) = _MovieDetailsDto;
@@ -35,7 +35,7 @@ abstract class MovieDetailsDto with _$MovieDetailsDto {
     overview: StringValue(overview),
     posterPath: StringValue(posterPath),
     releaseDate: DateTimeValue.fromYyyyMmDd(releaseDate),
-    runtime: runtime,
+    runtime: Duration(minutes: runtime),
     title: StringValue(title),
     video: video,
   );

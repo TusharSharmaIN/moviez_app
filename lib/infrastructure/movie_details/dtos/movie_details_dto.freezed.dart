@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MovieDetailsDto {
 
-@JsonKey(name: 'backdrop_path', defaultValue: '') String get backdropPath;@JsonKey(name: 'genres', defaultValue: []) List<GenreDto> get genres;@JsonKey(name: 'id', defaultValue: 0) num get id;@JsonKey(name: 'imdb_id', defaultValue: '') String get imdbId;@JsonKey(name: 'original_language', defaultValue: '') String get originalLanguage;@JsonKey(name: 'overview', defaultValue: '') String get overview;@JsonKey(name: 'poster_path', defaultValue: '') String get posterPath;@JsonKey(name: 'release_date', defaultValue: '') String get releaseDate;@JsonKey(name: 'runtime', defaultValue: 0) num get runtime;@JsonKey(name: 'title', defaultValue: '') String get title;@JsonKey(name: 'video', defaultValue: false) bool get video;
+@JsonKey(name: 'backdrop_path', defaultValue: '') String get backdropPath;@JsonKey(name: 'genres', defaultValue: []) List<GenreDto> get genres;@JsonKey(name: 'id', defaultValue: 0) num get id;@JsonKey(name: 'imdb_id', defaultValue: '') String get imdbId;@JsonKey(name: 'original_language', defaultValue: '') String get originalLanguage;@JsonKey(name: 'overview', defaultValue: '') String get overview;@JsonKey(name: 'poster_path', defaultValue: '') String get posterPath;@JsonKey(name: 'release_date', defaultValue: '') String get releaseDate;@JsonKey(name: 'runtime', defaultValue: 0) int get runtime;@JsonKey(name: 'title', defaultValue: '') String get title;@JsonKey(name: 'video', defaultValue: false) bool get video;
 /// Create a copy of MovieDetailsDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $MovieDetailsDtoCopyWith<$Res>  {
   factory $MovieDetailsDtoCopyWith(MovieDetailsDto value, $Res Function(MovieDetailsDto) _then) = _$MovieDetailsDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@JsonKey(name: 'genres', defaultValue: []) List<GenreDto> genres,@JsonKey(name: 'id', defaultValue: 0) num id,@JsonKey(name: 'imdb_id', defaultValue: '') String imdbId,@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@JsonKey(name: 'overview', defaultValue: '') String overview,@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@JsonKey(name: 'runtime', defaultValue: 0) num runtime,@JsonKey(name: 'title', defaultValue: '') String title,@JsonKey(name: 'video', defaultValue: false) bool video
+@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@JsonKey(name: 'genres', defaultValue: []) List<GenreDto> genres,@JsonKey(name: 'id', defaultValue: 0) num id,@JsonKey(name: 'imdb_id', defaultValue: '') String imdbId,@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@JsonKey(name: 'overview', defaultValue: '') String overview,@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@JsonKey(name: 'runtime', defaultValue: 0) int runtime,@JsonKey(name: 'title', defaultValue: '') String title,@JsonKey(name: 'video', defaultValue: false) bool video
 });
 
 
@@ -76,7 +76,7 @@ as String,overview: null == overview ? _self.overview : overview // ignore: cast
 as String,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as String,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
 as String,runtime: null == runtime ? _self.runtime : runtime // ignore: cast_nullable_to_non_nullable
-as num,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,video: null == video ? _self.video : video // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -163,7 +163,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genres', defaultValue: [])  List<GenreDto> genres, @JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'imdb_id', defaultValue: '')  String imdbId, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'runtime', defaultValue: 0)  num runtime, @JsonKey(name: 'title', defaultValue: '')  String title, @JsonKey(name: 'video', defaultValue: false)  bool video)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genres', defaultValue: [])  List<GenreDto> genres, @JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'imdb_id', defaultValue: '')  String imdbId, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'runtime', defaultValue: 0)  int runtime, @JsonKey(name: 'title', defaultValue: '')  String title, @JsonKey(name: 'video', defaultValue: false)  bool video)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieDetailsDto() when $default != null:
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -184,7 +184,7 @@ return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.orig
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genres', defaultValue: [])  List<GenreDto> genres, @JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'imdb_id', defaultValue: '')  String imdbId, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'runtime', defaultValue: 0)  num runtime, @JsonKey(name: 'title', defaultValue: '')  String title, @JsonKey(name: 'video', defaultValue: false)  bool video)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genres', defaultValue: [])  List<GenreDto> genres, @JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'imdb_id', defaultValue: '')  String imdbId, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'runtime', defaultValue: 0)  int runtime, @JsonKey(name: 'title', defaultValue: '')  String title, @JsonKey(name: 'video', defaultValue: false)  bool video)  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetailsDto():
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -204,7 +204,7 @@ return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.orig
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genres', defaultValue: [])  List<GenreDto> genres, @JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'imdb_id', defaultValue: '')  String imdbId, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'runtime', defaultValue: 0)  num runtime, @JsonKey(name: 'title', defaultValue: '')  String title, @JsonKey(name: 'video', defaultValue: false)  bool video)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genres', defaultValue: [])  List<GenreDto> genres, @JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'imdb_id', defaultValue: '')  String imdbId, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'runtime', defaultValue: 0)  int runtime, @JsonKey(name: 'title', defaultValue: '')  String title, @JsonKey(name: 'video', defaultValue: false)  bool video)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetailsDto() when $default != null:
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -236,7 +236,7 @@ class _MovieDetailsDto extends MovieDetailsDto {
 @override@JsonKey(name: 'overview', defaultValue: '') final  String overview;
 @override@JsonKey(name: 'poster_path', defaultValue: '') final  String posterPath;
 @override@JsonKey(name: 'release_date', defaultValue: '') final  String releaseDate;
-@override@JsonKey(name: 'runtime', defaultValue: 0) final  num runtime;
+@override@JsonKey(name: 'runtime', defaultValue: 0) final  int runtime;
 @override@JsonKey(name: 'title', defaultValue: '') final  String title;
 @override@JsonKey(name: 'video', defaultValue: false) final  bool video;
 
@@ -273,7 +273,7 @@ abstract mixin class _$MovieDetailsDtoCopyWith<$Res> implements $MovieDetailsDto
   factory _$MovieDetailsDtoCopyWith(_MovieDetailsDto value, $Res Function(_MovieDetailsDto) _then) = __$MovieDetailsDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@JsonKey(name: 'genres', defaultValue: []) List<GenreDto> genres,@JsonKey(name: 'id', defaultValue: 0) num id,@JsonKey(name: 'imdb_id', defaultValue: '') String imdbId,@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@JsonKey(name: 'overview', defaultValue: '') String overview,@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@JsonKey(name: 'runtime', defaultValue: 0) num runtime,@JsonKey(name: 'title', defaultValue: '') String title,@JsonKey(name: 'video', defaultValue: false) bool video
+@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@JsonKey(name: 'genres', defaultValue: []) List<GenreDto> genres,@JsonKey(name: 'id', defaultValue: 0) num id,@JsonKey(name: 'imdb_id', defaultValue: '') String imdbId,@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@JsonKey(name: 'overview', defaultValue: '') String overview,@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@JsonKey(name: 'runtime', defaultValue: 0) int runtime,@JsonKey(name: 'title', defaultValue: '') String title,@JsonKey(name: 'video', defaultValue: false) bool video
 });
 
 
@@ -301,7 +301,7 @@ as String,overview: null == overview ? _self.overview : overview // ignore: cast
 as String,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as String,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
 as String,runtime: null == runtime ? _self.runtime : runtime // ignore: cast_nullable_to_non_nullable
-as num,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,video: null == video ? _self.video : video // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
 import 'package:moviez_app/presentation/core/widgets/common/movie_tags.dart';
-import 'package:moviez_app/presentation/core/widgets/common/movie_ratings.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_icon_button.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_image_view.dart';
@@ -88,7 +87,7 @@ class MovieDetailsContent extends StatelessWidget {
           spacing: 12,
           children: [
             MovieTitle(),
-            MovieRatings(),
+            // MovieRatings(),
             MovieTags(),
             _MovieMetaData(),
             MovieDescription(),
@@ -105,20 +104,26 @@ class MovieTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'The Rats: A Witcher Tales',
-          style: BaseTextStyles.merriExtraLargeBold.copyWith(
-            color: BaseColors.primaryBlack,
-          ),
-        ),
-        CustomIconButton(
-          onPressed: () {},
-          icon: const Icon(PhosphorIconsRegular.bookmarkSimple),
-        ),
-      ],
+    return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+      buildWhen: (previous, current) =>
+          previous.movieDetails != current.movieDetails,
+      builder: (context, state) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              state.movieDetails.title.getValue(),
+              style: BaseTextStyles.merriExtraLargeBold.copyWith(
+                color: BaseColors.primaryBlack,
+              ),
+            ),
+            CustomIconButton(
+              onPressed: () {},
+              icon: const Icon(PhosphorIconsRegular.bookmarkSimple),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -128,23 +133,29 @@ class MovieDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 4,
-      children: [
-        Text(
-          'Description',
-          style: BaseTextStyles.merriLargeBold.copyWith(
-            color: BaseColors.primaryBlack,
-          ),
-        ),
-        Text(
-          'Description goes here. This is a placeholder text that will be replaced with the actual movie description. The description can be multiple lines long and will scroll if needed.',
-          style: BaseTextStyles.mulishMediumRegular.copyWith(
-            color: BaseColors.primaryBlack.withValues(alpha: 0.7),
-          ),
-        ),
-      ],
+    return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+      buildWhen: (previous, current) =>
+          previous.movieDetails != current.movieDetails,
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 4,
+          children: [
+            Text(
+              'Description',
+              style: BaseTextStyles.merriLargeBold.copyWith(
+                color: BaseColors.primaryBlack,
+              ),
+            ),
+            Text(
+              state.movieDetails.overview.getValue(),
+              style: BaseTextStyles.mulishMediumRegular.copyWith(
+                color: BaseColors.primaryBlack.withValues(alpha: 0.7),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

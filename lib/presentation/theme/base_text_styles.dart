@@ -35,13 +35,13 @@ abstract class BaseTextStyles {
     ),
   );
 
-  // static TextStyle mulishSmallBold = GoogleFonts.mulish(
-  //   textStyle: const TextStyle(
-  //     fontSize: 12,
-  //     fontWeight: FontWeight.w600,
-  //     color: BaseColors.black,
-  //   ),
-  // );
+  static TextStyle mulishSmallBold = GoogleFonts.mulish(
+    textStyle: const TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      color: BaseColors.black,
+    ),
+  );
 
   // static TextStyle mulishSemiMediumSemiBold = GoogleFonts.mulish(
   //   textStyle: const TextStyle(

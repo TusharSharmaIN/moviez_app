@@ -20,7 +20,7 @@ _MovieDetailsDto _$MovieDetailsDtoFromJson(Map<String, dynamic> json) =>
       overview: json['overview'] as String? ?? '',
       posterPath: json['poster_path'] as String? ?? '',
       releaseDate: json['release_date'] as String? ?? '',
-      runtime: json['runtime'] as num? ?? 0,
+      runtime: (json['runtime'] as num?)?.toInt() ?? 0,
       title: json['title'] as String? ?? '',
       video: json['video'] as bool? ?? false,
     );

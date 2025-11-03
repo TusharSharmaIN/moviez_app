@@ -16,7 +16,7 @@ abstract class MovieDetails with _$MovieDetails {
     required StringValue overview,
     required StringValue posterPath,
     required DateTimeValue releaseDate,
-    required num runtime,
+    required Duration runtime,
     required StringValue title,
     required bool video,
   }) = _MovieDetails;
@@ -30,7 +30,7 @@ abstract class MovieDetails with _$MovieDetails {
     overview: StringValue(''),
     posterPath: StringValue(''),
     releaseDate: DateTimeValue.fromYyyyMmDd('1970-01-01'),
-    runtime: 0,
+    runtime: const Duration(minutes: 0),
     title: StringValue(''),
     video: false,
   );
@@ -42,6 +42,16 @@ abstract class MovieDetails with _$MovieDetails {
   String get backdropUrl => backdropPath.isValid()
       ? 'https://image.tmdb.org/t/p/w500${backdropPath.getValue()}'
       : '';
+
+  String get formattedRuntime {
+    final hours = runtime.inHours;
+    final minutes = runtime.inMinutes.remainder(60);
+    if (hours > 0) {
+      return '${hours}h ${minutes}m';
+    } else {
+      return '${minutes}m';
+    }
+  }
 }
 
 @freezed

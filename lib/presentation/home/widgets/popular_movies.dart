@@ -77,7 +77,7 @@ class _PopularTile extends StatelessWidget {
                     color: BaseColors.black,
                   ),
                 ),
-                const MovieTags(),
+                // const MovieTags(),
                 DateAndLanguage(
                   date: movie.releaseDate.formattedDate,
                   languageCode: movie.originalLanguage.getValue(),

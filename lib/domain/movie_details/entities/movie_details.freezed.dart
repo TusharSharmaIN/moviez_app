@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MovieDetails {
 
- StringValue get backdropPath; List<Genre> get genres; num get id; StringValue get imdbId; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; num get runtime; StringValue get title; bool get video;
+ StringValue get backdropPath; List<Genre> get genres; num get id; StringValue get imdbId; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; Duration get runtime; StringValue get title; bool get video;
 /// Create a copy of MovieDetails
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $MovieDetailsCopyWith<$Res>  {
   factory $MovieDetailsCopyWith(MovieDetails value, $Res Function(MovieDetails) _then) = _$MovieDetailsCopyWithImpl;
 @useResult
 $Res call({
- StringValue backdropPath, List<Genre> genres, num id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, num runtime, StringValue title, bool video
+ StringValue backdropPath, List<Genre> genres, num id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, Duration runtime, StringValue title, bool video
 });
 
 
@@ -73,7 +73,7 @@ as StringValue,overview: null == overview ? _self.overview : overview // ignore:
 as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as StringValue,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
 as DateTimeValue,runtime: null == runtime ? _self.runtime : runtime // ignore: cast_nullable_to_non_nullable
-as num,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as Duration,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as StringValue,video: null == video ? _self.video : video // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -160,7 +160,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  num runtime,  StringValue title,  bool video)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieDetails() when $default != null:
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -181,7 +181,7 @@ return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.orig
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  num runtime,  StringValue title,  bool video)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetails():
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -201,7 +201,7 @@ return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.orig
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  num runtime,  StringValue title,  bool video)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetails() when $default != null:
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -233,7 +233,7 @@ class _MovieDetails extends MovieDetails {
 @override final  StringValue overview;
 @override final  StringValue posterPath;
 @override final  DateTimeValue releaseDate;
-@override final  num runtime;
+@override final  Duration runtime;
 @override final  StringValue title;
 @override final  bool video;
 
@@ -267,7 +267,7 @@ abstract mixin class _$MovieDetailsCopyWith<$Res> implements $MovieDetailsCopyWi
   factory _$MovieDetailsCopyWith(_MovieDetails value, $Res Function(_MovieDetails) _then) = __$MovieDetailsCopyWithImpl;
 @override @useResult
 $Res call({
- StringValue backdropPath, List<Genre> genres, num id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, num runtime, StringValue title, bool video
+ StringValue backdropPath, List<Genre> genres, num id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, Duration runtime, StringValue title, bool video
 });
 
 
@@ -295,7 +295,7 @@ as StringValue,overview: null == overview ? _self.overview : overview // ignore:
 as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as StringValue,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
 as DateTimeValue,runtime: null == runtime ? _self.runtime : runtime // ignore: cast_nullable_to_non_nullable
-as num,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as Duration,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as StringValue,video: null == video ? _self.video : video // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

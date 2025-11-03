@@ -5,17 +5,33 @@ class _MovieMetaData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          MetaDataItem(title: 'Duration', data: '2h 30m'),
-          MetaDataItem(title: 'Language', data: 'EN, '),
-          MetaDataItem(title: 'Rating', data: 'PG-13'),
-          // MetaDataItem(title: 'Release Date', data: '12 Dec 2023'),
-        ],
-      ),
+    return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+      buildWhen: (previous, current) =>
+          previous.movieDetails != current.movieDetails,
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              MetaDataItem(
+                title: 'Duration',
+                data: state.movieDetails.formattedRuntime,
+              ),
+              MetaDataItem(
+                title: 'Language',
+                data: state.movieDetails.originalLanguage
+                    .getValue()
+                    .toUpperCase(),
+              ),
+              MetaDataItem(
+                title: 'Release On',
+                data: state.movieDetails.releaseDate.formattedDate,
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
