@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,8 +17,19 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 part 'widgets/trending_movies.dart';
 part 'widgets/popular_movies.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeBloc>().add(const HomeEvent.loadNowShowingMovies());
+  }
 
   @override
   Widget build(BuildContext context) {

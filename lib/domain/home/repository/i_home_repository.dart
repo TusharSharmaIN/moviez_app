@@ -1,13 +1,7 @@
+import 'package:dartz/dartz.dart';
+import 'package:moviez_app/domain/core/error/api_failures.dart';
+import 'package:moviez_app/domain/home/entities/movies_data.dart';
+
 abstract class IHomeRepository {
-  // Future<Either<ApiFailure, TokensListResult>> getTokensList({
-  //   required String filterBy,
-  //   String sortBy,
-  //   String limit,
-  //   String offset,
-  //   String sessionUserId,
-  // });
-
-  // Future<Either<ApiFailure, FiltersInfo>> getFiltersInfo();
-
-  // Future<Either<ApiFailure, MarketOverview>> getMarketOverview();
+  Future<Either<ApiFailure, MoviesData>> getNowShowingMovies();
 }

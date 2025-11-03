@@ -1,6 +1,6 @@
-enum Flavor { dev, prod }
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-enum BaseUrlType { appServer, cmsGateway }
+enum Flavor { dev, prod }
 
 class Config {
   Flavor appFlavor = Flavor.prod;
@@ -20,9 +20,25 @@ class Config {
   String get appName {
     switch (appFlavor) {
       case Flavor.dev:
-        return 'Tortoise Assign. Dev';
+        return 'Moviez Dev';
       case Flavor.prod:
-        return 'Tortoise Assign';
+        return 'Moviez';
+    }
+  }
+
+  String get baseUrl {
+    switch (appFlavor) {
+      case Flavor.dev:
+      case Flavor.prod:
+        return 'https://api.themoviedb.org/3/';
+    }
+  }
+
+  String get tmdbAuthToken {
+    switch (appFlavor) {
+      case Flavor.dev:
+      case Flavor.prod:
+        return dotenv.env['TMDB_AUTH_TOKEN'] ?? '';
     }
   }
 }

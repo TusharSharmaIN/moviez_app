@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:moviez_app/bloc/home/home_bloc.dart';
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/locator.dart';
@@ -9,6 +10,7 @@ import 'package:moviez_app/presentation/theme/theme_data.dart';
 
 Future<void> initialSetup({required Flavor flavor}) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
 
   setupLocator();
   final config = locator<Config>();

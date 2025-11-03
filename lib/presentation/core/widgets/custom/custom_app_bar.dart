@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:moviez_app/bloc/home/home_bloc.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_icon_button.dart';
 import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
@@ -120,7 +122,10 @@ class AppBarWatchlistCTA extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(right: 16),
       child: IconButton(
-        onPressed: () => context.push(AppRoutes.watchlist),
+        // onPressed: () => context.push(AppRoutes.watchlist),
+        onPressed: () {
+          context.read<HomeBloc>().add(const HomeEvent.loadNowShowingMovies());
+        },
         icon: Icon(PhosphorIconsRegular.bookmarkSimple, size: 28),
         constraints: const BoxConstraints(),
       ),
