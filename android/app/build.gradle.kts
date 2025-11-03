@@ -42,12 +42,12 @@ android {
     productFlavors {
         create("prod") {
             dimension = "env"
-            resValue("string", "app_name", "Tortoise Assig.")
+            resValue("string", "app_name", "Moviez App")
         }
         create("dev") {
             dimension = "env"
             applicationIdSuffix = ".dev"
-            resValue("string", "app_name", "Tortoise Assig. Dev")
+            resValue("string", "app_name", "Moviez App Dev")
         }
     }
 }
