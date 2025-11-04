@@ -15,6 +15,14 @@ jobs:
       - run: echo "Starting workflow for releasing build"
       - uses: actions/checkout@v5
 
+      - name: Create .env file
+        id: dot_env
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: '.env'
+          fileDir: './'
+          encodedString: ${{ secrets.DOT_ENV }}
+
       - name: Setup Flutter & build APK
         uses: subosito/flutter-action@v2
         with:
