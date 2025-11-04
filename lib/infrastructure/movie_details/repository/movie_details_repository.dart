@@ -5,16 +5,16 @@ import 'package:moviez_app/domain/movie_details/entities/cast.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/domain/movie_details/entities/video.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
-import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.dart';
 import 'package:moviez_app/infrastructure/movie_details/datasource/movie_details_remote.dart';
+import 'package:moviez_app/infrastructure/watchlist/datasource/watchlist_local.dart';
 
 class MovieDetailsRepository implements IMovieDetailsRepository {
   final MovieDetailsRemoteDataSource movieDetailsRemoteDataSource;
-  final WatchlistStorage watchlistStorage;
+  final WatchlistLocalDataSource watchlistLocalDataSource;
 
   MovieDetailsRepository({
     required this.movieDetailsRemoteDataSource,
-    required this.watchlistStorage,
+    required this.watchlistLocalDataSource,
   });
 
   @override

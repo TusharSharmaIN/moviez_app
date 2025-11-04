@@ -23,7 +23,7 @@ abstract class MoviesDataDto with _$MoviesDataDto {
 }
 
 @freezed
-@HiveType(typeId: 1)
+@HiveType(typeId: 0)
 abstract class MovieDto with _$MovieDto {
   const MovieDto._();
 
@@ -31,30 +31,32 @@ abstract class MovieDto with _$MovieDto {
     @HiveField(1)
     @JsonKey(name: 'backdrop_path', defaultValue: '')
     required String backdropPath,
-    
+
     @HiveField(2)
     @JsonKey(name: 'genre_ids', defaultValue: <int>[])
     required List<int> genreIds,
-    
-    @HiveField(3)
-    @JsonKey(name: 'id', defaultValue: 0) required int id,
-    
+
+    @HiveField(3) @JsonKey(name: 'id', defaultValue: 0) required int id,
+
     @HiveField(4)
     @JsonKey(name: 'original_language', defaultValue: '')
     required String originalLanguage,
-    
+
     @HiveField(5)
-    @JsonKey(name: 'overview', defaultValue: '') required String overview,
-    
+    @JsonKey(name: 'overview', defaultValue: '')
+    required String overview,
+
     @HiveField(6)
-    @JsonKey(name: 'poster_path', defaultValue: '') required String posterPath,
-    
+    @JsonKey(name: 'poster_path', defaultValue: '')
+    required String posterPath,
+
     @HiveField(7)
     @JsonKey(name: 'release_date', defaultValue: '')
     required String releaseDate,
-    
+
     @HiveField(8)
-    @JsonKey(name: 'title', defaultValue: '') required String title,
+    @JsonKey(name: 'title', defaultValue: '')
+    required String title,
   }) = _MovieDto;
 
   Movie toDomain() => Movie(

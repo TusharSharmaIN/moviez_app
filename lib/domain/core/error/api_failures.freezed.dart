@@ -55,14 +55,15 @@ extension ApiFailurePatterns on ApiFailure {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Other value)?  other,TResult Function( _ServerError value)?  serverError,TResult Function( _PoorConnection value)?  poorConnection,TResult Function( _ServerTimeout value)?  serverTimeout,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Other value)?  other,TResult Function( _ServerError value)?  serverError,TResult Function( _PoorConnection value)?  poorConnection,TResult Function( _ServerTimeout value)?  serverTimeout,TResult Function( _NetworkError value)?  networkError,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Other() when other != null:
 return other(_that);case _ServerError() when serverError != null:
 return serverError(_that);case _PoorConnection() when poorConnection != null:
 return poorConnection(_that);case _ServerTimeout() when serverTimeout != null:
-return serverTimeout(_that);case _:
+return serverTimeout(_that);case _NetworkError() when networkError != null:
+return networkError(_that);case _:
   return orElse();
 
 }
@@ -80,14 +81,15 @@ return serverTimeout(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Other value)  other,required TResult Function( _ServerError value)  serverError,required TResult Function( _PoorConnection value)  poorConnection,required TResult Function( _ServerTimeout value)  serverTimeout,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Other value)  other,required TResult Function( _ServerError value)  serverError,required TResult Function( _PoorConnection value)  poorConnection,required TResult Function( _ServerTimeout value)  serverTimeout,required TResult Function( _NetworkError value)  networkError,}){
 final _that = this;
 switch (_that) {
 case _Other():
 return other(_that);case _ServerError():
 return serverError(_that);case _PoorConnection():
 return poorConnection(_that);case _ServerTimeout():
-return serverTimeout(_that);case _:
+return serverTimeout(_that);case _NetworkError():
+return networkError(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -104,14 +106,15 @@ return serverTimeout(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Other value)?  other,TResult? Function( _ServerError value)?  serverError,TResult? Function( _PoorConnection value)?  poorConnection,TResult? Function( _ServerTimeout value)?  serverTimeout,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Other value)?  other,TResult? Function( _ServerError value)?  serverError,TResult? Function( _PoorConnection value)?  poorConnection,TResult? Function( _ServerTimeout value)?  serverTimeout,TResult? Function( _NetworkError value)?  networkError,}){
 final _that = this;
 switch (_that) {
 case _Other() when other != null:
 return other(_that);case _ServerError() when serverError != null:
 return serverError(_that);case _PoorConnection() when poorConnection != null:
 return poorConnection(_that);case _ServerTimeout() when serverTimeout != null:
-return serverTimeout(_that);case _:
+return serverTimeout(_that);case _NetworkError() when networkError != null:
+return networkError(_that);case _:
   return null;
 
 }
@@ -128,13 +131,14 @@ return serverTimeout(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String message)?  other,TResult Function( String message)?  serverError,TResult Function()?  poorConnection,TResult Function()?  serverTimeout,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String message)?  other,TResult Function( String message)?  serverError,TResult Function()?  poorConnection,TResult Function()?  serverTimeout,TResult Function()?  networkError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Other() when other != null:
 return other(_that.message);case _ServerError() when serverError != null:
 return serverError(_that.message);case _PoorConnection() when poorConnection != null:
 return poorConnection();case _ServerTimeout() when serverTimeout != null:
-return serverTimeout();case _:
+return serverTimeout();case _NetworkError() when networkError != null:
+return networkError();case _:
   return orElse();
 
 }
@@ -152,13 +156,14 @@ return serverTimeout();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String message)  other,required TResult Function( String message)  serverError,required TResult Function()  poorConnection,required TResult Function()  serverTimeout,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String message)  other,required TResult Function( String message)  serverError,required TResult Function()  poorConnection,required TResult Function()  serverTimeout,required TResult Function()  networkError,}) {final _that = this;
 switch (_that) {
 case _Other():
 return other(_that.message);case _ServerError():
 return serverError(_that.message);case _PoorConnection():
 return poorConnection();case _ServerTimeout():
-return serverTimeout();case _:
+return serverTimeout();case _NetworkError():
+return networkError();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -175,13 +180,14 @@ return serverTimeout();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String message)?  other,TResult? Function( String message)?  serverError,TResult? Function()?  poorConnection,TResult? Function()?  serverTimeout,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String message)?  other,TResult? Function( String message)?  serverError,TResult? Function()?  poorConnection,TResult? Function()?  serverTimeout,TResult? Function()?  networkError,}) {final _that = this;
 switch (_that) {
 case _Other() when other != null:
 return other(_that.message);case _ServerError() when serverError != null:
 return serverError(_that.message);case _PoorConnection() when poorConnection != null:
 return poorConnection();case _ServerTimeout() when serverTimeout != null:
-return serverTimeout();case _:
+return serverTimeout();case _NetworkError() when networkError != null:
+return networkError();case _:
   return null;
 
 }
@@ -377,6 +383,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'ApiFailure.serverTimeout()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _NetworkError implements ApiFailure {
+  const _NetworkError();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NetworkError);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ApiFailure.networkError()';
 }
 
 

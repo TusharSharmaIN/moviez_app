@@ -8,6 +8,7 @@ class ApiFailure with _$ApiFailure {
   const factory ApiFailure.serverError(String message) = _ServerError;
   const factory ApiFailure.poorConnection() = _PoorConnection;
   const factory ApiFailure.serverTimeout() = _ServerTimeout;
+  const factory ApiFailure.networkError() = _NetworkError;
 }
 
 extension ApiFailureExt on ApiFailure {
@@ -16,6 +17,7 @@ extension ApiFailureExt on ApiFailure {
     serverError: (serverError) => Failure(serverError.message),
     poorConnection: (_) => const Failure('Poor Internet connection'),
     serverTimeout: (_) => const Failure('Server time out'),
+    networkError: (_) => const Failure('No Internet connection'),
   );
 }
 

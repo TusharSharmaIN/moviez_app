@@ -5,7 +5,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:moviez_app/bloc/search/search_bloc.dart';
 
 import 'package:moviez_app/config.dart';
-import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.dart';
+import 'package:moviez_app/infrastructure/home/datasource/home_local.dart';
+import 'package:moviez_app/infrastructure/watchlist/datasource/watchlist_local.dart';
 import 'package:moviez_app/locator.dart';
 import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/theme/theme_data.dart';
@@ -19,7 +20,8 @@ Future<void> initialSetup({required Flavor flavor}) async {
   setupLocator();
   final config = locator<Config>();
   config.appFlavor = flavor;
-  await locator<WatchlistStorage>().init();
+  await locator<HomeLocalDataSource>().init();
+  await locator<WatchlistLocalDataSource>().init();
 }
 
 void runAppWith() {

@@ -2,18 +2,20 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:moviez_app/domain/core/error/exceptions.dart';
 import 'package:moviez_app/infrastructure/home/dtos/movies_data_dto.dart';
 
-class WatchlistStorage {
+class WatchlistLocalDataSource {
   static const _boxName = 'watchlist_box';
   static const _watchlistKey = 'watchlist';
 
   late Box<List<dynamic>> _box;
 
-  WatchlistStorage();
+  WatchlistLocalDataSource();
 
   Future<void> init() async {
     try {
       await Hive.initFlutter();
-      Hive.registerAdapter(MovieDtoAdapter());
+      if (!Hive.isAdapterRegistered(0)) {
+        Hive.registerAdapter(MovieDtoAdapter());
+      }
       _box = await Hive.openBox<List<dynamic>>(_boxName);
     } catch (e) {
       await Hive.deleteBoxFromDisk(_boxName);

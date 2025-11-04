@@ -6,13 +6,14 @@ import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/exception_handler.dart';
 import 'package:moviez_app/infrastructure/core/http/http.dart';
 import 'package:moviez_app/infrastructure/core/http/interceptor/auth_interceptor.dart';
-import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.dart';
+import 'package:moviez_app/infrastructure/home/datasource/home_local.dart';
 import 'package:moviez_app/infrastructure/home/datasource/home_remote.dart';
 import 'package:moviez_app/infrastructure/home/repository/home_repository.dart';
 import 'package:moviez_app/infrastructure/movie_details/datasource/movie_details_remote.dart';
 import 'package:moviez_app/infrastructure/movie_details/repository/movie_details_repository.dart';
 import 'package:moviez_app/infrastructure/search/datasource/search_remote.dart';
 import 'package:moviez_app/infrastructure/search/repository/search_repository.dart';
+import 'package:moviez_app/infrastructure/watchlist/datasource/watchlist_local.dart';
 import 'package:moviez_app/infrastructure/watchlist/repository/watchlist_repository.dart';
 
 GetIt locator = GetIt.instance;
@@ -30,9 +31,9 @@ void setupLocator() {
       interceptors: [locator<AuthInterceptor>()],
     ),
   );
-  locator.registerLazySingleton(() => WatchlistStorage());
 
   // Home
+  locator.registerLazySingleton(() => HomeLocalDataSource());
   locator.registerLazySingleton(
     () => HomeRemoteDataSource(
       config: locator<Config>(),
@@ -41,10 +42,15 @@ void setupLocator() {
     ),
   );
   locator.registerLazySingleton(
-    () => HomeRepository(homeRemoteDataSource: locator<HomeRemoteDataSource>()),
+    () => HomeRepository(
+      homeLocalDataSource: locator<HomeLocalDataSource>(),
+      homeRemoteDataSource: locator<HomeRemoteDataSource>(),
+    ),
   );
   locator.registerLazySingleton(
-    () => WatchlistRepository(watchlistStorage: locator<WatchlistStorage>()),
+    () => WatchlistRepository(
+      watchlistLocalDataSource: locator<WatchlistLocalDataSource>(),
+    ),
   );
   locator.registerLazySingleton(
     () => HomeBloc(
@@ -54,6 +60,8 @@ void setupLocator() {
   );
 
   // Movie Details
+  locator.registerLazySingleton(() => WatchlistLocalDataSource());
+
   locator.registerLazySingleton(
     () => MovieDetailsRemoteDataSource(
       config: locator<Config>(),
@@ -64,7 +72,7 @@ void setupLocator() {
   locator.registerLazySingleton(
     () => MovieDetailsRepository(
       movieDetailsRemoteDataSource: locator<MovieDetailsRemoteDataSource>(),
-      watchlistStorage: locator<WatchlistStorage>(),
+      watchlistLocalDataSource: locator<WatchlistLocalDataSource>(),
     ),
   );
   locator.registerLazySingleton(

@@ -4,6 +4,7 @@ import 'package:moviez_app/bloc/home/home_bloc.dart';
 import 'package:moviez_app/presentation/core/widgets/common/column_movie_tile.dart';
 import 'package:moviez_app/presentation/core/widgets/common/row_movie_tile.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/custom_refresh_indicator.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/section_heading.dart';
 import 'package:moviez_app/presentation/search/search_box.dart';
 
@@ -24,6 +25,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
     final homebloc = context.read<HomeBloc>();
     homebloc.add(const HomeEvent.loadNowShowingMovies());
     homebloc.add(const HomeEvent.loadPopularMovies());
@@ -34,11 +39,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: BaseColors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 4,
-            children: [CustomAppBar.menuAppBar(), const _HomePageContent()],
+        child: CustomRefreshIndicator(
+          onRefresh: _loadData,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 4,
+              children: [CustomAppBar.menuAppBar(), const _HomePageContent()],
+            ),
           ),
         ),
       ),
