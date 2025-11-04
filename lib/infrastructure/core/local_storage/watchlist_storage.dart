@@ -1,0 +1,72 @@
+import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:moviez_app/domain/core/error/exceptions.dart';
+import 'package:moviez_app/infrastructure/watchlist/dtos/watchlist_movie_dto.dart';
+
+class WatchlistStorage {
+  static const _boxName = 'watchlist_box';
+  static const _watchlistKey = 'watchlist';
+
+  late Box<List<dynamic>> _box;
+
+  WatchlistStorage();
+
+  Future<void> init() async {
+    try {
+      await Hive.initFlutter();
+      Hive.registerAdapter(WatchlistMovieDtoAdapter());
+      _box = await Hive.openBox<List<dynamic>>(_boxName);
+    } catch (e) {
+      await Hive.deleteBoxFromDisk(_boxName);
+      await init();
+    }
+  }
+
+  Future<List<WatchlistMovieDto>> getWatchlistedMovies() async {
+    try {
+      final list = _box.get(_watchlistKey, defaultValue: <WatchlistMovieDto>[]);
+      if (list == null) return [];
+      return List<WatchlistMovieDto>.from(list);
+    } catch (e) {
+      throw CacheException(message: e.toString());
+    }
+  }
+
+  Future<void> addToWatchlist(WatchlistMovieDto movie) async {
+    try {
+      final currentList = await getWatchlistedMovies();
+      if (!currentList.any((m) => m.id == movie.id)) {
+        currentList.add(movie);
+        await _box.put(_watchlistKey, currentList);
+      }
+    } catch (e) {
+      throw CacheException(message: e.toString());
+    }
+  }
+
+  Future<void> removeFromWatchlist(num movieId) async {
+    try {
+      final currentList = await getWatchlistedMovies();
+      currentList.removeWhere((movie) => movie.id == movieId);
+      await _box.put(_watchlistKey, currentList);
+    } catch (e) {
+      throw CacheException(message: e.toString());
+    }
+  }
+
+  Future<bool> isMovieWatchlisted(num movieId) async {
+    try {
+      final currentList = await getWatchlistedMovies();
+      return currentList.any((movie) => movie.id == movieId);
+    } catch (e) {
+      throw CacheException(message: e.toString());
+    }
+  }
+
+  Future<void> clear() async {
+    try {
+      await _box.clear();
+    } catch (e) {
+      throw CacheException(message: e.toString());
+    }
+  }
+}

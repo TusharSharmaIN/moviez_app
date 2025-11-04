@@ -55,7 +55,7 @@ extension MovieDetailsEventPatterns on MovieDetailsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _SetMovieId value)?  setMovieId,TResult Function( _LoadMovieDetails value)?  loadMovieDetails,TResult Function( _LoadTrailerDetails value)?  loadTrailerDetails,TResult Function( _LoadCastDetails value)?  loadCastDetails,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _SetMovieId value)?  setMovieId,TResult Function( _LoadMovieDetails value)?  loadMovieDetails,TResult Function( _LoadTrailerDetails value)?  loadTrailerDetails,TResult Function( _LoadCastDetails value)?  loadCastDetails,TResult Function( _AddToWatchlist value)?  addToWatchlist,TResult Function( _RemoveFromWatchlist value)?  removeFromWatchlist,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
@@ -63,7 +63,9 @@ return init(_that);case _SetMovieId() when setMovieId != null:
 return setMovieId(_that);case _LoadMovieDetails() when loadMovieDetails != null:
 return loadMovieDetails(_that);case _LoadTrailerDetails() when loadTrailerDetails != null:
 return loadTrailerDetails(_that);case _LoadCastDetails() when loadCastDetails != null:
-return loadCastDetails(_that);case _:
+return loadCastDetails(_that);case _AddToWatchlist() when addToWatchlist != null:
+return addToWatchlist(_that);case _RemoveFromWatchlist() when removeFromWatchlist != null:
+return removeFromWatchlist(_that);case _:
   return orElse();
 
 }
@@ -81,7 +83,7 @@ return loadCastDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _SetMovieId value)  setMovieId,required TResult Function( _LoadMovieDetails value)  loadMovieDetails,required TResult Function( _LoadTrailerDetails value)  loadTrailerDetails,required TResult Function( _LoadCastDetails value)  loadCastDetails,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _SetMovieId value)  setMovieId,required TResult Function( _LoadMovieDetails value)  loadMovieDetails,required TResult Function( _LoadTrailerDetails value)  loadTrailerDetails,required TResult Function( _LoadCastDetails value)  loadCastDetails,required TResult Function( _AddToWatchlist value)  addToWatchlist,required TResult Function( _RemoveFromWatchlist value)  removeFromWatchlist,}){
 final _that = this;
 switch (_that) {
 case _Init():
@@ -89,7 +91,9 @@ return init(_that);case _SetMovieId():
 return setMovieId(_that);case _LoadMovieDetails():
 return loadMovieDetails(_that);case _LoadTrailerDetails():
 return loadTrailerDetails(_that);case _LoadCastDetails():
-return loadCastDetails(_that);case _:
+return loadCastDetails(_that);case _AddToWatchlist():
+return addToWatchlist(_that);case _RemoveFromWatchlist():
+return removeFromWatchlist(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -106,7 +110,7 @@ return loadCastDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _SetMovieId value)?  setMovieId,TResult? Function( _LoadMovieDetails value)?  loadMovieDetails,TResult? Function( _LoadTrailerDetails value)?  loadTrailerDetails,TResult? Function( _LoadCastDetails value)?  loadCastDetails,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _SetMovieId value)?  setMovieId,TResult? Function( _LoadMovieDetails value)?  loadMovieDetails,TResult? Function( _LoadTrailerDetails value)?  loadTrailerDetails,TResult? Function( _LoadCastDetails value)?  loadCastDetails,TResult? Function( _AddToWatchlist value)?  addToWatchlist,TResult? Function( _RemoveFromWatchlist value)?  removeFromWatchlist,}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
@@ -114,7 +118,9 @@ return init(_that);case _SetMovieId() when setMovieId != null:
 return setMovieId(_that);case _LoadMovieDetails() when loadMovieDetails != null:
 return loadMovieDetails(_that);case _LoadTrailerDetails() when loadTrailerDetails != null:
 return loadTrailerDetails(_that);case _LoadCastDetails() when loadCastDetails != null:
-return loadCastDetails(_that);case _:
+return loadCastDetails(_that);case _AddToWatchlist() when addToWatchlist != null:
+return addToWatchlist(_that);case _RemoveFromWatchlist() when removeFromWatchlist != null:
+return removeFromWatchlist(_that);case _:
   return null;
 
 }
@@ -131,14 +137,16 @@ return loadCastDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( String movieId)?  setMovieId,TResult Function()?  loadMovieDetails,TResult Function()?  loadTrailerDetails,TResult Function()?  loadCastDetails,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( String movieId)?  setMovieId,TResult Function()?  loadMovieDetails,TResult Function()?  loadTrailerDetails,TResult Function()?  loadCastDetails,TResult Function( WatchlistMovie movie)?  addToWatchlist,TResult Function( num movieId)?  removeFromWatchlist,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _SetMovieId() when setMovieId != null:
 return setMovieId(_that.movieId);case _LoadMovieDetails() when loadMovieDetails != null:
 return loadMovieDetails();case _LoadTrailerDetails() when loadTrailerDetails != null:
 return loadTrailerDetails();case _LoadCastDetails() when loadCastDetails != null:
-return loadCastDetails();case _:
+return loadCastDetails();case _AddToWatchlist() when addToWatchlist != null:
+return addToWatchlist(_that.movie);case _RemoveFromWatchlist() when removeFromWatchlist != null:
+return removeFromWatchlist(_that.movieId);case _:
   return orElse();
 
 }
@@ -156,14 +164,16 @@ return loadCastDetails();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( String movieId)  setMovieId,required TResult Function()  loadMovieDetails,required TResult Function()  loadTrailerDetails,required TResult Function()  loadCastDetails,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( String movieId)  setMovieId,required TResult Function()  loadMovieDetails,required TResult Function()  loadTrailerDetails,required TResult Function()  loadCastDetails,required TResult Function( WatchlistMovie movie)  addToWatchlist,required TResult Function( num movieId)  removeFromWatchlist,}) {final _that = this;
 switch (_that) {
 case _Init():
 return init();case _SetMovieId():
 return setMovieId(_that.movieId);case _LoadMovieDetails():
 return loadMovieDetails();case _LoadTrailerDetails():
 return loadTrailerDetails();case _LoadCastDetails():
-return loadCastDetails();case _:
+return loadCastDetails();case _AddToWatchlist():
+return addToWatchlist(_that.movie);case _RemoveFromWatchlist():
+return removeFromWatchlist(_that.movieId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -180,14 +190,16 @@ return loadCastDetails();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( String movieId)?  setMovieId,TResult? Function()?  loadMovieDetails,TResult? Function()?  loadTrailerDetails,TResult? Function()?  loadCastDetails,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( String movieId)?  setMovieId,TResult? Function()?  loadMovieDetails,TResult? Function()?  loadTrailerDetails,TResult? Function()?  loadCastDetails,TResult? Function( WatchlistMovie movie)?  addToWatchlist,TResult? Function( num movieId)?  removeFromWatchlist,}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _SetMovieId() when setMovieId != null:
 return setMovieId(_that.movieId);case _LoadMovieDetails() when loadMovieDetails != null:
 return loadMovieDetails();case _LoadTrailerDetails() when loadTrailerDetails != null:
 return loadTrailerDetails();case _LoadCastDetails() when loadCastDetails != null:
-return loadCastDetails();case _:
+return loadCastDetails();case _AddToWatchlist() when addToWatchlist != null:
+return addToWatchlist(_that.movie);case _RemoveFromWatchlist() when removeFromWatchlist != null:
+return removeFromWatchlist(_that.movieId);case _:
   return null;
 
 }
@@ -388,6 +400,147 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class _AddToWatchlist implements MovieDetailsEvent {
+  const _AddToWatchlist({required this.movie});
+  
+
+ final  WatchlistMovie movie;
+
+/// Create a copy of MovieDetailsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddToWatchlistCopyWith<_AddToWatchlist> get copyWith => __$AddToWatchlistCopyWithImpl<_AddToWatchlist>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToWatchlist&&(identical(other.movie, movie) || other.movie == movie));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,movie);
+
+@override
+String toString() {
+  return 'MovieDetailsEvent.addToWatchlist(movie: $movie)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AddToWatchlistCopyWith<$Res> implements $MovieDetailsEventCopyWith<$Res> {
+  factory _$AddToWatchlistCopyWith(_AddToWatchlist value, $Res Function(_AddToWatchlist) _then) = __$AddToWatchlistCopyWithImpl;
+@useResult
+$Res call({
+ WatchlistMovie movie
+});
+
+
+$WatchlistMovieCopyWith<$Res> get movie;
+
+}
+/// @nodoc
+class __$AddToWatchlistCopyWithImpl<$Res>
+    implements _$AddToWatchlistCopyWith<$Res> {
+  __$AddToWatchlistCopyWithImpl(this._self, this._then);
+
+  final _AddToWatchlist _self;
+  final $Res Function(_AddToWatchlist) _then;
+
+/// Create a copy of MovieDetailsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? movie = null,}) {
+  return _then(_AddToWatchlist(
+movie: null == movie ? _self.movie : movie // ignore: cast_nullable_to_non_nullable
+as WatchlistMovie,
+  ));
+}
+
+/// Create a copy of MovieDetailsEvent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WatchlistMovieCopyWith<$Res> get movie {
+  
+  return $WatchlistMovieCopyWith<$Res>(_self.movie, (value) {
+    return _then(_self.copyWith(movie: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class _RemoveFromWatchlist implements MovieDetailsEvent {
+  const _RemoveFromWatchlist({required this.movieId});
+  
+
+ final  num movieId;
+
+/// Create a copy of MovieDetailsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RemoveFromWatchlistCopyWith<_RemoveFromWatchlist> get copyWith => __$RemoveFromWatchlistCopyWithImpl<_RemoveFromWatchlist>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RemoveFromWatchlist&&(identical(other.movieId, movieId) || other.movieId == movieId));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,movieId);
+
+@override
+String toString() {
+  return 'MovieDetailsEvent.removeFromWatchlist(movieId: $movieId)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RemoveFromWatchlistCopyWith<$Res> implements $MovieDetailsEventCopyWith<$Res> {
+  factory _$RemoveFromWatchlistCopyWith(_RemoveFromWatchlist value, $Res Function(_RemoveFromWatchlist) _then) = __$RemoveFromWatchlistCopyWithImpl;
+@useResult
+$Res call({
+ num movieId
+});
+
+
+
+
+}
+/// @nodoc
+class __$RemoveFromWatchlistCopyWithImpl<$Res>
+    implements _$RemoveFromWatchlistCopyWith<$Res> {
+  __$RemoveFromWatchlistCopyWithImpl(this._self, this._then);
+
+  final _RemoveFromWatchlist _self;
+  final $Res Function(_RemoveFromWatchlist) _then;
+
+/// Create a copy of MovieDetailsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? movieId = null,}) {
+  return _then(_RemoveFromWatchlist(
+movieId: null == movieId ? _self.movieId : movieId // ignore: cast_nullable_to_non_nullable
+as num,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$MovieDetailsState {

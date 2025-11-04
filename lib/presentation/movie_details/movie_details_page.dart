@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
 import 'package:moviez_app/domain/movie_details/entities/cast.dart';
+import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
 import 'package:moviez_app/presentation/core/widgets/common/movie_tags.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_icon_button.dart';
@@ -87,7 +88,7 @@ class MovieDetailsContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 12,
           children: [
-            MovieTitle(),
+            TitleAndWatchlistCTA(),
             // MovieRatings(),
             MovieTags(),
             _MovieMetaData(),
@@ -100,8 +101,8 @@ class MovieDetailsContent extends StatelessWidget {
   }
 }
 
-class MovieTitle extends StatelessWidget {
-  const MovieTitle({super.key});
+class TitleAndWatchlistCTA extends StatelessWidget {
+  const TitleAndWatchlistCTA({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +120,24 @@ class MovieTitle extends StatelessWidget {
               ),
             ),
             CustomIconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<MovieDetailsBloc>().add(
+                  MovieDetailsEvent.addToWatchlist(
+                    movie: WatchlistMovie(
+                      id: state.movieDetails.id,
+                      title: state.movieDetails.title,
+                      posterPath: state.movieDetails.posterPath,
+                      releaseDate: state.movieDetails.releaseDate,
+                      backdropPath: state.movieDetails.backdropPath,
+                      genreIds: state.movieDetails.genres
+                          .map((genre) => genre.id)
+                          .toList(),
+                      originalLanguage: state.movieDetails.originalLanguage,
+                      overview: state.movieDetails.overview,
+                    ),
+                  ),
+                );
+              },
               icon: const Icon(PhosphorIconsRegular.bookmarkSimple),
             ),
           ],

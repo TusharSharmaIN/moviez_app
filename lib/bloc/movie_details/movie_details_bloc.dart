@@ -6,6 +6,8 @@ import 'package:moviez_app/domain/movie_details/entities/cast.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/domain/movie_details/entities/video.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
+import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
+import 'package:moviez_app/domain/watchlist/repository/i_movie_details_repository.dart';
 
 part 'movie_details_event.dart';
 part 'movie_details_state.dart';
@@ -13,9 +15,12 @@ part 'movie_details_bloc.freezed.dart';
 
 class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   final IMovieDetailsRepository movieDetailsRepository;
+  final IWatchlistRepository watchlistRepository;
 
-  MovieDetailsBloc({required this.movieDetailsRepository})
-    : super(MovieDetailsState.initial()) {
+  MovieDetailsBloc({
+    required this.movieDetailsRepository,
+    required this.watchlistRepository,
+  }) : super(MovieDetailsState.initial()) {
     on<MovieDetailsEvent>(_onEvent);
   }
 
@@ -36,15 +41,16 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           ),
         );
 
-        final result = await movieDetailsRepository.getMovieDetails(
+        final failureOrSuccess = await movieDetailsRepository.getMovieDetails(
           movieId: state.movieId,
         );
-        result.fold(
+
+        failureOrSuccess.fold(
           (failure) {
             emit(
               state.copyWith(
                 isLoadingMovieDetails: false,
-                apiFailureOrSuccess: none(),
+                apiFailureOrSuccess: optionOf(failureOrSuccess),
               ),
             );
           },
@@ -53,6 +59,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
               state.copyWith(
                 isLoadingMovieDetails: false,
                 movieDetails: movieDetails,
+                apiFailureOrSuccess: none(),
               ),
             );
           },
@@ -68,21 +75,26 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           ),
         );
 
-        final result = await movieDetailsRepository.getMovieVideos(
+        final failureOrSuccess = await movieDetailsRepository.getMovieVideos(
           movieId: state.movieId,
         );
-        result.fold(
+
+        failureOrSuccess.fold(
           (failure) {
             emit(
               state.copyWith(
                 isLoadingMovieDetails: false,
-                apiFailureOrSuccess: none(),
+                apiFailureOrSuccess: optionOf(failureOrSuccess),
               ),
             );
           },
           (trailer) {
             emit(
-              state.copyWith(isLoadingMovieDetails: false, trailer: trailer),
+              state.copyWith(
+                isLoadingMovieDetails: false,
+                trailer: trailer,
+                apiFailureOrSuccess: none(),
+              ),
             );
           },
         );
@@ -95,20 +107,59 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           ),
         );
 
-        final result = await movieDetailsRepository.getMovieCast(
+        final failureOrSuccess = await movieDetailsRepository.getMovieCast(
           movieId: state.movieId,
         );
-        result.fold(
+
+        failureOrSuccess.fold(
           (failure) {
             emit(
               state.copyWith(
                 isLoadingCastDetails: false,
-                apiFailureOrSuccess: none(),
+                apiFailureOrSuccess: optionOf(failureOrSuccess),
               ),
             );
           },
           (cast) {
-            emit(state.copyWith(isLoadingCastDetails: false, cast: cast));
+            emit(
+              state.copyWith(
+                isLoadingCastDetails: false,
+                cast: cast,
+                apiFailureOrSuccess: none(),
+              ),
+            );
+          },
+        );
+      },
+      addToWatchlist: (e) async {
+        final failureOrSuccess = await watchlistRepository.addToWatchlist(
+          movie: e.movie,
+        );
+
+        failureOrSuccess.fold(
+          (failure) {
+            emit(
+              state.copyWith(apiFailureOrSuccess: optionOf(failureOrSuccess)),
+            );
+          },
+          (_) {
+            emit(state.copyWith(apiFailureOrSuccess: none()));
+          },
+        );
+      },
+      removeFromWatchlist: (e) async {
+        final failureOrSuccess = await watchlistRepository.removeFromWatchlist(
+          movieId: e.movieId,
+        );
+
+        failureOrSuccess.fold(
+          (failure) {
+            emit(
+              state.copyWith(apiFailureOrSuccess: optionOf(failureOrSuccess)),
+            );
+          },
+          (_) {
+            emit(state.copyWith(apiFailureOrSuccess: none()));
           },
         );
       },

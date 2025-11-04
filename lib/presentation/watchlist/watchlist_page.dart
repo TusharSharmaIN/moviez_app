@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moviez_app/bloc/home/home_bloc.dart';
+import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/custom_image_view.dart';
+import 'package:moviez_app/presentation/theme/base_colors.dart';
+import 'package:moviez_app/presentation/theme/base_text_styles.dart';
 
-class WatchlistPage extends StatelessWidget {
+part 'widgets/watchlisted_movies.dart';
+
+class WatchlistPage extends StatefulWidget {
   const WatchlistPage({super.key});
+
+  @override
+  State<WatchlistPage> createState() => _WatchlistPageState();
+}
+
+class _WatchlistPageState extends State<WatchlistPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeBloc>().add(const HomeEvent.loadWatchlistedMovies());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +30,24 @@ class WatchlistPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: [CustomAppBar.backAppBar()],
+          children: [CustomAppBar.backAppBar(), const _WatchlistPageContent()],
         ),
+      ),
+    );
+  }
+}
+
+class _WatchlistPageContent extends StatelessWidget {
+  const _WatchlistPageContent();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 16,
+        children: [WatchlistedMovies()],
       ),
     );
   }

@@ -72,7 +72,7 @@ class _PopularTile extends StatelessWidget {
               spacing: 8,
               children: [
                 Text(
-                  'The Rats: A Witcher Tales',
+                  movie.title.getValue(),
                   style: BaseTextStyles.mulishMediumBold.copyWith(
                     color: BaseColors.black,
                   ),

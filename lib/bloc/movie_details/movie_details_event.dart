@@ -12,4 +12,14 @@ class MovieDetailsEvent with _$MovieDetailsEvent {
   const factory MovieDetailsEvent.loadTrailerDetails() = _LoadTrailerDetails;
 
   const factory MovieDetailsEvent.loadCastDetails() = _LoadCastDetails;
+
+  const factory MovieDetailsEvent.addToWatchlist({
+    required WatchlistMovie movie,
+  }) = _AddToWatchlist;
+
+  const factory MovieDetailsEvent.removeFromWatchlist({required num movieId}) =
+      _RemoveFromWatchlist;
+
+  // const factory MovieDetailsEvent.checkIfMovieIsWatchlisted({required num movieId}) =
+  //     _CheckIfMovieIsWatchlisted;
 }

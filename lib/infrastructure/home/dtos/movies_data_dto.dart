@@ -42,7 +42,6 @@ abstract class MovieDto with _$MovieDto {
   }) = _MovieDto;
 
   Movie toDomain() => Movie(
-    adult: adult,
     backdropPath: StringValue(backdropPath),
     genreIds: genreIds,
     id: id,

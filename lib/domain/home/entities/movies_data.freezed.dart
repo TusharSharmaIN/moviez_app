@@ -277,7 +277,7 @@ as List<Movie>,
 /// @nodoc
 mixin _$Movie {
 
- bool get adult; StringValue get backdropPath; List<num> get genreIds; num get id; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; StringValue get title;
+ StringValue get backdropPath; List<num> get genreIds; num get id; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; StringValue get title;
 /// Create a copy of Movie
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -288,16 +288,16 @@ $MovieCopyWith<Movie> get copyWith => _$MovieCopyWithImpl<Movie>(this as Movie, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Movie&&(identical(other.adult, adult) || other.adult == adult)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other.genreIds, genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Movie&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other.genreIds, genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,adult,backdropPath,const DeepCollectionEquality().hash(genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
+int get hashCode => Object.hash(runtimeType,backdropPath,const DeepCollectionEquality().hash(genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
 
 @override
 String toString() {
-  return 'Movie(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
+  return 'Movie(backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
 }
 
 
@@ -308,7 +308,7 @@ abstract mixin class $MovieCopyWith<$Res>  {
   factory $MovieCopyWith(Movie value, $Res Function(Movie) _then) = _$MovieCopyWithImpl;
 @useResult
 $Res call({
- bool adult, StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
+ StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
 });
 
 
@@ -325,10 +325,9 @@ class _$MovieCopyWithImpl<$Res>
 
 /// Create a copy of Movie
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? adult = null,Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
   return _then(_self.copyWith(
-adult: null == adult ? _self.adult : adult // ignore: cast_nullable_to_non_nullable
-as bool,backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as StringValue,genreIds: null == genreIds ? _self.genreIds : genreIds // ignore: cast_nullable_to_non_nullable
 as List<num>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as num,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -421,10 +420,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool adult,  StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Movie() when $default != null:
-return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
   return orElse();
 
 }
@@ -442,10 +441,10 @@ return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.ori
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool adult,  StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)  $default,) {final _that = this;
 switch (_that) {
 case _Movie():
-return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -462,10 +461,10 @@ return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.ori
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool adult,  StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,) {final _that = this;
 switch (_that) {
 case _Movie() when $default != null:
-return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
   return null;
 
 }
@@ -477,10 +476,9 @@ return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.ori
 
 
 class _Movie extends Movie {
-  const _Movie({required this.adult, required this.backdropPath, required final  List<num> genreIds, required this.id, required this.originalLanguage, required this.overview, required this.posterPath, required this.releaseDate, required this.title}): _genreIds = genreIds,super._();
+  const _Movie({required this.backdropPath, required final  List<num> genreIds, required this.id, required this.originalLanguage, required this.overview, required this.posterPath, required this.releaseDate, required this.title}): _genreIds = genreIds,super._();
   
 
-@override final  bool adult;
 @override final  StringValue backdropPath;
  final  List<num> _genreIds;
 @override List<num> get genreIds {
@@ -506,16 +504,16 @@ _$MovieCopyWith<_Movie> get copyWith => __$MovieCopyWithImpl<_Movie>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Movie&&(identical(other.adult, adult) || other.adult == adult)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other._genreIds, _genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Movie&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other._genreIds, _genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,adult,backdropPath,const DeepCollectionEquality().hash(_genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
+int get hashCode => Object.hash(runtimeType,backdropPath,const DeepCollectionEquality().hash(_genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
 
 @override
 String toString() {
-  return 'Movie(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
+  return 'Movie(backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
 }
 
 
@@ -526,7 +524,7 @@ abstract mixin class _$MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
   factory _$MovieCopyWith(_Movie value, $Res Function(_Movie) _then) = __$MovieCopyWithImpl;
 @override @useResult
 $Res call({
- bool adult, StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
+ StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
 });
 
 
@@ -543,10 +541,9 @@ class __$MovieCopyWithImpl<$Res>
 
 /// Create a copy of Movie
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? adult = null,Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
   return _then(_Movie(
-adult: null == adult ? _self.adult : adult // ignore: cast_nullable_to_non_nullable
-as bool,backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as StringValue,genreIds: null == genreIds ? _self._genreIds : genreIds // ignore: cast_nullable_to_non_nullable
 as List<num>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as num,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable

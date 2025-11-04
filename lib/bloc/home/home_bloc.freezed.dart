@@ -55,13 +55,14 @@ extension HomeEventPatterns on HomeEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _LoadNowShowingMovies value)?  loadNowShowingMovies,TResult Function( _LoadPopularMovies value)?  loadPopularMovies,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Init value)?  init,TResult Function( _LoadNowShowingMovies value)?  loadNowShowingMovies,TResult Function( _LoadPopularMovies value)?  loadPopularMovies,TResult Function( _LoadWatchlistedMovies value)?  loadWatchlistedMovies,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init(_that);case _LoadNowShowingMovies() when loadNowShowingMovies != null:
 return loadNowShowingMovies(_that);case _LoadPopularMovies() when loadPopularMovies != null:
-return loadPopularMovies(_that);case _:
+return loadPopularMovies(_that);case _LoadWatchlistedMovies() when loadWatchlistedMovies != null:
+return loadWatchlistedMovies(_that);case _:
   return orElse();
 
 }
@@ -79,13 +80,14 @@ return loadPopularMovies(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _LoadNowShowingMovies value)  loadNowShowingMovies,required TResult Function( _LoadPopularMovies value)  loadPopularMovies,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Init value)  init,required TResult Function( _LoadNowShowingMovies value)  loadNowShowingMovies,required TResult Function( _LoadPopularMovies value)  loadPopularMovies,required TResult Function( _LoadWatchlistedMovies value)  loadWatchlistedMovies,}){
 final _that = this;
 switch (_that) {
 case _Init():
 return init(_that);case _LoadNowShowingMovies():
 return loadNowShowingMovies(_that);case _LoadPopularMovies():
-return loadPopularMovies(_that);case _:
+return loadPopularMovies(_that);case _LoadWatchlistedMovies():
+return loadWatchlistedMovies(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -102,13 +104,14 @@ return loadPopularMovies(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _LoadNowShowingMovies value)?  loadNowShowingMovies,TResult? Function( _LoadPopularMovies value)?  loadPopularMovies,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Init value)?  init,TResult? Function( _LoadNowShowingMovies value)?  loadNowShowingMovies,TResult? Function( _LoadPopularMovies value)?  loadPopularMovies,TResult? Function( _LoadWatchlistedMovies value)?  loadWatchlistedMovies,}){
 final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init(_that);case _LoadNowShowingMovies() when loadNowShowingMovies != null:
 return loadNowShowingMovies(_that);case _LoadPopularMovies() when loadPopularMovies != null:
-return loadPopularMovies(_that);case _:
+return loadPopularMovies(_that);case _LoadWatchlistedMovies() when loadWatchlistedMovies != null:
+return loadWatchlistedMovies(_that);case _:
   return null;
 
 }
@@ -125,12 +128,13 @@ return loadPopularMovies(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function()?  loadNowShowingMovies,TResult Function()?  loadPopularMovies,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function()?  loadNowShowingMovies,TResult Function()?  loadPopularMovies,TResult Function()?  loadWatchlistedMovies,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _LoadNowShowingMovies() when loadNowShowingMovies != null:
 return loadNowShowingMovies();case _LoadPopularMovies() when loadPopularMovies != null:
-return loadPopularMovies();case _:
+return loadPopularMovies();case _LoadWatchlistedMovies() when loadWatchlistedMovies != null:
+return loadWatchlistedMovies();case _:
   return orElse();
 
 }
@@ -148,12 +152,13 @@ return loadPopularMovies();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function()  loadNowShowingMovies,required TResult Function()  loadPopularMovies,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function()  loadNowShowingMovies,required TResult Function()  loadPopularMovies,required TResult Function()  loadWatchlistedMovies,}) {final _that = this;
 switch (_that) {
 case _Init():
 return init();case _LoadNowShowingMovies():
 return loadNowShowingMovies();case _LoadPopularMovies():
-return loadPopularMovies();case _:
+return loadPopularMovies();case _LoadWatchlistedMovies():
+return loadWatchlistedMovies();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -170,12 +175,13 @@ return loadPopularMovies();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function()?  loadNowShowingMovies,TResult? Function()?  loadPopularMovies,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function()?  loadNowShowingMovies,TResult? Function()?  loadPopularMovies,TResult? Function()?  loadWatchlistedMovies,}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _LoadNowShowingMovies() when loadNowShowingMovies != null:
 return loadNowShowingMovies();case _LoadPopularMovies() when loadPopularMovies != null:
-return loadPopularMovies();case _:
+return loadPopularMovies();case _LoadWatchlistedMovies() when loadWatchlistedMovies != null:
+return loadWatchlistedMovies();case _:
   return null;
 
 }
@@ -280,9 +286,41 @@ String toString() {
 
 
 /// @nodoc
+
+
+class _LoadWatchlistedMovies implements HomeEvent {
+  const _LoadWatchlistedMovies();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoadWatchlistedMovies);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeEvent.loadWatchlistedMovies()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
 mixin _$HomeState {
 
- bool get isLoadingNowShowingMovies; bool get isLoadingPopularMovies; MoviesData get nowShowingMovies; MoviesData get popularMovies; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
+ bool get isLoadingNowShowingMovies; bool get isLoadingPopularMovies; MoviesData get nowShowingMovies; MoviesData get popularMovies; List<WatchlistMovie> get watchlistedMovies; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -293,16 +331,16 @@ $HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.isLoadingNowShowingMovies, isLoadingNowShowingMovies) || other.isLoadingNowShowingMovies == isLoadingNowShowingMovies)&&(identical(other.isLoadingPopularMovies, isLoadingPopularMovies) || other.isLoadingPopularMovies == isLoadingPopularMovies)&&(identical(other.nowShowingMovies, nowShowingMovies) || other.nowShowingMovies == nowShowingMovies)&&(identical(other.popularMovies, popularMovies) || other.popularMovies == popularMovies)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.isLoadingNowShowingMovies, isLoadingNowShowingMovies) || other.isLoadingNowShowingMovies == isLoadingNowShowingMovies)&&(identical(other.isLoadingPopularMovies, isLoadingPopularMovies) || other.isLoadingPopularMovies == isLoadingPopularMovies)&&(identical(other.nowShowingMovies, nowShowingMovies) || other.nowShowingMovies == nowShowingMovies)&&(identical(other.popularMovies, popularMovies) || other.popularMovies == popularMovies)&&const DeepCollectionEquality().equals(other.watchlistedMovies, watchlistedMovies)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoadingNowShowingMovies,isLoadingPopularMovies,nowShowingMovies,popularMovies,apiFailureOrSuccess);
+int get hashCode => Object.hash(runtimeType,isLoadingNowShowingMovies,isLoadingPopularMovies,nowShowingMovies,popularMovies,const DeepCollectionEquality().hash(watchlistedMovies),apiFailureOrSuccess);
 
 @override
 String toString() {
-  return 'HomeState(isLoadingNowShowingMovies: $isLoadingNowShowingMovies, isLoadingPopularMovies: $isLoadingPopularMovies, nowShowingMovies: $nowShowingMovies, popularMovies: $popularMovies, apiFailureOrSuccess: $apiFailureOrSuccess)';
+  return 'HomeState(isLoadingNowShowingMovies: $isLoadingNowShowingMovies, isLoadingPopularMovies: $isLoadingPopularMovies, nowShowingMovies: $nowShowingMovies, popularMovies: $popularMovies, watchlistedMovies: $watchlistedMovies, apiFailureOrSuccess: $apiFailureOrSuccess)';
 }
 
 
@@ -313,7 +351,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, List<WatchlistMovie> watchlistedMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
@@ -330,13 +368,14 @@ class _$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoadingNowShowingMovies = null,Object? isLoadingPopularMovies = null,Object? nowShowingMovies = null,Object? popularMovies = null,Object? apiFailureOrSuccess = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoadingNowShowingMovies = null,Object? isLoadingPopularMovies = null,Object? nowShowingMovies = null,Object? popularMovies = null,Object? watchlistedMovies = null,Object? apiFailureOrSuccess = null,}) {
   return _then(_self.copyWith(
 isLoadingNowShowingMovies: null == isLoadingNowShowingMovies ? _self.isLoadingNowShowingMovies : isLoadingNowShowingMovies // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingPopularMovies: null == isLoadingPopularMovies ? _self.isLoadingPopularMovies : isLoadingPopularMovies // ignore: cast_nullable_to_non_nullable
 as bool,nowShowingMovies: null == nowShowingMovies ? _self.nowShowingMovies : nowShowingMovies // ignore: cast_nullable_to_non_nullable
 as MoviesData,popularMovies: null == popularMovies ? _self.popularMovies : popularMovies // ignore: cast_nullable_to_non_nullable
-as MoviesData,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+as MoviesData,watchlistedMovies: null == watchlistedMovies ? _self.watchlistedMovies : watchlistedMovies // ignore: cast_nullable_to_non_nullable
+as List<WatchlistMovie>,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,
   ));
 }
@@ -440,10 +479,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<WatchlistMovie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.apiFailureOrSuccess);case _:
+return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.watchlistedMovies,_that.apiFailureOrSuccess);case _:
   return orElse();
 
 }
@@ -461,10 +500,10 @@ return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<WatchlistMovie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
 switch (_that) {
 case _HomeState():
-return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.apiFailureOrSuccess);case _:
+return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.watchlistedMovies,_that.apiFailureOrSuccess);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -481,10 +520,10 @@ return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<WatchlistMovie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.apiFailureOrSuccess);case _:
+return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.watchlistedMovies,_that.apiFailureOrSuccess);case _:
   return null;
 
 }
@@ -496,13 +535,20 @@ return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_th
 
 
 class _HomeState extends HomeState {
-  const _HomeState({required this.isLoadingNowShowingMovies, required this.isLoadingPopularMovies, required this.nowShowingMovies, required this.popularMovies, required this.apiFailureOrSuccess}): super._();
+  const _HomeState({required this.isLoadingNowShowingMovies, required this.isLoadingPopularMovies, required this.nowShowingMovies, required this.popularMovies, required final  List<WatchlistMovie> watchlistedMovies, required this.apiFailureOrSuccess}): _watchlistedMovies = watchlistedMovies,super._();
   
 
 @override final  bool isLoadingNowShowingMovies;
 @override final  bool isLoadingPopularMovies;
 @override final  MoviesData nowShowingMovies;
 @override final  MoviesData popularMovies;
+ final  List<WatchlistMovie> _watchlistedMovies;
+@override List<WatchlistMovie> get watchlistedMovies {
+  if (_watchlistedMovies is EqualUnmodifiableListView) return _watchlistedMovies;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_watchlistedMovies);
+}
+
 @override final  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess;
 
 /// Create a copy of HomeState
@@ -515,16 +561,16 @@ _$HomeStateCopyWith<_HomeState> get copyWith => __$HomeStateCopyWithImpl<_HomeSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.isLoadingNowShowingMovies, isLoadingNowShowingMovies) || other.isLoadingNowShowingMovies == isLoadingNowShowingMovies)&&(identical(other.isLoadingPopularMovies, isLoadingPopularMovies) || other.isLoadingPopularMovies == isLoadingPopularMovies)&&(identical(other.nowShowingMovies, nowShowingMovies) || other.nowShowingMovies == nowShowingMovies)&&(identical(other.popularMovies, popularMovies) || other.popularMovies == popularMovies)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.isLoadingNowShowingMovies, isLoadingNowShowingMovies) || other.isLoadingNowShowingMovies == isLoadingNowShowingMovies)&&(identical(other.isLoadingPopularMovies, isLoadingPopularMovies) || other.isLoadingPopularMovies == isLoadingPopularMovies)&&(identical(other.nowShowingMovies, nowShowingMovies) || other.nowShowingMovies == nowShowingMovies)&&(identical(other.popularMovies, popularMovies) || other.popularMovies == popularMovies)&&const DeepCollectionEquality().equals(other._watchlistedMovies, _watchlistedMovies)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoadingNowShowingMovies,isLoadingPopularMovies,nowShowingMovies,popularMovies,apiFailureOrSuccess);
+int get hashCode => Object.hash(runtimeType,isLoadingNowShowingMovies,isLoadingPopularMovies,nowShowingMovies,popularMovies,const DeepCollectionEquality().hash(_watchlistedMovies),apiFailureOrSuccess);
 
 @override
 String toString() {
-  return 'HomeState(isLoadingNowShowingMovies: $isLoadingNowShowingMovies, isLoadingPopularMovies: $isLoadingPopularMovies, nowShowingMovies: $nowShowingMovies, popularMovies: $popularMovies, apiFailureOrSuccess: $apiFailureOrSuccess)';
+  return 'HomeState(isLoadingNowShowingMovies: $isLoadingNowShowingMovies, isLoadingPopularMovies: $isLoadingPopularMovies, nowShowingMovies: $nowShowingMovies, popularMovies: $popularMovies, watchlistedMovies: $watchlistedMovies, apiFailureOrSuccess: $apiFailureOrSuccess)';
 }
 
 
@@ -535,7 +581,7 @@ abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Re
   factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, List<WatchlistMovie> watchlistedMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
@@ -552,13 +598,14 @@ class __$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoadingNowShowingMovies = null,Object? isLoadingPopularMovies = null,Object? nowShowingMovies = null,Object? popularMovies = null,Object? apiFailureOrSuccess = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoadingNowShowingMovies = null,Object? isLoadingPopularMovies = null,Object? nowShowingMovies = null,Object? popularMovies = null,Object? watchlistedMovies = null,Object? apiFailureOrSuccess = null,}) {
   return _then(_HomeState(
 isLoadingNowShowingMovies: null == isLoadingNowShowingMovies ? _self.isLoadingNowShowingMovies : isLoadingNowShowingMovies // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingPopularMovies: null == isLoadingPopularMovies ? _self.isLoadingPopularMovies : isLoadingPopularMovies // ignore: cast_nullable_to_non_nullable
 as bool,nowShowingMovies: null == nowShowingMovies ? _self.nowShowingMovies : nowShowingMovies // ignore: cast_nullable_to_non_nullable
 as MoviesData,popularMovies: null == popularMovies ? _self.popularMovies : popularMovies // ignore: cast_nullable_to_non_nullable
-as MoviesData,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+as MoviesData,watchlistedMovies: null == watchlistedMovies ? _self._watchlistedMovies : watchlistedMovies // ignore: cast_nullable_to_non_nullable
+as List<WatchlistMovie>,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,
   ));
 }

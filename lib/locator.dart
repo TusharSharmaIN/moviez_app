@@ -5,10 +5,12 @@ import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/exception_handler.dart';
 import 'package:moviez_app/infrastructure/core/http/http.dart';
 import 'package:moviez_app/infrastructure/core/http/interceptor/auth_interceptor.dart';
+import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.dart';
 import 'package:moviez_app/infrastructure/home/datasource/home_remote.dart';
 import 'package:moviez_app/infrastructure/home/repository/home_repository.dart';
 import 'package:moviez_app/infrastructure/movie_details/datasource/movie_details_remote.dart';
 import 'package:moviez_app/infrastructure/movie_details/repository/movie_details_repository.dart';
+import 'package:moviez_app/infrastructure/watchlist/repository/watchlist_repository.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -25,6 +27,7 @@ void setupLocator() {
       interceptors: [locator<AuthInterceptor>()],
     ),
   );
+  locator.registerLazySingleton(() => WatchlistStorage());
 
   // Home
   locator.registerLazySingleton(
@@ -41,7 +44,16 @@ void setupLocator() {
     ),
   );
   locator.registerLazySingleton(
-    () => HomeBloc(homeRepository: locator<HomeRepository>()),
+    () => WatchlistRepository(
+      config: locator<Config>(),
+      watchlistStorage: locator<WatchlistStorage>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => HomeBloc(
+      homeRepository: locator<HomeRepository>(),
+      watchlistRepository: locator<WatchlistRepository>(),
+    ),
   );
 
   // Movie Details
@@ -56,11 +68,13 @@ void setupLocator() {
     () => MovieDetailsRepository(
       config: locator<Config>(),
       movieDetailsRemoteDataSource: locator<MovieDetailsRemoteDataSource>(),
+      watchlistStorage: locator<WatchlistStorage>(),
     ),
   );
   locator.registerLazySingleton(
     () => MovieDetailsBloc(
       movieDetailsRepository: locator<MovieDetailsRepository>(),
+      watchlistRepository: locator<WatchlistRepository>(),
     ),
   );
 }

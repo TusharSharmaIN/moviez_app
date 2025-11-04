@@ -6,15 +6,18 @@ import 'package:moviez_app/domain/movie_details/entities/cast.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/domain/movie_details/entities/video.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
+import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.dart';
 import 'package:moviez_app/infrastructure/movie_details/datasource/movie_details_remote.dart';
 
 class MovieDetailsRepository implements IMovieDetailsRepository {
   final Config config;
   final MovieDetailsRemoteDataSource movieDetailsRemoteDataSource;
+  final WatchlistStorage watchlistStorage;
 
   MovieDetailsRepository({
     required this.config,
     required this.movieDetailsRemoteDataSource,
+    required this.watchlistStorage,
   });
 
   @override

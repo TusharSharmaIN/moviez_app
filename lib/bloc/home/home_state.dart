@@ -9,6 +9,7 @@ abstract class HomeState with _$HomeState {
     required bool isLoadingPopularMovies,
     required MoviesData nowShowingMovies,
     required MoviesData popularMovies,
+    required List<WatchlistMovie> watchlistedMovies,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess,
   }) = _HomeState;
 
@@ -17,6 +18,7 @@ abstract class HomeState with _$HomeState {
     isLoadingPopularMovies: false,
     nowShowingMovies: MoviesData.empty(),
     popularMovies: MoviesData.empty(),
+    watchlistedMovies: <WatchlistMovie>[],
     apiFailureOrSuccess: none(),
   );
 }
