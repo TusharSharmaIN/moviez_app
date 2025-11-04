@@ -140,7 +140,7 @@ return checkIfMovieIsWatchlisted(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( int movieId)?  setMovieId,TResult Function()?  loadMovieDetails,TResult Function()?  loadTrailerDetails,TResult Function()?  loadCastDetails,TResult Function( WatchlistMovie movie)?  addToWatchlist,TResult Function( int movieId)?  removeFromWatchlist,TResult Function( int movieId)?  checkIfMovieIsWatchlisted,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  init,TResult Function( int movieId)?  setMovieId,TResult Function()?  loadMovieDetails,TResult Function()?  loadTrailerDetails,TResult Function()?  loadCastDetails,TResult Function( Movie movie)?  addToWatchlist,TResult Function( int movieId)?  removeFromWatchlist,TResult Function( int movieId)?  checkIfMovieIsWatchlisted,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _SetMovieId() when setMovieId != null:
@@ -168,7 +168,7 @@ return checkIfMovieIsWatchlisted(_that.movieId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( int movieId)  setMovieId,required TResult Function()  loadMovieDetails,required TResult Function()  loadTrailerDetails,required TResult Function()  loadCastDetails,required TResult Function( WatchlistMovie movie)  addToWatchlist,required TResult Function( int movieId)  removeFromWatchlist,required TResult Function( int movieId)  checkIfMovieIsWatchlisted,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  init,required TResult Function( int movieId)  setMovieId,required TResult Function()  loadMovieDetails,required TResult Function()  loadTrailerDetails,required TResult Function()  loadCastDetails,required TResult Function( Movie movie)  addToWatchlist,required TResult Function( int movieId)  removeFromWatchlist,required TResult Function( int movieId)  checkIfMovieIsWatchlisted,}) {final _that = this;
 switch (_that) {
 case _Init():
 return init();case _SetMovieId():
@@ -195,7 +195,7 @@ return checkIfMovieIsWatchlisted(_that.movieId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( int movieId)?  setMovieId,TResult? Function()?  loadMovieDetails,TResult? Function()?  loadTrailerDetails,TResult? Function()?  loadCastDetails,TResult? Function( WatchlistMovie movie)?  addToWatchlist,TResult? Function( int movieId)?  removeFromWatchlist,TResult? Function( int movieId)?  checkIfMovieIsWatchlisted,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  init,TResult? Function( int movieId)?  setMovieId,TResult? Function()?  loadMovieDetails,TResult? Function()?  loadTrailerDetails,TResult? Function()?  loadCastDetails,TResult? Function( Movie movie)?  addToWatchlist,TResult? Function( int movieId)?  removeFromWatchlist,TResult? Function( int movieId)?  checkIfMovieIsWatchlisted,}) {final _that = this;
 switch (_that) {
 case _Init() when init != null:
 return init();case _SetMovieId() when setMovieId != null:
@@ -414,7 +414,7 @@ class _AddToWatchlist implements MovieDetailsEvent {
   const _AddToWatchlist({required this.movie});
   
 
- final  WatchlistMovie movie;
+ final  Movie movie;
 
 /// Create a copy of MovieDetailsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -446,11 +446,11 @@ abstract mixin class _$AddToWatchlistCopyWith<$Res> implements $MovieDetailsEven
   factory _$AddToWatchlistCopyWith(_AddToWatchlist value, $Res Function(_AddToWatchlist) _then) = __$AddToWatchlistCopyWithImpl;
 @useResult
 $Res call({
- WatchlistMovie movie
+ Movie movie
 });
 
 
-$WatchlistMovieCopyWith<$Res> get movie;
+$MovieCopyWith<$Res> get movie;
 
 }
 /// @nodoc
@@ -466,7 +466,7 @@ class __$AddToWatchlistCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? movie = null,}) {
   return _then(_AddToWatchlist(
 movie: null == movie ? _self.movie : movie // ignore: cast_nullable_to_non_nullable
-as WatchlistMovie,
+as Movie,
   ));
 }
 
@@ -474,9 +474,9 @@ as WatchlistMovie,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$WatchlistMovieCopyWith<$Res> get movie {
+$MovieCopyWith<$Res> get movie {
   
-  return $WatchlistMovieCopyWith<$Res>(_self.movie, (value) {
+  return $MovieCopyWith<$Res>(_self.movie, (value) {
     return _then(_self.copyWith(movie: value));
   });
 }

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:moviez_app/domain/core/value/value_objects.dart';
 import 'package:moviez_app/domain/home/entities/movies_data.dart';
 
@@ -22,22 +23,37 @@ abstract class MoviesDataDto with _$MoviesDataDto {
 }
 
 @freezed
+@HiveType(typeId: 1)
 abstract class MovieDto with _$MovieDto {
   const MovieDto._();
 
   const factory MovieDto({
-    @JsonKey(name: 'adult', defaultValue: false) required bool adult,
+    @HiveField(1)
     @JsonKey(name: 'backdrop_path', defaultValue: '')
     required String backdropPath,
+    
+    @HiveField(2)
     @JsonKey(name: 'genre_ids', defaultValue: <int>[])
     required List<int> genreIds,
+    
+    @HiveField(3)
     @JsonKey(name: 'id', defaultValue: 0) required int id,
+    
+    @HiveField(4)
     @JsonKey(name: 'original_language', defaultValue: '')
     required String originalLanguage,
+    
+    @HiveField(5)
     @JsonKey(name: 'overview', defaultValue: '') required String overview,
+    
+    @HiveField(6)
     @JsonKey(name: 'poster_path', defaultValue: '') required String posterPath,
+    
+    @HiveField(7)
     @JsonKey(name: 'release_date', defaultValue: '')
     required String releaseDate,
+    
+    @HiveField(8)
     @JsonKey(name: 'title', defaultValue: '') required String title,
   }) = _MovieDto;
 
@@ -52,8 +68,18 @@ abstract class MovieDto with _$MovieDto {
     title: StringValue(title),
   );
 
+  factory MovieDto.fromDomain(Movie movie) => MovieDto(
+    backdropPath: movie.backdropPath.getValue(),
+    genreIds: movie.genreIds,
+    id: movie.id,
+    originalLanguage: movie.originalLanguage.getValue(),
+    overview: movie.overview.getValue(),
+    posterPath: movie.posterPath.getValue(),
+    releaseDate: movie.releaseDate.getValue().toString(),
+    title: movie.title.getValue(),
+  );
+
   static const empty = MovieDto(
-    adult: false,
     backdropPath: '',
     genreIds: <int>[],
     id: 0,

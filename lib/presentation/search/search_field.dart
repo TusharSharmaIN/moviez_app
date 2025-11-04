@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moviez_app/bloc/search/search_bloc.dart';
+import 'package:moviez_app/domain/core/value/value_objects.dart';
+import 'package:moviez_app/presentation/core/utils/debouncer.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -12,7 +16,7 @@ class SearchField extends StatefulWidget {
 
 class _SearchFieldState extends State<SearchField> {
   late TextEditingController _controller;
-  // final _debouncer = Debouncer(delay: const Duration(milliseconds: 600));
+  final _debouncer = Debouncer(delay: const Duration(milliseconds: 300));
 
   @override
   void initState() {
@@ -20,15 +24,7 @@ class _SearchFieldState extends State<SearchField> {
     _controller = TextEditingController();
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // final searchQuery = context
-    //     .watch<SearchBloc>()
-    //     .state
-    //     .searchQuery
-    //     .getOrDefaultValue('');
-    final searchQuery = '';
+  void _syncControllerWithState(String searchQuery) {
     if (_controller.text != searchQuery) {
       final oldSelection = _controller.selection;
       var offset = oldSelection.baseOffset;
@@ -44,43 +40,53 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: _controller,
-      decoration: InputDecoration(
-        isDense: true,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide.none,
-        ),
-        fillColor: BaseColors.white.withValues(alpha: 0.1),
-        filled: true,
-        hintText: 'Search movies...',
-        hintStyle: BaseTextStyles.mulishLargeSemiBold.copyWith(
-          color: BaseColors.textGrey,
-        ),
-        contentPadding: const EdgeInsets.all(10),
-        prefixIcon: const Icon(PhosphorIconsRegular.magnifyingGlass, size: 20),
-        prefixIconConstraints: const BoxConstraints(
-          minWidth: 24,
-          minHeight: 24,
-        ),
-      ),
-      style: BaseTextStyles.mulishMediumRegular.copyWith(
-        color: BaseColors.primaryBlack,
-      ),
-      cursorColor: BaseColors.primaryBlack,
-      cursorWidth: 1.4,
-      onChanged: (value) {
-        // context.read<SearchBloc>().add(
-        //   SearchEvent.onQueryChanged(value: StringValue(value)),
-        // );
-        // if (value.length > 2) {
-        //   _debouncer.run(() {
-        //     context.read<SearchBloc>().add(const SearchEvent.search());
-        //   });
-        // }
+    return BlocBuilder<SearchBloc, SearchState>(
+      buildWhen: (previous, current) =>
+          previous.searchQuery != current.searchQuery,
+      builder: (context, state) {
+        _syncControllerWithState(state.searchQuery.getOrDefaultValue(''));
+        return TextFormField(
+          controller: _controller,
+          decoration: InputDecoration(
+            isDense: true,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide.none,
+            ),
+            fillColor: BaseColors.white.withValues(alpha: 0.1),
+            filled: true,
+            hintText: 'Search movies...',
+            hintStyle: BaseTextStyles.mulishLargeSemiBold.copyWith(
+              color: BaseColors.textGrey,
+            ),
+            contentPadding: const EdgeInsets.all(10),
+            prefixIcon: const Icon(
+              PhosphorIconsRegular.magnifyingGlass,
+              size: 20,
+            ),
+            prefixIconConstraints: const BoxConstraints(
+              minWidth: 24,
+              minHeight: 24,
+            ),
+          ),
+          style: BaseTextStyles.mulishMediumRegular.copyWith(
+            color: BaseColors.primaryBlack,
+          ),
+          cursorColor: BaseColors.primaryBlack,
+          cursorWidth: 1.4,
+          onChanged: (value) {
+            context.read<SearchBloc>().add(
+              SearchEvent.onQueryChanged(value: StringValue(value)),
+            );
+            if (value.length > 2) {
+              _debouncer.run(() {
+                context.read<SearchBloc>().add(const SearchEvent.onSearch());
+              });
+            }
+          },
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+        );
       },
-      autovalidateMode: AutovalidateMode.onUserInteraction,
     );
   }
 }

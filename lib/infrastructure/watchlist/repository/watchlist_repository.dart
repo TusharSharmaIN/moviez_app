@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
 import 'package:moviez_app/domain/core/error/failure_handler.dart';
-import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
+import 'package:moviez_app/domain/home/entities/movies_data.dart';
 import 'package:moviez_app/domain/watchlist/repository/i_movie_details_repository.dart';
 import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.dart';
-import 'package:moviez_app/infrastructure/watchlist/dtos/watchlist_movie_dto.dart';
+import 'package:moviez_app/infrastructure/home/dtos/movies_data_dto.dart';
 
 class WatchlistRepository implements IWatchlistRepository {
   final WatchlistStorage watchlistStorage;
@@ -12,8 +12,7 @@ class WatchlistRepository implements IWatchlistRepository {
   WatchlistRepository({required this.watchlistStorage});
 
   @override
-  Future<Either<ApiFailure, List<WatchlistMovie>>>
-  getWatchlistedMovies() async {
+  Future<Either<ApiFailure, List<Movie>>> getWatchlistedMovies() async {
     try {
       final watchlistedMovies = await watchlistStorage.getWatchlistedMovies();
       return Right(watchlistedMovies.map((dto) => dto.toDomain()).toList());
@@ -24,10 +23,10 @@ class WatchlistRepository implements IWatchlistRepository {
 
   @override
   Future<Either<ApiFailure, bool>> addToWatchlist({
-    required WatchlistMovie movie,
+    required Movie movie,
   }) async {
     try {
-      final movieDto = WatchlistMovieDto.fromDomain(movie);
+      final movieDto = MovieDto.fromDomain(movie);
       await watchlistStorage.addToWatchlist(movieDto);
       return const Right(true);
     } catch (e) {

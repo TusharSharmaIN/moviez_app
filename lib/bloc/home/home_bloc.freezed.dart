@@ -320,7 +320,7 @@ String toString() {
 /// @nodoc
 mixin _$HomeState {
 
- bool get isLoadingNowShowingMovies; bool get isLoadingPopularMovies; MoviesData get nowShowingMovies; MoviesData get popularMovies; List<WatchlistMovie> get watchlistedMovies; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
+ bool get isLoadingNowShowingMovies; bool get isLoadingPopularMovies; MoviesData get nowShowingMovies; MoviesData get popularMovies; List<Movie> get watchlistedMovies; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -351,7 +351,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, List<WatchlistMovie> watchlistedMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, List<Movie> watchlistedMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
@@ -375,7 +375,7 @@ as bool,isLoadingPopularMovies: null == isLoadingPopularMovies ? _self.isLoading
 as bool,nowShowingMovies: null == nowShowingMovies ? _self.nowShowingMovies : nowShowingMovies // ignore: cast_nullable_to_non_nullable
 as MoviesData,popularMovies: null == popularMovies ? _self.popularMovies : popularMovies // ignore: cast_nullable_to_non_nullable
 as MoviesData,watchlistedMovies: null == watchlistedMovies ? _self.watchlistedMovies : watchlistedMovies // ignore: cast_nullable_to_non_nullable
-as List<WatchlistMovie>,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+as List<Movie>,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,
   ));
 }
@@ -479,7 +479,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<WatchlistMovie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<Movie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
 return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.watchlistedMovies,_that.apiFailureOrSuccess);case _:
@@ -500,7 +500,7 @@ return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<WatchlistMovie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<Movie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
 switch (_that) {
 case _HomeState():
 return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.watchlistedMovies,_that.apiFailureOrSuccess);case _:
@@ -520,7 +520,7 @@ return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<WatchlistMovie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoadingNowShowingMovies,  bool isLoadingPopularMovies,  MoviesData nowShowingMovies,  MoviesData popularMovies,  List<Movie> watchlistedMovies,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
 return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_that.nowShowingMovies,_that.popularMovies,_that.watchlistedMovies,_that.apiFailureOrSuccess);case _:
@@ -535,15 +535,15 @@ return $default(_that.isLoadingNowShowingMovies,_that.isLoadingPopularMovies,_th
 
 
 class _HomeState extends HomeState {
-  const _HomeState({required this.isLoadingNowShowingMovies, required this.isLoadingPopularMovies, required this.nowShowingMovies, required this.popularMovies, required final  List<WatchlistMovie> watchlistedMovies, required this.apiFailureOrSuccess}): _watchlistedMovies = watchlistedMovies,super._();
+  const _HomeState({required this.isLoadingNowShowingMovies, required this.isLoadingPopularMovies, required this.nowShowingMovies, required this.popularMovies, required final  List<Movie> watchlistedMovies, required this.apiFailureOrSuccess}): _watchlistedMovies = watchlistedMovies,super._();
   
 
 @override final  bool isLoadingNowShowingMovies;
 @override final  bool isLoadingPopularMovies;
 @override final  MoviesData nowShowingMovies;
 @override final  MoviesData popularMovies;
- final  List<WatchlistMovie> _watchlistedMovies;
-@override List<WatchlistMovie> get watchlistedMovies {
+ final  List<Movie> _watchlistedMovies;
+@override List<Movie> get watchlistedMovies {
   if (_watchlistedMovies is EqualUnmodifiableListView) return _watchlistedMovies;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_watchlistedMovies);
@@ -581,7 +581,7 @@ abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Re
   factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, List<WatchlistMovie> watchlistedMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ bool isLoadingNowShowingMovies, bool isLoadingPopularMovies, MoviesData nowShowingMovies, MoviesData popularMovies, List<Movie> watchlistedMovies, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
@@ -605,7 +605,7 @@ as bool,isLoadingPopularMovies: null == isLoadingPopularMovies ? _self.isLoading
 as bool,nowShowingMovies: null == nowShowingMovies ? _self.nowShowingMovies : nowShowingMovies // ignore: cast_nullable_to_non_nullable
 as MoviesData,popularMovies: null == popularMovies ? _self.popularMovies : popularMovies // ignore: cast_nullable_to_non_nullable
 as MoviesData,watchlistedMovies: null == watchlistedMovies ? _self._watchlistedMovies : watchlistedMovies // ignore: cast_nullable_to_non_nullable
-as List<WatchlistMovie>,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+as List<Movie>,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,
   ));
 }

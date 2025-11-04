@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
+import 'package:moviez_app/domain/home/entities/movies_data.dart';
 import 'package:moviez_app/domain/movie_details/entities/cast.dart';
-import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
 import 'package:moviez_app/presentation/core/widgets/common/movie_tags.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_icon_button.dart';
@@ -136,7 +136,7 @@ class TitleAndWatchlistCTA extends StatelessWidget {
                       )
                     : context.read<MovieDetailsBloc>().add(
                         MovieDetailsEvent.addToWatchlist(
-                          movie: WatchlistMovie(
+                          movie: Movie(
                             id: state.movieDetails.id,
                             title: state.movieDetails.title,
                             posterPath: state.movieDetails.posterPath,

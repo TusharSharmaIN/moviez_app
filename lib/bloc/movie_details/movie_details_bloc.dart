@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
+import 'package:moviez_app/domain/home/entities/movies_data.dart';
 import 'package:moviez_app/domain/movie_details/entities/cast.dart';
 import 'package:moviez_app/domain/movie_details/entities/movie_details.dart';
 import 'package:moviez_app/domain/movie_details/entities/video.dart';
 import 'package:moviez_app/domain/movie_details/repository/i_movie_details_repository.dart';
-import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
 import 'package:moviez_app/domain/watchlist/repository/i_movie_details_repository.dart';
 
 part 'movie_details_event.dart';

@@ -284,7 +284,7 @@ as List<MovieDto>,
 /// @nodoc
 mixin _$MovieDto {
 
-@JsonKey(name: 'adult', defaultValue: false) bool get adult;@JsonKey(name: 'backdrop_path', defaultValue: '') String get backdropPath;@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> get genreIds;@JsonKey(name: 'id', defaultValue: 0) int get id;@JsonKey(name: 'original_language', defaultValue: '') String get originalLanguage;@JsonKey(name: 'overview', defaultValue: '') String get overview;@JsonKey(name: 'poster_path', defaultValue: '') String get posterPath;@JsonKey(name: 'release_date', defaultValue: '') String get releaseDate;@JsonKey(name: 'title', defaultValue: '') String get title;
+@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '') String get backdropPath;@HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> get genreIds;@HiveField(3)@JsonKey(name: 'id', defaultValue: 0) int get id;@HiveField(4)@JsonKey(name: 'original_language', defaultValue: '') String get originalLanguage;@HiveField(5)@JsonKey(name: 'overview', defaultValue: '') String get overview;@HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '') String get posterPath;@HiveField(7)@JsonKey(name: 'release_date', defaultValue: '') String get releaseDate;@HiveField(8)@JsonKey(name: 'title', defaultValue: '') String get title;
 /// Create a copy of MovieDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -297,16 +297,16 @@ $MovieDtoCopyWith<MovieDto> get copyWith => _$MovieDtoCopyWithImpl<MovieDto>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieDto&&(identical(other.adult, adult) || other.adult == adult)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other.genreIds, genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieDto&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other.genreIds, genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,adult,backdropPath,const DeepCollectionEquality().hash(genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
+int get hashCode => Object.hash(runtimeType,backdropPath,const DeepCollectionEquality().hash(genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
 
 @override
 String toString() {
-  return 'MovieDto(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
+  return 'MovieDto(backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
 }
 
 
@@ -317,7 +317,7 @@ abstract mixin class $MovieDtoCopyWith<$Res>  {
   factory $MovieDtoCopyWith(MovieDto value, $Res Function(MovieDto) _then) = _$MovieDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'adult', defaultValue: false) bool adult,@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> genreIds,@JsonKey(name: 'id', defaultValue: 0) int id,@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@JsonKey(name: 'overview', defaultValue: '') String overview,@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@JsonKey(name: 'title', defaultValue: '') String title
+@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> genreIds,@HiveField(3)@JsonKey(name: 'id', defaultValue: 0) int id,@HiveField(4)@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@HiveField(5)@JsonKey(name: 'overview', defaultValue: '') String overview,@HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@HiveField(7)@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@HiveField(8)@JsonKey(name: 'title', defaultValue: '') String title
 });
 
 
@@ -334,10 +334,9 @@ class _$MovieDtoCopyWithImpl<$Res>
 
 /// Create a copy of MovieDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? adult = null,Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
   return _then(_self.copyWith(
-adult: null == adult ? _self.adult : adult // ignore: cast_nullable_to_non_nullable
-as bool,backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as String,genreIds: null == genreIds ? _self.genreIds : genreIds // ignore: cast_nullable_to_non_nullable
 as List<int>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -430,10 +429,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'adult', defaultValue: false)  bool adult, @JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genre_ids', defaultValue: <int>[])  List<int> genreIds, @JsonKey(name: 'id', defaultValue: 0)  int id, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'title', defaultValue: '')  String title)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[])  List<int> genreIds, @HiveField(3)@JsonKey(name: 'id', defaultValue: 0)  int id, @HiveField(4)@JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @HiveField(5)@JsonKey(name: 'overview', defaultValue: '')  String overview, @HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @HiveField(7)@JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @HiveField(8)@JsonKey(name: 'title', defaultValue: '')  String title)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieDto() when $default != null:
-return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
   return orElse();
 
 }
@@ -451,10 +450,10 @@ return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.ori
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'adult', defaultValue: false)  bool adult, @JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genre_ids', defaultValue: <int>[])  List<int> genreIds, @JsonKey(name: 'id', defaultValue: 0)  int id, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'title', defaultValue: '')  String title)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[])  List<int> genreIds, @HiveField(3)@JsonKey(name: 'id', defaultValue: 0)  int id, @HiveField(4)@JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @HiveField(5)@JsonKey(name: 'overview', defaultValue: '')  String overview, @HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @HiveField(7)@JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @HiveField(8)@JsonKey(name: 'title', defaultValue: '')  String title)  $default,) {final _that = this;
 switch (_that) {
 case _MovieDto():
-return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -471,10 +470,10 @@ return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.ori
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'adult', defaultValue: false)  bool adult, @JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @JsonKey(name: 'genre_ids', defaultValue: <int>[])  List<int> genreIds, @JsonKey(name: 'id', defaultValue: 0)  int id, @JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @JsonKey(name: 'overview', defaultValue: '')  String overview, @JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @JsonKey(name: 'title', defaultValue: '')  String title)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '')  String backdropPath, @HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[])  List<int> genreIds, @HiveField(3)@JsonKey(name: 'id', defaultValue: 0)  int id, @HiveField(4)@JsonKey(name: 'original_language', defaultValue: '')  String originalLanguage, @HiveField(5)@JsonKey(name: 'overview', defaultValue: '')  String overview, @HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '')  String posterPath, @HiveField(7)@JsonKey(name: 'release_date', defaultValue: '')  String releaseDate, @HiveField(8)@JsonKey(name: 'title', defaultValue: '')  String title)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieDto() when $default != null:
-return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
+return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
   return null;
 
 }
@@ -486,24 +485,23 @@ return $default(_that.adult,_that.backdropPath,_that.genreIds,_that.id,_that.ori
 @JsonSerializable()
 
 class _MovieDto extends MovieDto {
-  const _MovieDto({@JsonKey(name: 'adult', defaultValue: false) required this.adult, @JsonKey(name: 'backdrop_path', defaultValue: '') required this.backdropPath, @JsonKey(name: 'genre_ids', defaultValue: <int>[]) required final  List<int> genreIds, @JsonKey(name: 'id', defaultValue: 0) required this.id, @JsonKey(name: 'original_language', defaultValue: '') required this.originalLanguage, @JsonKey(name: 'overview', defaultValue: '') required this.overview, @JsonKey(name: 'poster_path', defaultValue: '') required this.posterPath, @JsonKey(name: 'release_date', defaultValue: '') required this.releaseDate, @JsonKey(name: 'title', defaultValue: '') required this.title}): _genreIds = genreIds,super._();
+  const _MovieDto({@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '') required this.backdropPath, @HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[]) required final  List<int> genreIds, @HiveField(3)@JsonKey(name: 'id', defaultValue: 0) required this.id, @HiveField(4)@JsonKey(name: 'original_language', defaultValue: '') required this.originalLanguage, @HiveField(5)@JsonKey(name: 'overview', defaultValue: '') required this.overview, @HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '') required this.posterPath, @HiveField(7)@JsonKey(name: 'release_date', defaultValue: '') required this.releaseDate, @HiveField(8)@JsonKey(name: 'title', defaultValue: '') required this.title}): _genreIds = genreIds,super._();
   factory _MovieDto.fromJson(Map<String, dynamic> json) => _$MovieDtoFromJson(json);
 
-@override@JsonKey(name: 'adult', defaultValue: false) final  bool adult;
-@override@JsonKey(name: 'backdrop_path', defaultValue: '') final  String backdropPath;
+@override@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '') final  String backdropPath;
  final  List<int> _genreIds;
-@override@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> get genreIds {
+@override@HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> get genreIds {
   if (_genreIds is EqualUnmodifiableListView) return _genreIds;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_genreIds);
 }
 
-@override@JsonKey(name: 'id', defaultValue: 0) final  int id;
-@override@JsonKey(name: 'original_language', defaultValue: '') final  String originalLanguage;
-@override@JsonKey(name: 'overview', defaultValue: '') final  String overview;
-@override@JsonKey(name: 'poster_path', defaultValue: '') final  String posterPath;
-@override@JsonKey(name: 'release_date', defaultValue: '') final  String releaseDate;
-@override@JsonKey(name: 'title', defaultValue: '') final  String title;
+@override@HiveField(3)@JsonKey(name: 'id', defaultValue: 0) final  int id;
+@override@HiveField(4)@JsonKey(name: 'original_language', defaultValue: '') final  String originalLanguage;
+@override@HiveField(5)@JsonKey(name: 'overview', defaultValue: '') final  String overview;
+@override@HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '') final  String posterPath;
+@override@HiveField(7)@JsonKey(name: 'release_date', defaultValue: '') final  String releaseDate;
+@override@HiveField(8)@JsonKey(name: 'title', defaultValue: '') final  String title;
 
 /// Create a copy of MovieDto
 /// with the given fields replaced by the non-null parameter values.
@@ -518,16 +516,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieDto&&(identical(other.adult, adult) || other.adult == adult)&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other._genreIds, _genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieDto&&(identical(other.backdropPath, backdropPath) || other.backdropPath == backdropPath)&&const DeepCollectionEquality().equals(other._genreIds, _genreIds)&&(identical(other.id, id) || other.id == id)&&(identical(other.originalLanguage, originalLanguage) || other.originalLanguage == originalLanguage)&&(identical(other.overview, overview) || other.overview == overview)&&(identical(other.posterPath, posterPath) || other.posterPath == posterPath)&&(identical(other.releaseDate, releaseDate) || other.releaseDate == releaseDate)&&(identical(other.title, title) || other.title == title));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,adult,backdropPath,const DeepCollectionEquality().hash(_genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
+int get hashCode => Object.hash(runtimeType,backdropPath,const DeepCollectionEquality().hash(_genreIds),id,originalLanguage,overview,posterPath,releaseDate,title);
 
 @override
 String toString() {
-  return 'MovieDto(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
+  return 'MovieDto(backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, overview: $overview, posterPath: $posterPath, releaseDate: $releaseDate, title: $title)';
 }
 
 
@@ -538,7 +536,7 @@ abstract mixin class _$MovieDtoCopyWith<$Res> implements $MovieDtoCopyWith<$Res>
   factory _$MovieDtoCopyWith(_MovieDto value, $Res Function(_MovieDto) _then) = __$MovieDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'adult', defaultValue: false) bool adult,@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> genreIds,@JsonKey(name: 'id', defaultValue: 0) int id,@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@JsonKey(name: 'overview', defaultValue: '') String overview,@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@JsonKey(name: 'title', defaultValue: '') String title
+@HiveField(1)@JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,@HiveField(2)@JsonKey(name: 'genre_ids', defaultValue: <int>[]) List<int> genreIds,@HiveField(3)@JsonKey(name: 'id', defaultValue: 0) int id,@HiveField(4)@JsonKey(name: 'original_language', defaultValue: '') String originalLanguage,@HiveField(5)@JsonKey(name: 'overview', defaultValue: '') String overview,@HiveField(6)@JsonKey(name: 'poster_path', defaultValue: '') String posterPath,@HiveField(7)@JsonKey(name: 'release_date', defaultValue: '') String releaseDate,@HiveField(8)@JsonKey(name: 'title', defaultValue: '') String title
 });
 
 
@@ -555,10 +553,9 @@ class __$MovieDtoCopyWithImpl<$Res>
 
 /// Create a copy of MovieDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? adult = null,Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? backdropPath = null,Object? genreIds = null,Object? id = null,Object? originalLanguage = null,Object? overview = null,Object? posterPath = null,Object? releaseDate = null,Object? title = null,}) {
   return _then(_MovieDto(
-adult: null == adult ? _self.adult : adult // ignore: cast_nullable_to_non_nullable
-as bool,backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
+backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as String,genreIds: null == genreIds ? _self._genreIds : genreIds // ignore: cast_nullable_to_non_nullable
 as List<int>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable

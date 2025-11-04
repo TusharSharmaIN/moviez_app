@@ -3,16 +3,16 @@
 // Check in to version control
 
 import 'package:hive_ce/hive.dart';
-import 'package:moviez_app/infrastructure/watchlist/dtos/watchlist_movie_dto.dart';
+import 'package:moviez_app/infrastructure/home/dtos/movies_data_dto.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
-    registerAdapter(WatchlistMovieDtoAdapter());
+    registerAdapter(MovieDtoAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
-    registerAdapter(WatchlistMovieDtoAdapter());
+    registerAdapter(MovieDtoAdapter());
   }
 }

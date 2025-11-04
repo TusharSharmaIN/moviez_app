@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:moviez_app/bloc/home/home_bloc.dart';
-import 'package:moviez_app/domain/home/entities/movies_data.dart';
+import 'package:moviez_app/presentation/core/widgets/common/column_movie_tile.dart';
+import 'package:moviez_app/presentation/core/widgets/common/row_movie_tile.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
-import 'package:moviez_app/presentation/core/widgets/custom/custom_image_view.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/section_heading.dart';
-import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/search/search_box.dart';
 
 import 'package:moviez_app/presentation/theme/base_colors.dart';
-import 'package:moviez_app/presentation/theme/base_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 part 'widgets/trending_movies.dart';

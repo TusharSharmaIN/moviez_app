@@ -1,6 +1,6 @@
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:moviez_app/domain/core/error/exceptions.dart';
-import 'package:moviez_app/infrastructure/watchlist/dtos/watchlist_movie_dto.dart';
+import 'package:moviez_app/infrastructure/home/dtos/movies_data_dto.dart';
 
 class WatchlistStorage {
   static const _boxName = 'watchlist_box';
@@ -13,7 +13,7 @@ class WatchlistStorage {
   Future<void> init() async {
     try {
       await Hive.initFlutter();
-      Hive.registerAdapter(WatchlistMovieDtoAdapter());
+      Hive.registerAdapter(MovieDtoAdapter());
       _box = await Hive.openBox<List<dynamic>>(_boxName);
     } catch (e) {
       await Hive.deleteBoxFromDisk(_boxName);
@@ -21,17 +21,17 @@ class WatchlistStorage {
     }
   }
 
-  Future<List<WatchlistMovieDto>> getWatchlistedMovies() async {
+  Future<List<MovieDto>> getWatchlistedMovies() async {
     try {
-      final list = _box.get(_watchlistKey, defaultValue: <WatchlistMovieDto>[]);
+      final list = _box.get(_watchlistKey, defaultValue: <MovieDto>[]);
       if (list == null) return [];
-      return List<WatchlistMovieDto>.from(list);
+      return List<MovieDto>.from(list);
     } catch (e) {
       throw CacheException(message: e.toString());
     }
   }
 
-  Future<void> addToWatchlist(WatchlistMovieDto movie) async {
+  Future<void> addToWatchlist(MovieDto movie) async {
     try {
       final currentList = await getWatchlistedMovies();
       if (!currentList.any((m) => m.id == movie.id)) {

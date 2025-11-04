@@ -51,13 +51,13 @@ abstract class BaseTextStyles {
   //   ),
   // );
 
-  // static TextStyle mulishSemiMediumBold = GoogleFonts.mulish(
-  //   textStyle: const TextStyle(
-  //     fontSize: 13,
-  //     fontWeight: FontWeight.w600,
-  //     color: BaseColors.black,
-  //   ),
-  // );
+  static TextStyle mulishSemiMediumBold = GoogleFonts.mulish(
+    textStyle: const TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w600,
+      color: BaseColors.black,
+    ),
+  );
 
   static TextStyle mulishMediumRegular = GoogleFonts.mulish(
     textStyle: const TextStyle(

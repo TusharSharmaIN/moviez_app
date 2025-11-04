@@ -25,59 +25,13 @@ class TrendingMovies extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
                 itemBuilder: (context, index) {
-                  return _TrendingTile(movie: movies[index]);
+                  return ColumnMovieTile(movie: movies[index]);
                 },
               ),
             ),
           ],
         );
       },
-    );
-  }
-}
-
-class _TrendingTile extends StatelessWidget {
-  const _TrendingTile({required this.movie});
-  final Movie movie;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.push(
-          AppRoutes.movieDetails,
-          extra: {'movieId': movie.id.toString()},
-        );
-      },
-      child: Container(
-        width: 120,
-        margin: const EdgeInsets.only(right: 16),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 4,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: CustomImageView(
-                height: 220,
-                width: 120,
-                fit: BoxFit.cover,
-                imageUrl: movie.posterUrl,
-              ),
-            ),
-            Flexible(
-              child: Text(
-                movie.title.getValue(),
-                style: BaseTextStyles.mulishSmallSemiBold.copyWith(
-                  color: BaseColors.black,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

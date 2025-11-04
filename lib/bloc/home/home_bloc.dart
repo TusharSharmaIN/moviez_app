@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
 import 'package:moviez_app/domain/home/entities/movies_data.dart';
 import 'package:moviez_app/domain/home/repository/i_home_repository.dart';
-import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
 import 'package:moviez_app/domain/watchlist/repository/i_movie_details_repository.dart';
 
 part 'home_event.dart';
