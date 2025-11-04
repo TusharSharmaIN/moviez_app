@@ -14,11 +14,9 @@ class TrendingMovies extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              'Trending',
-              style: BaseTextStyles.merriExtraLargeBold.copyWith(
-                color: BaseColors.primaryBlack,
-              ),
+            const SectionHeading(
+              title: 'Trending',
+              icon: PhosphorIconsFill.trendUp,
             ),
             const SizedBox(height: 8),
             SizedBox(
@@ -69,10 +67,12 @@ class _TrendingTile extends StatelessWidget {
                 imageUrl: movie.posterUrl,
               ),
             ),
-            Text(
-              movie.title.getValue(),
-              style: BaseTextStyles.mulishSmallSemiBold.copyWith(
-                color: BaseColors.black,
+            Flexible(
+              child: Text(
+                movie.title.getValue(),
+                style: BaseTextStyles.mulishSmallSemiBold.copyWith(
+                  color: BaseColors.black,
+                ),
               ),
             ),
           ],

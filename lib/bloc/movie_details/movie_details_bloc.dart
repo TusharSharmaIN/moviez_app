@@ -31,7 +31,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
     await event.map(
       init: (_) async => emit(MovieDetailsState.initial()),
       setMovieId: (e) async {
-        emit(state.copyWith(movieId: int.tryParse(e.movieId) ?? state.movieId));
+        emit(state.copyWith(movieId: e.movieId));
       },
       loadMovieDetails: (_) async {
         emit(
@@ -143,7 +143,9 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
             );
           },
           (_) {
-            emit(state.copyWith(apiFailureOrSuccess: none()));
+            emit(
+              state.copyWith(isWatchlisted: true, apiFailureOrSuccess: none()),
+            );
           },
         );
       },
@@ -159,7 +161,29 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
             );
           },
           (_) {
-            emit(state.copyWith(apiFailureOrSuccess: none()));
+            emit(
+              state.copyWith(isWatchlisted: false, apiFailureOrSuccess: none()),
+            );
+          },
+        );
+      },
+      checkIfMovieIsWatchlisted: (e) async {
+        final failureOrSuccess = await watchlistRepository.isMovieWatchlisted(
+          movieId: e.movieId,
+        );
+        failureOrSuccess.fold(
+          (failure) {
+            emit(
+              state.copyWith(apiFailureOrSuccess: optionOf(failureOrSuccess)),
+            );
+          },
+          (isWatchlisted) {
+            emit(
+              state.copyWith(
+                isWatchlisted: isWatchlisted,
+                apiFailureOrSuccess: none(),
+              ),
+            );
           },
         );
       },

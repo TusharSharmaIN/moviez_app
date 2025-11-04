@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:moviez_app/bloc/home/home_bloc.dart';
+import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
 import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_image_view.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/section_heading.dart';
+import 'package:moviez_app/presentation/home/home_page.dart';
+import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 part 'widgets/watchlisted_movies.dart';
 
@@ -30,6 +36,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
+          spacing: 16,
           children: [CustomAppBar.backAppBar(), const _WatchlistPageContent()],
         ),
       ),
@@ -42,12 +49,18 @@ class _WatchlistPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 16,
-        children: [WatchlistedMovies()],
+    return BlocListener<MovieDetailsBloc, MovieDetailsState>(
+      listenWhen: (previous, current) =>
+          previous.isWatchlisted != current.isWatchlisted,
+      listener: (context, state) {
+        context.read<HomeBloc>().add(const HomeEvent.loadWatchlistedMovies());
+      },
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [WatchlistedMovies()],
+        ),
       ),
     );
   }

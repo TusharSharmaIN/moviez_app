@@ -14,13 +14,11 @@ class WatchlistedMovies extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              'Watchlist',
-              style: BaseTextStyles.merriExtraLargeBold.copyWith(
-                color: BaseColors.primaryBlack,
-              ),
+            const SectionHeading(
+              title: 'Watchlist',
+              icon: PhosphorIconsRegular.queue,
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             SizedBox(
               height: 300,
               child: ListView.builder(
@@ -44,40 +42,49 @@ class _WatchlistTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: CustomImageView(
-              height: 160,
-              width: 100,
-              fit: BoxFit.cover,
-              imageUrl: movie.posterUrl,
-            ),
-          ),
-          const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 8,
-            children: [
-              Text(
-                movie.title.getValue(),
-                style: BaseTextStyles.mulishMediumBold.copyWith(
-                  color: BaseColors.black,
-                ),
+    return GestureDetector(
+      onTap: () {
+        context.push(
+          AppRoutes.movieDetails,
+          extra: {'movieId': movie.id.toString()},
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: CustomImageView(
+                height: 120,
+                width: 80,
+                fit: BoxFit.cover,
+                imageUrl: movie.posterUrl,
               ),
-              // const MovieTags(),
-              // DateAndLanguage(
-              //   date: movie.releaseDate.formattedDate,
-              //   languageCode: movie.originalLanguage.getValue(),
-              // ),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 8,
+                children: [
+                  Text(
+                    movie.title.getValue(),
+                    style: BaseTextStyles.mulishMediumBold.copyWith(
+                      color: BaseColors.black,
+                    ),
+                  ),
+                  DateAndLanguage(
+                    date: movie.releaseDate.formattedDate,
+                    languageCode: movie.originalLanguage.getValue(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

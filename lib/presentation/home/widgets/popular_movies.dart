@@ -14,11 +14,9 @@ class PopularMovies extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              'Popular',
-              style: BaseTextStyles.merriExtraLargeBold.copyWith(
-                color: BaseColors.primaryBlack,
-              ),
+            const SectionHeading(
+              title: 'Popular',
+              icon: PhosphorIconsFill.sparkle,
             ),
             const SizedBox(height: 8),
             SizedBox(
@@ -67,22 +65,23 @@ class _PopularTile extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 8,
-              children: [
-                Text(
-                  movie.title.getValue(),
-                  style: BaseTextStyles.mulishMediumBold.copyWith(
-                    color: BaseColors.black,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 8,
+                children: [
+                  Text(
+                    movie.title.getValue(),
+                    style: BaseTextStyles.mulishMediumBold.copyWith(
+                      color: BaseColors.black,
+                    ),
                   ),
-                ),
-                // const MovieTags(),
-                DateAndLanguage(
-                  date: movie.releaseDate.formattedDate,
-                  languageCode: movie.originalLanguage.getValue(),
-                ),
-              ],
+                  DateAndLanguage(
+                    date: movie.releaseDate.formattedDate,
+                    languageCode: movie.originalLanguage.getValue(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

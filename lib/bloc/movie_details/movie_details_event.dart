@@ -4,7 +4,7 @@ part of 'movie_details_bloc.dart';
 class MovieDetailsEvent with _$MovieDetailsEvent {
   const factory MovieDetailsEvent.init() = _Init;
 
-  const factory MovieDetailsEvent.setMovieId({required String movieId}) =
+  const factory MovieDetailsEvent.setMovieId({required int movieId}) =
       _SetMovieId;
 
   const factory MovieDetailsEvent.loadMovieDetails() = _LoadMovieDetails;
@@ -17,9 +17,10 @@ class MovieDetailsEvent with _$MovieDetailsEvent {
     required WatchlistMovie movie,
   }) = _AddToWatchlist;
 
-  const factory MovieDetailsEvent.removeFromWatchlist({required num movieId}) =
+  const factory MovieDetailsEvent.removeFromWatchlist({required int movieId}) =
       _RemoveFromWatchlist;
 
-  // const factory MovieDetailsEvent.checkIfMovieIsWatchlisted({required num movieId}) =
-  //     _CheckIfMovieIsWatchlisted;
+  const factory MovieDetailsEvent.checkIfMovieIsWatchlisted({
+    required int movieId,
+  }) = _CheckIfMovieIsWatchlisted;
 }

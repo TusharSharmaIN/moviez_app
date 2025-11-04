@@ -28,11 +28,13 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   void initState() {
     super.initState();
-    context.read<MovieDetailsBloc>().add(
-      MovieDetailsEvent.setMovieId(movieId: widget.movieId),
-    );
-    context.read<MovieDetailsBloc>().add(
-      const MovieDetailsEvent.loadMovieDetails(),
+    final movieDetailsBloc = context.read<MovieDetailsBloc>();
+    final movieId =
+        int.tryParse(widget.movieId) ?? movieDetailsBloc.state.movieId;
+    movieDetailsBloc.add(MovieDetailsEvent.setMovieId(movieId: movieId));
+    movieDetailsBloc.add(const MovieDetailsEvent.loadMovieDetails());
+    movieDetailsBloc.add(
+      MovieDetailsEvent.checkIfMovieIsWatchlisted(movieId: movieId),
     );
   }
 
@@ -108,37 +110,54 @@ class TitleAndWatchlistCTA extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
       buildWhen: (previous, current) =>
-          previous.movieDetails != current.movieDetails,
+          previous.movieDetails != current.movieDetails ||
+          previous.isWatchlisted != current.isWatchlisted,
       builder: (context, state) {
+        final isWatchlisted = state.isWatchlisted;
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              state.movieDetails.title.getValue(),
-              style: BaseTextStyles.merriExtraLargeBold.copyWith(
-                color: BaseColors.primaryBlack,
+            Flexible(
+              child: Text(
+                state.movieDetails.title.getValue(),
+                style: BaseTextStyles.merriExtraLargeBold.copyWith(
+                  color: BaseColors.primaryBlack,
+                ),
               ),
             ),
             CustomIconButton(
               onPressed: () {
-                context.read<MovieDetailsBloc>().add(
-                  MovieDetailsEvent.addToWatchlist(
-                    movie: WatchlistMovie(
-                      id: state.movieDetails.id,
-                      title: state.movieDetails.title,
-                      posterPath: state.movieDetails.posterPath,
-                      releaseDate: state.movieDetails.releaseDate,
-                      backdropPath: state.movieDetails.backdropPath,
-                      genreIds: state.movieDetails.genres
-                          .map((genre) => genre.id)
-                          .toList(),
-                      originalLanguage: state.movieDetails.originalLanguage,
-                      overview: state.movieDetails.overview,
-                    ),
-                  ),
-                );
+                isWatchlisted
+                    ? context.read<MovieDetailsBloc>().add(
+                        MovieDetailsEvent.removeFromWatchlist(
+                          movieId: state.movieDetails.id,
+                        ),
+                      )
+                    : context.read<MovieDetailsBloc>().add(
+                        MovieDetailsEvent.addToWatchlist(
+                          movie: WatchlistMovie(
+                            id: state.movieDetails.id,
+                            title: state.movieDetails.title,
+                            posterPath: state.movieDetails.posterPath,
+                            releaseDate: state.movieDetails.releaseDate,
+                            backdropPath: state.movieDetails.backdropPath,
+                            genreIds: state.movieDetails.genres
+                                .map((genre) => genre.id)
+                                .toList(),
+                            originalLanguage:
+                                state.movieDetails.originalLanguage,
+                            overview: state.movieDetails.overview,
+                          ),
+                        ),
+                      );
               },
-              icon: const Icon(PhosphorIconsRegular.bookmarkSimple),
+              icon: isWatchlisted
+                  ? const Icon(
+                      PhosphorIconsFill.bookmarkSimple,
+                      color: BaseColors.slateRed,
+                    )
+                  : const Icon(PhosphorIconsRegular.bookmarkSimple),
             ),
           ],
         );

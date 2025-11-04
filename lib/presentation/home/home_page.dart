@@ -5,11 +5,13 @@ import 'package:moviez_app/bloc/home/home_bloc.dart';
 import 'package:moviez_app/domain/home/entities/movies_data.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_image_view.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/section_heading.dart';
 import 'package:moviez_app/presentation/router/route.dart';
 import 'package:moviez_app/presentation/search/search_box.dart';
 
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 part 'widgets/trending_movies.dart';
 part 'widgets/popular_movies.dart';
@@ -25,8 +27,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeBloc>().add(const HomeEvent.loadNowShowingMovies());
-    context.read<HomeBloc>().add(const HomeEvent.loadPopularMovies());
+    final homebloc = context.read<HomeBloc>();
+    homebloc.add(const HomeEvent.loadNowShowingMovies());
+    homebloc.add(const HomeEvent.loadPopularMovies());
   }
 
   @override
