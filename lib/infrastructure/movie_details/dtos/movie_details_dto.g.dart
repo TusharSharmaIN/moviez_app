@@ -14,7 +14,7 @@ _MovieDetailsDto _$MovieDetailsDtoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => GenreDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      id: json['id'] as num? ?? 0,
+      id: (json['id'] as num?)?.toInt() ?? 0,
       imdbId: json['imdb_id'] as String? ?? '',
       originalLanguage: json['original_language'] as String? ?? '',
       overview: json['overview'] as String? ?? '',
@@ -40,8 +40,10 @@ Map<String, dynamic> _$MovieDetailsDtoToJson(_MovieDetailsDto instance) =>
       'video': instance.video,
     };
 
-_GenreDto _$GenreDtoFromJson(Map<String, dynamic> json) =>
-    _GenreDto(id: json['id'] as num? ?? 0, name: json['name'] as String? ?? '');
+_GenreDto _$GenreDtoFromJson(Map<String, dynamic> json) => _GenreDto(
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  name: json['name'] as String? ?? '',
+);
 
 Map<String, dynamic> _$GenreDtoToJson(_GenreDto instance) => <String, dynamic>{
   'id': instance.id,

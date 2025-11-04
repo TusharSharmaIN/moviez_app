@@ -7,7 +7,7 @@ part of 'cast_dto.dart';
 // **************************************************************************
 
 _CastDto _$CastDtoFromJson(Map<String, dynamic> json) => _CastDto(
-  id: json['id'] as num? ?? 0,
+  id: (json['id'] as num?)?.toInt() ?? 0,
   name: json['name'] as String? ?? '',
   profilePath: json['profile_path'] as String? ?? '',
   character: json['character'] as String? ?? '',

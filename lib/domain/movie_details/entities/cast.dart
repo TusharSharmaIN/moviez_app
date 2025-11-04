@@ -8,7 +8,7 @@ abstract class Cast with _$Cast {
   const Cast._();
 
   const factory Cast({
-    required num id,
+    required int id,
     required StringValue name,
     required StringValue profilePath,
     required StringValue character,

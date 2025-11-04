@@ -17,10 +17,10 @@ abstract class WatchlistMovieDto with _$WatchlistMovieDto {
     required String backdropPath,
 
     @HiveField(2)
-    @JsonKey(name: 'genre_ids', defaultValue: <num>[])
-    required List<num> genreIds,
+    @JsonKey(name: 'genre_ids', defaultValue: <int>[])
+    required List<int> genreIds,
 
-    @HiveField(3) @JsonKey(name: 'id', defaultValue: 0) required num id,
+    @HiveField(3) @JsonKey(name: 'id', defaultValue: 0) required int id,
 
     @HiveField(4)
     @JsonKey(name: 'original_language', defaultValue: '')
@@ -68,7 +68,7 @@ abstract class WatchlistMovieDto with _$WatchlistMovieDto {
 
   static const empty = WatchlistMovieDto(
     backdropPath: '',
-    genreIds: <num>[],
+    genreIds: <int>[],
     id: 0,
     originalLanguage: '',
     overview: '',

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MovieDetails {
 
- StringValue get backdropPath; List<Genre> get genres; num get id; StringValue get imdbId; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; Duration get runtime; StringValue get title; bool get video;
+ StringValue get backdropPath; List<Genre> get genres; int get id; StringValue get imdbId; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; Duration get runtime; StringValue get title; bool get video;
 /// Create a copy of MovieDetails
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $MovieDetailsCopyWith<$Res>  {
   factory $MovieDetailsCopyWith(MovieDetails value, $Res Function(MovieDetails) _then) = _$MovieDetailsCopyWithImpl;
 @useResult
 $Res call({
- StringValue backdropPath, List<Genre> genres, num id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, Duration runtime, StringValue title, bool video
+ StringValue backdropPath, List<Genre> genres, int id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, Duration runtime, StringValue title, bool video
 });
 
 
@@ -67,7 +67,7 @@ class _$MovieDetailsCopyWithImpl<$Res>
 backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as StringValue,genres: null == genres ? _self.genres : genres // ignore: cast_nullable_to_non_nullable
 as List<Genre>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,imdbId: null == imdbId ? _self.imdbId : imdbId // ignore: cast_nullable_to_non_nullable
+as int,imdbId: null == imdbId ? _self.imdbId : imdbId // ignore: cast_nullable_to_non_nullable
 as StringValue,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as StringValue,overview: null == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
 as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
@@ -160,7 +160,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  int id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieDetails() when $default != null:
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -181,7 +181,7 @@ return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.orig
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<Genre> genres,  int id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetails():
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -201,7 +201,7 @@ return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.orig
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StringValue backdropPath,  List<Genre> genres,  num id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StringValue backdropPath,  List<Genre> genres,  int id,  StringValue imdbId,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  Duration runtime,  StringValue title,  bool video)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetails() when $default != null:
 return $default(_that.backdropPath,_that.genres,_that.id,_that.imdbId,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.runtime,_that.title,_that.video);case _:
@@ -227,7 +227,7 @@ class _MovieDetails extends MovieDetails {
   return EqualUnmodifiableListView(_genres);
 }
 
-@override final  num id;
+@override final  int id;
 @override final  StringValue imdbId;
 @override final  StringValue originalLanguage;
 @override final  StringValue overview;
@@ -267,7 +267,7 @@ abstract mixin class _$MovieDetailsCopyWith<$Res> implements $MovieDetailsCopyWi
   factory _$MovieDetailsCopyWith(_MovieDetails value, $Res Function(_MovieDetails) _then) = __$MovieDetailsCopyWithImpl;
 @override @useResult
 $Res call({
- StringValue backdropPath, List<Genre> genres, num id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, Duration runtime, StringValue title, bool video
+ StringValue backdropPath, List<Genre> genres, int id, StringValue imdbId, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, Duration runtime, StringValue title, bool video
 });
 
 
@@ -289,7 +289,7 @@ class __$MovieDetailsCopyWithImpl<$Res>
 backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as StringValue,genres: null == genres ? _self._genres : genres // ignore: cast_nullable_to_non_nullable
 as List<Genre>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,imdbId: null == imdbId ? _self.imdbId : imdbId // ignore: cast_nullable_to_non_nullable
+as int,imdbId: null == imdbId ? _self.imdbId : imdbId // ignore: cast_nullable_to_non_nullable
 as StringValue,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as StringValue,overview: null == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
 as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
@@ -307,7 +307,7 @@ as bool,
 /// @nodoc
 mixin _$Genre {
 
- num get id; StringValue get name;
+ int get id; StringValue get name;
 /// Create a copy of Genre
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -338,7 +338,7 @@ abstract mixin class $GenreCopyWith<$Res>  {
   factory $GenreCopyWith(Genre value, $Res Function(Genre) _then) = _$GenreCopyWithImpl;
 @useResult
 $Res call({
- num id, StringValue name
+ int id, StringValue name
 });
 
 
@@ -358,7 +358,7 @@ class _$GenreCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as StringValue,
   ));
 }
@@ -444,7 +444,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( num id,  StringValue name)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  StringValue name)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Genre() when $default != null:
 return $default(_that.id,_that.name);case _:
@@ -465,7 +465,7 @@ return $default(_that.id,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( num id,  StringValue name)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  StringValue name)  $default,) {final _that = this;
 switch (_that) {
 case _Genre():
 return $default(_that.id,_that.name);case _:
@@ -485,7 +485,7 @@ return $default(_that.id,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( num id,  StringValue name)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  StringValue name)?  $default,) {final _that = this;
 switch (_that) {
 case _Genre() when $default != null:
 return $default(_that.id,_that.name);case _:
@@ -503,7 +503,7 @@ class _Genre extends Genre {
   const _Genre({required this.id, required this.name}): super._();
   
 
-@override final  num id;
+@override final  int id;
 @override final  StringValue name;
 
 /// Create a copy of Genre
@@ -536,7 +536,7 @@ abstract mixin class _$GenreCopyWith<$Res> implements $GenreCopyWith<$Res> {
   factory _$GenreCopyWith(_Genre value, $Res Function(_Genre) _then) = __$GenreCopyWithImpl;
 @override @useResult
 $Res call({
- num id, StringValue name
+ int id, StringValue name
 });
 
 
@@ -556,7 +556,7 @@ class __$GenreCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,}) {
   return _then(_Genre(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as StringValue,
   ));
 }

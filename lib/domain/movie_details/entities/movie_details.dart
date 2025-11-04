@@ -10,7 +10,7 @@ abstract class MovieDetails with _$MovieDetails {
   const factory MovieDetails({
     required StringValue backdropPath,
     required List<Genre> genres,
-    required num id,
+    required int id,
     required StringValue imdbId,
     required StringValue originalLanguage,
     required StringValue overview,
@@ -58,7 +58,7 @@ abstract class MovieDetails with _$MovieDetails {
 abstract class Genre with _$Genre {
   const Genre._();
 
-  const factory Genre({required num id, required StringValue name}) = _Genre;
+  const factory Genre({required int id, required StringValue name}) = _Genre;
 
   factory Genre.empty() => Genre(id: 0, name: StringValue(''));
 }

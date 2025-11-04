@@ -10,7 +10,7 @@ abstract class CastDto with _$CastDto {
   const CastDto._();
 
   const factory CastDto({
-    @JsonKey(name: 'id', defaultValue: 0) required num id,
+    @JsonKey(name: 'id', defaultValue: 0) required int id,
     @JsonKey(name: 'name', defaultValue: '') required String name,
     @JsonKey(name: 'profile_path', defaultValue: '')
     required String profilePath,

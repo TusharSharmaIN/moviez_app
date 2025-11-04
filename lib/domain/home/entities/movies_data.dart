@@ -18,8 +18,8 @@ abstract class Movie with _$Movie {
 
   const factory Movie({
     required StringValue backdropPath,
-    required List<num> genreIds,
-    required num id,
+    required List<int> genreIds,
+    required int id,
     required StringValue originalLanguage,
     required StringValue overview,
     required StringValue posterPath,

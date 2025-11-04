@@ -9,8 +9,8 @@ abstract class WatchlistMovie with _$WatchlistMovie {
 
   const factory WatchlistMovie({
     required StringValue backdropPath,
-    required List<num> genreIds,
-    required num id,
+    required List<int> genreIds,
+    required int id,
     required StringValue originalLanguage,
     required StringValue overview,
     required StringValue posterPath,

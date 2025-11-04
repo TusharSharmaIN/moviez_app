@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WatchlistMovie {
 
- StringValue get backdropPath; List<num> get genreIds; num get id; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; StringValue get title;
+ StringValue get backdropPath; List<int> get genreIds; int get id; StringValue get originalLanguage; StringValue get overview; StringValue get posterPath; DateTimeValue get releaseDate; StringValue get title;
 /// Create a copy of WatchlistMovie
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $WatchlistMovieCopyWith<$Res>  {
   factory $WatchlistMovieCopyWith(WatchlistMovie value, $Res Function(WatchlistMovie) _then) = _$WatchlistMovieCopyWithImpl;
 @useResult
 $Res call({
- StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
+ StringValue backdropPath, List<int> genreIds, int id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
 });
 
 
@@ -66,8 +66,8 @@ class _$WatchlistMovieCopyWithImpl<$Res>
   return _then(_self.copyWith(
 backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as StringValue,genreIds: null == genreIds ? _self.genreIds : genreIds // ignore: cast_nullable_to_non_nullable
-as List<num>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
+as List<int>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as StringValue,overview: null == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
 as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as StringValue,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
@@ -157,7 +157,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<int> genreIds,  int id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _WatchlistMovie() when $default != null:
 return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
@@ -178,7 +178,7 @@ return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguag
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StringValue backdropPath,  List<int> genreIds,  int id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)  $default,) {final _that = this;
 switch (_that) {
 case _WatchlistMovie():
 return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
@@ -198,7 +198,7 @@ return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguag
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StringValue backdropPath,  List<num> genreIds,  num id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StringValue backdropPath,  List<int> genreIds,  int id,  StringValue originalLanguage,  StringValue overview,  StringValue posterPath,  DateTimeValue releaseDate,  StringValue title)?  $default,) {final _that = this;
 switch (_that) {
 case _WatchlistMovie() when $default != null:
 return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguage,_that.overview,_that.posterPath,_that.releaseDate,_that.title);case _:
@@ -213,18 +213,18 @@ return $default(_that.backdropPath,_that.genreIds,_that.id,_that.originalLanguag
 
 
 class _WatchlistMovie extends WatchlistMovie {
-  const _WatchlistMovie({required this.backdropPath, required final  List<num> genreIds, required this.id, required this.originalLanguage, required this.overview, required this.posterPath, required this.releaseDate, required this.title}): _genreIds = genreIds,super._();
+  const _WatchlistMovie({required this.backdropPath, required final  List<int> genreIds, required this.id, required this.originalLanguage, required this.overview, required this.posterPath, required this.releaseDate, required this.title}): _genreIds = genreIds,super._();
   
 
 @override final  StringValue backdropPath;
- final  List<num> _genreIds;
-@override List<num> get genreIds {
+ final  List<int> _genreIds;
+@override List<int> get genreIds {
   if (_genreIds is EqualUnmodifiableListView) return _genreIds;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_genreIds);
 }
 
-@override final  num id;
+@override final  int id;
 @override final  StringValue originalLanguage;
 @override final  StringValue overview;
 @override final  StringValue posterPath;
@@ -261,7 +261,7 @@ abstract mixin class _$WatchlistMovieCopyWith<$Res> implements $WatchlistMovieCo
   factory _$WatchlistMovieCopyWith(_WatchlistMovie value, $Res Function(_WatchlistMovie) _then) = __$WatchlistMovieCopyWithImpl;
 @override @useResult
 $Res call({
- StringValue backdropPath, List<num> genreIds, num id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
+ StringValue backdropPath, List<int> genreIds, int id, StringValue originalLanguage, StringValue overview, StringValue posterPath, DateTimeValue releaseDate, StringValue title
 });
 
 
@@ -282,8 +282,8 @@ class __$WatchlistMovieCopyWithImpl<$Res>
   return _then(_WatchlistMovie(
 backdropPath: null == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as StringValue,genreIds: null == genreIds ? _self._genreIds : genreIds // ignore: cast_nullable_to_non_nullable
-as List<num>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
+as List<int>,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,originalLanguage: null == originalLanguage ? _self.originalLanguage : originalLanguage // ignore: cast_nullable_to_non_nullable
 as StringValue,overview: null == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
 as StringValue,posterPath: null == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as StringValue,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable

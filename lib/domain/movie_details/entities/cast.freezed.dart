@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Cast {
 
- num get id; StringValue get name; StringValue get profilePath; StringValue get character;
+ int get id; StringValue get name; StringValue get profilePath; StringValue get character;
 /// Create a copy of Cast
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $CastCopyWith<$Res>  {
   factory $CastCopyWith(Cast value, $Res Function(Cast) _then) = _$CastCopyWithImpl;
 @useResult
 $Res call({
- num id, StringValue name, StringValue profilePath, StringValue character
+ int id, StringValue name, StringValue profilePath, StringValue character
 });
 
 
@@ -65,7 +65,7 @@ class _$CastCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? profilePath = null,Object? character = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as StringValue,profilePath: null == profilePath ? _self.profilePath : profilePath // ignore: cast_nullable_to_non_nullable
 as StringValue,character: null == character ? _self.character : character // ignore: cast_nullable_to_non_nullable
 as StringValue,
@@ -153,7 +153,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( num id,  StringValue name,  StringValue profilePath,  StringValue character)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  StringValue name,  StringValue profilePath,  StringValue character)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Cast() when $default != null:
 return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
@@ -174,7 +174,7 @@ return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( num id,  StringValue name,  StringValue profilePath,  StringValue character)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  StringValue name,  StringValue profilePath,  StringValue character)  $default,) {final _that = this;
 switch (_that) {
 case _Cast():
 return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
@@ -194,7 +194,7 @@ return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( num id,  StringValue name,  StringValue profilePath,  StringValue character)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  StringValue name,  StringValue profilePath,  StringValue character)?  $default,) {final _that = this;
 switch (_that) {
 case _Cast() when $default != null:
 return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
@@ -212,7 +212,7 @@ class _Cast extends Cast {
   const _Cast({required this.id, required this.name, required this.profilePath, required this.character}): super._();
   
 
-@override final  num id;
+@override final  int id;
 @override final  StringValue name;
 @override final  StringValue profilePath;
 @override final  StringValue character;
@@ -247,7 +247,7 @@ abstract mixin class _$CastCopyWith<$Res> implements $CastCopyWith<$Res> {
   factory _$CastCopyWith(_Cast value, $Res Function(_Cast) _then) = __$CastCopyWithImpl;
 @override @useResult
 $Res call({
- num id, StringValue name, StringValue profilePath, StringValue character
+ int id, StringValue name, StringValue profilePath, StringValue character
 });
 
 
@@ -267,7 +267,7 @@ class __$CastCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? profilePath = null,Object? character = null,}) {
   return _then(_Cast(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as StringValue,profilePath: null == profilePath ? _self.profilePath : profilePath // ignore: cast_nullable_to_non_nullable
 as StringValue,character: null == character ? _self.character : character // ignore: cast_nullable_to_non_nullable
 as StringValue,

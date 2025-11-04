@@ -13,7 +13,7 @@ abstract class MovieDetailsDto with _$MovieDetailsDto {
     @JsonKey(name: 'backdrop_path', defaultValue: '')
     required String backdropPath,
     @JsonKey(name: 'genres', defaultValue: []) required List<GenreDto> genres,
-    @JsonKey(name: 'id', defaultValue: 0) required num id,
+    @JsonKey(name: 'id', defaultValue: 0) required int id,
     @JsonKey(name: 'imdb_id', defaultValue: '') required String imdbId,
     @JsonKey(name: 'original_language', defaultValue: '')
     required String originalLanguage,
@@ -63,7 +63,7 @@ abstract class GenreDto with _$GenreDto {
   const GenreDto._();
 
   const factory GenreDto({
-    @JsonKey(name: 'id', defaultValue: 0) required num id,
+    @JsonKey(name: 'id', defaultValue: 0) required int id,
     @JsonKey(name: 'name', defaultValue: '') required String name,
   }) = _GenreDto;
 

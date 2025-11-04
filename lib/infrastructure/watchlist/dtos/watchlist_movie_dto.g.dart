@@ -18,8 +18,8 @@ class WatchlistMovieDtoAdapter extends TypeAdapter<WatchlistMovieDto> {
     };
     return WatchlistMovieDto(
       backdropPath: fields[1] as String,
-      genreIds: (fields[2] as List).cast<num>(),
-      id: fields[3] as num,
+      genreIds: (fields[2] as List).cast<int>(),
+      id: (fields[3] as num).toInt(),
       originalLanguage: fields[4] as String,
       overview: fields[5] as String,
       posterPath: fields[6] as String,
@@ -70,10 +70,10 @@ _WatchlistMovieDto _$WatchlistMovieDtoFromJson(Map<String, dynamic> json) =>
       backdropPath: json['backdrop_path'] as String? ?? '',
       genreIds:
           (json['genre_ids'] as List<dynamic>?)
-              ?.map((e) => e as num)
+              ?.map((e) => (e as num).toInt())
               .toList() ??
           [],
-      id: json['id'] as num? ?? 0,
+      id: (json['id'] as num?)?.toInt() ?? 0,
       originalLanguage: json['original_language'] as String? ?? '',
       overview: json['overview'] as String? ?? '',
       posterPath: json['poster_path'] as String? ?? '',

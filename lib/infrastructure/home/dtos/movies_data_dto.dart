@@ -29,9 +29,9 @@ abstract class MovieDto with _$MovieDto {
     @JsonKey(name: 'adult', defaultValue: false) required bool adult,
     @JsonKey(name: 'backdrop_path', defaultValue: '')
     required String backdropPath,
-    @JsonKey(name: 'genre_ids', defaultValue: <num>[])
-    required List<num> genreIds,
-    @JsonKey(name: 'id', defaultValue: 0) required num id,
+    @JsonKey(name: 'genre_ids', defaultValue: <int>[])
+    required List<int> genreIds,
+    @JsonKey(name: 'id', defaultValue: 0) required int id,
     @JsonKey(name: 'original_language', defaultValue: '')
     required String originalLanguage,
     @JsonKey(name: 'overview', defaultValue: '') required String overview,
@@ -55,7 +55,7 @@ abstract class MovieDto with _$MovieDto {
   static const empty = MovieDto(
     adult: false,
     backdropPath: '',
-    genreIds: <num>[],
+    genreIds: <int>[],
     id: 0,
     originalLanguage: '',
     overview: '',

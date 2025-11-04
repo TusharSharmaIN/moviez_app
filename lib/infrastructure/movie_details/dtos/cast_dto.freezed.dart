@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CastDto {
 
-@JsonKey(name: 'id', defaultValue: 0) num get id;@JsonKey(name: 'name', defaultValue: '') String get name;@JsonKey(name: 'profile_path', defaultValue: '') String get profilePath;@JsonKey(name: 'character', defaultValue: '') String get character;
+@JsonKey(name: 'id', defaultValue: 0) int get id;@JsonKey(name: 'name', defaultValue: '') String get name;@JsonKey(name: 'profile_path', defaultValue: '') String get profilePath;@JsonKey(name: 'character', defaultValue: '') String get character;
 /// Create a copy of CastDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $CastDtoCopyWith<$Res>  {
   factory $CastDtoCopyWith(CastDto value, $Res Function(CastDto) _then) = _$CastDtoCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'id', defaultValue: 0) num id,@JsonKey(name: 'name', defaultValue: '') String name,@JsonKey(name: 'profile_path', defaultValue: '') String profilePath,@JsonKey(name: 'character', defaultValue: '') String character
+@JsonKey(name: 'id', defaultValue: 0) int id,@JsonKey(name: 'name', defaultValue: '') String name,@JsonKey(name: 'profile_path', defaultValue: '') String profilePath,@JsonKey(name: 'character', defaultValue: '') String character
 });
 
 
@@ -68,7 +68,7 @@ class _$CastDtoCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? profilePath = null,Object? character = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,profilePath: null == profilePath ? _self.profilePath : profilePath // ignore: cast_nullable_to_non_nullable
 as String,character: null == character ? _self.character : character // ignore: cast_nullable_to_non_nullable
 as String,
@@ -156,7 +156,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'name', defaultValue: '')  String name, @JsonKey(name: 'profile_path', defaultValue: '')  String profilePath, @JsonKey(name: 'character', defaultValue: '')  String character)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id', defaultValue: 0)  int id, @JsonKey(name: 'name', defaultValue: '')  String name, @JsonKey(name: 'profile_path', defaultValue: '')  String profilePath, @JsonKey(name: 'character', defaultValue: '')  String character)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CastDto() when $default != null:
 return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
@@ -177,7 +177,7 @@ return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'name', defaultValue: '')  String name, @JsonKey(name: 'profile_path', defaultValue: '')  String profilePath, @JsonKey(name: 'character', defaultValue: '')  String character)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id', defaultValue: 0)  int id, @JsonKey(name: 'name', defaultValue: '')  String name, @JsonKey(name: 'profile_path', defaultValue: '')  String profilePath, @JsonKey(name: 'character', defaultValue: '')  String character)  $default,) {final _that = this;
 switch (_that) {
 case _CastDto():
 return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
@@ -197,7 +197,7 @@ return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id', defaultValue: 0)  num id, @JsonKey(name: 'name', defaultValue: '')  String name, @JsonKey(name: 'profile_path', defaultValue: '')  String profilePath, @JsonKey(name: 'character', defaultValue: '')  String character)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id', defaultValue: 0)  int id, @JsonKey(name: 'name', defaultValue: '')  String name, @JsonKey(name: 'profile_path', defaultValue: '')  String profilePath, @JsonKey(name: 'character', defaultValue: '')  String character)?  $default,) {final _that = this;
 switch (_that) {
 case _CastDto() when $default != null:
 return $default(_that.id,_that.name,_that.profilePath,_that.character);case _:
@@ -215,7 +215,7 @@ class _CastDto extends CastDto {
   const _CastDto({@JsonKey(name: 'id', defaultValue: 0) required this.id, @JsonKey(name: 'name', defaultValue: '') required this.name, @JsonKey(name: 'profile_path', defaultValue: '') required this.profilePath, @JsonKey(name: 'character', defaultValue: '') required this.character}): super._();
   factory _CastDto.fromJson(Map<String, dynamic> json) => _$CastDtoFromJson(json);
 
-@override@JsonKey(name: 'id', defaultValue: 0) final  num id;
+@override@JsonKey(name: 'id', defaultValue: 0) final  int id;
 @override@JsonKey(name: 'name', defaultValue: '') final  String name;
 @override@JsonKey(name: 'profile_path', defaultValue: '') final  String profilePath;
 @override@JsonKey(name: 'character', defaultValue: '') final  String character;
@@ -253,7 +253,7 @@ abstract mixin class _$CastDtoCopyWith<$Res> implements $CastDtoCopyWith<$Res> {
   factory _$CastDtoCopyWith(_CastDto value, $Res Function(_CastDto) _then) = __$CastDtoCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'id', defaultValue: 0) num id,@JsonKey(name: 'name', defaultValue: '') String name,@JsonKey(name: 'profile_path', defaultValue: '') String profilePath,@JsonKey(name: 'character', defaultValue: '') String character
+@JsonKey(name: 'id', defaultValue: 0) int id,@JsonKey(name: 'name', defaultValue: '') String name,@JsonKey(name: 'profile_path', defaultValue: '') String profilePath,@JsonKey(name: 'character', defaultValue: '') String character
 });
 
 
@@ -273,7 +273,7 @@ class __$CastDtoCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? profilePath = null,Object? character = null,}) {
   return _then(_CastDto(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as num,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,profilePath: null == profilePath ? _self.profilePath : profilePath // ignore: cast_nullable_to_non_nullable
 as String,character: null == character ? _self.character : character // ignore: cast_nullable_to_non_nullable
 as String,

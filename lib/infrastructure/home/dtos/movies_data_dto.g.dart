@@ -22,9 +22,11 @@ _MovieDto _$MovieDtoFromJson(Map<String, dynamic> json) => _MovieDto(
   adult: json['adult'] as bool? ?? false,
   backdropPath: json['backdrop_path'] as String? ?? '',
   genreIds:
-      (json['genre_ids'] as List<dynamic>?)?.map((e) => e as num).toList() ??
+      (json['genre_ids'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList() ??
       [],
-  id: json['id'] as num? ?? 0,
+  id: (json['id'] as num?)?.toInt() ?? 0,
   originalLanguage: json['original_language'] as String? ?? '',
   overview: json['overview'] as String? ?? '',
   posterPath: json['poster_path'] as String? ?? '',
