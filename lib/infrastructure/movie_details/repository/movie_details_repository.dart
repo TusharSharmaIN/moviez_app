@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
 import 'package:moviez_app/domain/core/error/failure_handler.dart';
 import 'package:moviez_app/domain/movie_details/entities/cast.dart';
@@ -10,12 +9,10 @@ import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.d
 import 'package:moviez_app/infrastructure/movie_details/datasource/movie_details_remote.dart';
 
 class MovieDetailsRepository implements IMovieDetailsRepository {
-  final Config config;
   final MovieDetailsRemoteDataSource movieDetailsRemoteDataSource;
   final WatchlistStorage watchlistStorage;
 
   MovieDetailsRepository({
-    required this.config,
     required this.movieDetailsRemoteDataSource,
     required this.watchlistStorage,
   });

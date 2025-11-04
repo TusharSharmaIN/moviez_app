@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:moviez_app/bloc/home/home_bloc.dart';
 import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
+import 'package:moviez_app/bloc/search/search_bloc.dart';
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/exception_handler.dart';
 import 'package:moviez_app/infrastructure/core/http/http.dart';
@@ -10,6 +11,8 @@ import 'package:moviez_app/infrastructure/home/datasource/home_remote.dart';
 import 'package:moviez_app/infrastructure/home/repository/home_repository.dart';
 import 'package:moviez_app/infrastructure/movie_details/datasource/movie_details_remote.dart';
 import 'package:moviez_app/infrastructure/movie_details/repository/movie_details_repository.dart';
+import 'package:moviez_app/infrastructure/search/datasource/search_remote.dart';
+import 'package:moviez_app/infrastructure/search/repository/search_repository.dart';
 import 'package:moviez_app/infrastructure/watchlist/repository/watchlist_repository.dart';
 
 GetIt locator = GetIt.instance;
@@ -38,16 +41,10 @@ void setupLocator() {
     ),
   );
   locator.registerLazySingleton(
-    () => HomeRepository(
-      config: locator<Config>(),
-      homeRemoteDataSource: locator<HomeRemoteDataSource>(),
-    ),
+    () => HomeRepository(homeRemoteDataSource: locator<HomeRemoteDataSource>()),
   );
   locator.registerLazySingleton(
-    () => WatchlistRepository(
-      config: locator<Config>(),
-      watchlistStorage: locator<WatchlistStorage>(),
-    ),
+    () => WatchlistRepository(watchlistStorage: locator<WatchlistStorage>()),
   );
   locator.registerLazySingleton(
     () => HomeBloc(
@@ -66,7 +63,6 @@ void setupLocator() {
   );
   locator.registerLazySingleton(
     () => MovieDetailsRepository(
-      config: locator<Config>(),
       movieDetailsRemoteDataSource: locator<MovieDetailsRemoteDataSource>(),
       watchlistStorage: locator<WatchlistStorage>(),
     ),
@@ -76,5 +72,22 @@ void setupLocator() {
       movieDetailsRepository: locator<MovieDetailsRepository>(),
       watchlistRepository: locator<WatchlistRepository>(),
     ),
+  );
+
+  // Search
+  locator.registerLazySingleton(
+    () => SearchRemoteDataSource(
+      config: locator<Config>(),
+      dataSourceExceptionHandler: locator<DataSourceExceptionHandler>(),
+      httpService: locator<HttpService>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => SearchRepository(
+      searchRemoteDataSource: locator<SearchRemoteDataSource>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => SearchBloc(searchRepository: locator<SearchRepository>()),
   );
 }

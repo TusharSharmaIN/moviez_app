@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/api_failures.dart';
 import 'package:moviez_app/domain/core/error/failure_handler.dart';
 import 'package:moviez_app/domain/watchlist/entities/watchlist_movie.dart';
@@ -8,10 +7,9 @@ import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.d
 import 'package:moviez_app/infrastructure/watchlist/dtos/watchlist_movie_dto.dart';
 
 class WatchlistRepository implements IWatchlistRepository {
-  final Config config;
   final WatchlistStorage watchlistStorage;
 
-  WatchlistRepository({required this.config, required this.watchlistStorage});
+  WatchlistRepository({required this.watchlistStorage});
 
   @override
   Future<Either<ApiFailure, List<WatchlistMovie>>>

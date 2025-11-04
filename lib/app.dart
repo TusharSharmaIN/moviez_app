@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:moviez_app/bloc/search/search_bloc.dart';
 
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/infrastructure/core/local_storage/watchlist_storage.dart';
@@ -40,6 +41,7 @@ class App extends StatelessWidget {
         BlocProvider<MovieDetailsBloc>(
           create: (context) => locator<MovieDetailsBloc>(),
         ),
+        BlocProvider<SearchBloc>(create: (context) => locator<SearchBloc>()),
       ],
       child: MaterialApp.router(
         routerConfig: goRouter,
