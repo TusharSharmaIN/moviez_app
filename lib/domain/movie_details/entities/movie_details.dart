@@ -43,6 +43,8 @@ abstract class MovieDetails with _$MovieDetails {
       ? 'https://image.tmdb.org/t/p/w500${backdropPath.getValue()}'
       : '';
 
+  String get deeplink => 'moviezapp://movie/$id';
+
   String get formattedRuntime {
     final hours = runtime.inHours;
     final minutes = runtime.inMinutes.remainder(60);

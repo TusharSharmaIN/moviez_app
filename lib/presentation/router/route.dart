@@ -24,6 +24,14 @@ final goRouter = GoRouter(
       },
     ),
     GoRoute(
+      // deep link: moviezapp://movie/123
+      path: AppRoutes.movieDetailsDynamic,
+      builder: (context, state) {
+        final movieId = state.pathParameters['id'] ?? '';
+        return MovieDetailsPage(movieId: movieId);
+      },
+    ),
+    GoRoute(
       path: AppRoutes.watchlist,
       builder: (context, state) => const WatchlistPage(),
     ),
@@ -34,5 +42,10 @@ class AppRoutes {
   static const String home = '/home';
   static const String search = '/search';
   static const String movieDetails = '/movie_details';
+  static const String movieDetailsDynamic =
+      '/movie/:id'; //used in route definitions.
   static const String watchlist = '/watchlist';
+
+  static String movieDetailsWithId(String id) =>
+      '/movie/$id'; //used in navigation and deep link generation.
 }
