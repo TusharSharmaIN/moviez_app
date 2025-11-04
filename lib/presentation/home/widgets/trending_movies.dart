@@ -22,6 +22,7 @@ class TrendingMovies extends StatelessWidget {
             SizedBox(
               height: 260,
               child: ListView.builder(
+                shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
                 itemBuilder: (context, index) {

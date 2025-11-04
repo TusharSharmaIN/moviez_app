@@ -41,13 +41,14 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: CustomRefreshIndicator(
           onRefresh: _loadData,
-          child: SingleChildScrollView(
+          child: ListView(
             physics: const AlwaysScrollableScrollPhysics(),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 4,
-              children: [CustomAppBar.menuAppBar(), const _HomePageContent()],
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            children: [
+              CustomAppBar.menuAppBar(),
+              const SizedBox(height: 4),
+              const _HomePageContent(),
+            ],
           ),
         ),
       ),
@@ -60,13 +61,10 @@ class _HomePageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 16,
-        children: [SearchBox(), TrendingMovies(), PopularMovies()],
-      ),
+    return const Column(
+      mainAxisSize: MainAxisSize.min,
+      spacing: 16,
+      children: [SearchBox(), TrendingMovies(), PopularMovies()],
     );
   }
 }

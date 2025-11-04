@@ -19,14 +19,11 @@ class PopularMovies extends StatelessWidget {
               icon: PhosphorIconsFill.sparkle,
             ),
             const SizedBox(height: 8),
-            SizedBox(
-              height: 300,
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: movies.length,
-                itemBuilder: (context, index) {
-                  return RowMovieTile(movie: movies[index]);
-                },
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(
+                movies.length,
+                (index) => RowMovieTile(movie: movies[index]),
               ),
             ),
           ],
