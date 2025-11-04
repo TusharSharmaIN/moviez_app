@@ -29,13 +29,15 @@ abstract class BaseColors {
   // static const Color brightGreen = Color.fromRGBO(22, 175, 142, 1);
   // static const Color lightGreen = Color.fromRGBO(164, 246, 181, 1);
   static const Color lightLilac = Color.fromRGBO(219, 227, 255, 1);
+  static const Color lilacGrey = Color.fromRGBO(195, 198, 210, 1);
   static const Color lilac = Color.fromRGBO(52, 100, 212, 1);
   // static const Color textGrey = Color.fromRGBO(156, 156, 156, 1);
   static const Color textGrey = Color.fromRGBO(100, 100, 100, 1);
   static const Color primaryBlack = Color.fromRGBO(25, 25, 25, 1);
   // static const Color secondaryBlack = Color.fromRGBO(50, 50, 50, 1);
   static const Color slateRed = Color.fromRGBO(241, 70, 70, 1);
-
+  static const Color loadingBackground = Color.fromRGBO(56, 57, 54, 1);
+  static const Color shimmerGrey = Color.fromRGBO(65, 68, 75, 1);
 
   //=====================================
   // Gradient Colors

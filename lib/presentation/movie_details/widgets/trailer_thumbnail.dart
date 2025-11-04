@@ -8,6 +8,7 @@ class TrailerThumbnail extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
       buildWhen: (previous, current) =>
+          previous.isLoadingMovieDetails != current.isLoadingMovieDetails ||
           previous.movieDetails != current.movieDetails ||
           previous.trailer != current.trailer,
       builder: (context, state) {
@@ -22,38 +23,41 @@ class TrailerThumbnail extends StatelessWidget {
               }
             }
           },
-          child: SizedBox(
-            height: height,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                CustomImageView(
-                  height: height,
-                  fit: BoxFit.cover,
-                  imageUrl: state.movieDetails.backdropUrl,
-                ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 24),
-                  child: const Icon(
-                    PhosphorIconsFill.playCircle,
-                    size: 64,
-                    color: BaseColors.white,
+          child: CustomSkeletonizer(
+            enabled: state.isLoadingMovieDetails,
+            child: SizedBox(
+              height: height,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  CustomImageView(
+                    height: height,
+                    fit: BoxFit.cover,
+                    imageUrl: state.movieDetails.backdropUrl,
                   ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        BaseColors.black.withValues(alpha: 0.1),
-                        BaseColors.black,
-                      ],
-                      stops: const [0.5, 1.0],
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 24),
+                    child: const Icon(
+                      PhosphorIconsFill.playCircle,
+                      size: 64,
+                      color: BaseColors.white,
                     ),
                   ),
-                ),
-              ],
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          BaseColors.black.withValues(alpha: 0.1),
+                          BaseColors.black,
+                        ],
+                        stops: const [0.5, 1.0],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );

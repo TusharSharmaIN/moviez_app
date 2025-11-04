@@ -617,7 +617,7 @@ as int,
 /// @nodoc
 mixin _$MovieDetailsState {
 
- int get movieId; bool get isLoadingMovieDetails; MovieDetails get movieDetails; bool get isLoadingTrailerDetails; Video get trailer; bool get isLoadingCastDetails; List<Cast> get cast; bool get isWatchlisted; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
+ int get movieId; bool get isLoadingMovieDetails; MovieDetails get movieDetails; Video get trailer; List<Cast> get cast; bool get isWatchlisted; Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccess;
 /// Create a copy of MovieDetailsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -628,16 +628,16 @@ $MovieDetailsStateCopyWith<MovieDetailsState> get copyWith => _$MovieDetailsStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieDetailsState&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieDetails, movieDetails) || other.movieDetails == movieDetails)&&(identical(other.isLoadingTrailerDetails, isLoadingTrailerDetails) || other.isLoadingTrailerDetails == isLoadingTrailerDetails)&&(identical(other.trailer, trailer) || other.trailer == trailer)&&(identical(other.isLoadingCastDetails, isLoadingCastDetails) || other.isLoadingCastDetails == isLoadingCastDetails)&&const DeepCollectionEquality().equals(other.cast, cast)&&(identical(other.isWatchlisted, isWatchlisted) || other.isWatchlisted == isWatchlisted)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieDetailsState&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieDetails, movieDetails) || other.movieDetails == movieDetails)&&(identical(other.trailer, trailer) || other.trailer == trailer)&&const DeepCollectionEquality().equals(other.cast, cast)&&(identical(other.isWatchlisted, isWatchlisted) || other.isWatchlisted == isWatchlisted)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,movieId,isLoadingMovieDetails,movieDetails,isLoadingTrailerDetails,trailer,isLoadingCastDetails,const DeepCollectionEquality().hash(cast),isWatchlisted,apiFailureOrSuccess);
+int get hashCode => Object.hash(runtimeType,movieId,isLoadingMovieDetails,movieDetails,trailer,const DeepCollectionEquality().hash(cast),isWatchlisted,apiFailureOrSuccess);
 
 @override
 String toString() {
-  return 'MovieDetailsState(movieId: $movieId, isLoadingMovieDetails: $isLoadingMovieDetails, movieDetails: $movieDetails, isLoadingTrailerDetails: $isLoadingTrailerDetails, trailer: $trailer, isLoadingCastDetails: $isLoadingCastDetails, cast: $cast, isWatchlisted: $isWatchlisted, apiFailureOrSuccess: $apiFailureOrSuccess)';
+  return 'MovieDetailsState(movieId: $movieId, isLoadingMovieDetails: $isLoadingMovieDetails, movieDetails: $movieDetails, trailer: $trailer, cast: $cast, isWatchlisted: $isWatchlisted, apiFailureOrSuccess: $apiFailureOrSuccess)';
 }
 
 
@@ -648,7 +648,7 @@ abstract mixin class $MovieDetailsStateCopyWith<$Res>  {
   factory $MovieDetailsStateCopyWith(MovieDetailsState value, $Res Function(MovieDetailsState) _then) = _$MovieDetailsStateCopyWithImpl;
 @useResult
 $Res call({
- int movieId, bool isLoadingMovieDetails, MovieDetails movieDetails, bool isLoadingTrailerDetails, Video trailer, bool isLoadingCastDetails, List<Cast> cast, bool isWatchlisted, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ int movieId, bool isLoadingMovieDetails, MovieDetails movieDetails, Video trailer, List<Cast> cast, bool isWatchlisted, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
@@ -665,15 +665,13 @@ class _$MovieDetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of MovieDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? movieId = null,Object? isLoadingMovieDetails = null,Object? movieDetails = null,Object? isLoadingTrailerDetails = null,Object? trailer = null,Object? isLoadingCastDetails = null,Object? cast = null,Object? isWatchlisted = null,Object? apiFailureOrSuccess = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? movieId = null,Object? isLoadingMovieDetails = null,Object? movieDetails = null,Object? trailer = null,Object? cast = null,Object? isWatchlisted = null,Object? apiFailureOrSuccess = null,}) {
   return _then(_self.copyWith(
 movieId: null == movieId ? _self.movieId : movieId // ignore: cast_nullable_to_non_nullable
 as int,isLoadingMovieDetails: null == isLoadingMovieDetails ? _self.isLoadingMovieDetails : isLoadingMovieDetails // ignore: cast_nullable_to_non_nullable
 as bool,movieDetails: null == movieDetails ? _self.movieDetails : movieDetails // ignore: cast_nullable_to_non_nullable
-as MovieDetails,isLoadingTrailerDetails: null == isLoadingTrailerDetails ? _self.isLoadingTrailerDetails : isLoadingTrailerDetails // ignore: cast_nullable_to_non_nullable
-as bool,trailer: null == trailer ? _self.trailer : trailer // ignore: cast_nullable_to_non_nullable
-as Video,isLoadingCastDetails: null == isLoadingCastDetails ? _self.isLoadingCastDetails : isLoadingCastDetails // ignore: cast_nullable_to_non_nullable
-as bool,cast: null == cast ? _self.cast : cast // ignore: cast_nullable_to_non_nullable
+as MovieDetails,trailer: null == trailer ? _self.trailer : trailer // ignore: cast_nullable_to_non_nullable
+as Video,cast: null == cast ? _self.cast : cast // ignore: cast_nullable_to_non_nullable
 as List<Cast>,isWatchlisted: null == isWatchlisted ? _self.isWatchlisted : isWatchlisted // ignore: cast_nullable_to_non_nullable
 as bool,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,
@@ -779,10 +777,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int movieId,  bool isLoadingMovieDetails,  MovieDetails movieDetails,  bool isLoadingTrailerDetails,  Video trailer,  bool isLoadingCastDetails,  List<Cast> cast,  bool isWatchlisted,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int movieId,  bool isLoadingMovieDetails,  MovieDetails movieDetails,  Video trailer,  List<Cast> cast,  bool isWatchlisted,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieDetailsState() when $default != null:
-return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_that.isLoadingTrailerDetails,_that.trailer,_that.isLoadingCastDetails,_that.cast,_that.isWatchlisted,_that.apiFailureOrSuccess);case _:
+return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_that.trailer,_that.cast,_that.isWatchlisted,_that.apiFailureOrSuccess);case _:
   return orElse();
 
 }
@@ -800,10 +798,10 @@ return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int movieId,  bool isLoadingMovieDetails,  MovieDetails movieDetails,  bool isLoadingTrailerDetails,  Video trailer,  bool isLoadingCastDetails,  List<Cast> cast,  bool isWatchlisted,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int movieId,  bool isLoadingMovieDetails,  MovieDetails movieDetails,  Video trailer,  List<Cast> cast,  bool isWatchlisted,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetailsState():
-return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_that.isLoadingTrailerDetails,_that.trailer,_that.isLoadingCastDetails,_that.cast,_that.isWatchlisted,_that.apiFailureOrSuccess);case _:
+return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_that.trailer,_that.cast,_that.isWatchlisted,_that.apiFailureOrSuccess);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -820,10 +818,10 @@ return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_th
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int movieId,  bool isLoadingMovieDetails,  MovieDetails movieDetails,  bool isLoadingTrailerDetails,  Video trailer,  bool isLoadingCastDetails,  List<Cast> cast,  bool isWatchlisted,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int movieId,  bool isLoadingMovieDetails,  MovieDetails movieDetails,  Video trailer,  List<Cast> cast,  bool isWatchlisted,  Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieDetailsState() when $default != null:
-return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_that.isLoadingTrailerDetails,_that.trailer,_that.isLoadingCastDetails,_that.cast,_that.isWatchlisted,_that.apiFailureOrSuccess);case _:
+return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_that.trailer,_that.cast,_that.isWatchlisted,_that.apiFailureOrSuccess);case _:
   return null;
 
 }
@@ -835,15 +833,13 @@ return $default(_that.movieId,_that.isLoadingMovieDetails,_that.movieDetails,_th
 
 
 class _MovieDetailsState extends MovieDetailsState {
-  const _MovieDetailsState({required this.movieId, required this.isLoadingMovieDetails, required this.movieDetails, required this.isLoadingTrailerDetails, required this.trailer, required this.isLoadingCastDetails, required final  List<Cast> cast, required this.isWatchlisted, required this.apiFailureOrSuccess}): _cast = cast,super._();
+  const _MovieDetailsState({required this.movieId, required this.isLoadingMovieDetails, required this.movieDetails, required this.trailer, required final  List<Cast> cast, required this.isWatchlisted, required this.apiFailureOrSuccess}): _cast = cast,super._();
   
 
 @override final  int movieId;
 @override final  bool isLoadingMovieDetails;
 @override final  MovieDetails movieDetails;
-@override final  bool isLoadingTrailerDetails;
 @override final  Video trailer;
-@override final  bool isLoadingCastDetails;
  final  List<Cast> _cast;
 @override List<Cast> get cast {
   if (_cast is EqualUnmodifiableListView) return _cast;
@@ -864,16 +860,16 @@ _$MovieDetailsStateCopyWith<_MovieDetailsState> get copyWith => __$MovieDetailsS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieDetailsState&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieDetails, movieDetails) || other.movieDetails == movieDetails)&&(identical(other.isLoadingTrailerDetails, isLoadingTrailerDetails) || other.isLoadingTrailerDetails == isLoadingTrailerDetails)&&(identical(other.trailer, trailer) || other.trailer == trailer)&&(identical(other.isLoadingCastDetails, isLoadingCastDetails) || other.isLoadingCastDetails == isLoadingCastDetails)&&const DeepCollectionEquality().equals(other._cast, _cast)&&(identical(other.isWatchlisted, isWatchlisted) || other.isWatchlisted == isWatchlisted)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieDetailsState&&(identical(other.movieId, movieId) || other.movieId == movieId)&&(identical(other.isLoadingMovieDetails, isLoadingMovieDetails) || other.isLoadingMovieDetails == isLoadingMovieDetails)&&(identical(other.movieDetails, movieDetails) || other.movieDetails == movieDetails)&&(identical(other.trailer, trailer) || other.trailer == trailer)&&const DeepCollectionEquality().equals(other._cast, _cast)&&(identical(other.isWatchlisted, isWatchlisted) || other.isWatchlisted == isWatchlisted)&&(identical(other.apiFailureOrSuccess, apiFailureOrSuccess) || other.apiFailureOrSuccess == apiFailureOrSuccess));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,movieId,isLoadingMovieDetails,movieDetails,isLoadingTrailerDetails,trailer,isLoadingCastDetails,const DeepCollectionEquality().hash(_cast),isWatchlisted,apiFailureOrSuccess);
+int get hashCode => Object.hash(runtimeType,movieId,isLoadingMovieDetails,movieDetails,trailer,const DeepCollectionEquality().hash(_cast),isWatchlisted,apiFailureOrSuccess);
 
 @override
 String toString() {
-  return 'MovieDetailsState(movieId: $movieId, isLoadingMovieDetails: $isLoadingMovieDetails, movieDetails: $movieDetails, isLoadingTrailerDetails: $isLoadingTrailerDetails, trailer: $trailer, isLoadingCastDetails: $isLoadingCastDetails, cast: $cast, isWatchlisted: $isWatchlisted, apiFailureOrSuccess: $apiFailureOrSuccess)';
+  return 'MovieDetailsState(movieId: $movieId, isLoadingMovieDetails: $isLoadingMovieDetails, movieDetails: $movieDetails, trailer: $trailer, cast: $cast, isWatchlisted: $isWatchlisted, apiFailureOrSuccess: $apiFailureOrSuccess)';
 }
 
 
@@ -884,7 +880,7 @@ abstract mixin class _$MovieDetailsStateCopyWith<$Res> implements $MovieDetailsS
   factory _$MovieDetailsStateCopyWith(_MovieDetailsState value, $Res Function(_MovieDetailsState) _then) = __$MovieDetailsStateCopyWithImpl;
 @override @useResult
 $Res call({
- int movieId, bool isLoadingMovieDetails, MovieDetails movieDetails, bool isLoadingTrailerDetails, Video trailer, bool isLoadingCastDetails, List<Cast> cast, bool isWatchlisted, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
+ int movieId, bool isLoadingMovieDetails, MovieDetails movieDetails, Video trailer, List<Cast> cast, bool isWatchlisted, Option<Either<ApiFailure, dynamic>> apiFailureOrSuccess
 });
 
 
@@ -901,15 +897,13 @@ class __$MovieDetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of MovieDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? movieId = null,Object? isLoadingMovieDetails = null,Object? movieDetails = null,Object? isLoadingTrailerDetails = null,Object? trailer = null,Object? isLoadingCastDetails = null,Object? cast = null,Object? isWatchlisted = null,Object? apiFailureOrSuccess = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? movieId = null,Object? isLoadingMovieDetails = null,Object? movieDetails = null,Object? trailer = null,Object? cast = null,Object? isWatchlisted = null,Object? apiFailureOrSuccess = null,}) {
   return _then(_MovieDetailsState(
 movieId: null == movieId ? _self.movieId : movieId // ignore: cast_nullable_to_non_nullable
 as int,isLoadingMovieDetails: null == isLoadingMovieDetails ? _self.isLoadingMovieDetails : isLoadingMovieDetails // ignore: cast_nullable_to_non_nullable
 as bool,movieDetails: null == movieDetails ? _self.movieDetails : movieDetails // ignore: cast_nullable_to_non_nullable
-as MovieDetails,isLoadingTrailerDetails: null == isLoadingTrailerDetails ? _self.isLoadingTrailerDetails : isLoadingTrailerDetails // ignore: cast_nullable_to_non_nullable
-as bool,trailer: null == trailer ? _self.trailer : trailer // ignore: cast_nullable_to_non_nullable
-as Video,isLoadingCastDetails: null == isLoadingCastDetails ? _self.isLoadingCastDetails : isLoadingCastDetails // ignore: cast_nullable_to_non_nullable
-as bool,cast: null == cast ? _self._cast : cast // ignore: cast_nullable_to_non_nullable
+as MovieDetails,trailer: null == trailer ? _self.trailer : trailer // ignore: cast_nullable_to_non_nullable
+as Video,cast: null == cast ? _self._cast : cast // ignore: cast_nullable_to_non_nullable
 as List<Cast>,isWatchlisted: null == isWatchlisted ? _self.isWatchlisted : isWatchlisted // ignore: cast_nullable_to_non_nullable
 as bool,apiFailureOrSuccess: null == apiFailureOrSuccess ? _self.apiFailureOrSuccess : apiFailureOrSuccess // ignore: cast_nullable_to_non_nullable
 as Option<Either<ApiFailure, dynamic>>,

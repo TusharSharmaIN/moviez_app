@@ -57,7 +57,6 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           (movieDetails) {
             emit(
               state.copyWith(
-                isLoadingMovieDetails: false,
                 movieDetails: movieDetails,
                 apiFailureOrSuccess: none(),
               ),
@@ -65,16 +64,8 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           },
         );
         add(const _LoadTrailerDetails());
-        add(const _LoadCastDetails());
       },
       loadTrailerDetails: (_) async {
-        emit(
-          state.copyWith(
-            isLoadingMovieDetails: true,
-            apiFailureOrSuccess: none(),
-          ),
-        );
-
         final failureOrSuccess = await movieDetailsRepository.getMovieVideos(
           movieId: state.movieId,
         );
@@ -89,24 +80,12 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
             );
           },
           (trailer) {
-            emit(
-              state.copyWith(
-                isLoadingMovieDetails: false,
-                trailer: trailer,
-                apiFailureOrSuccess: none(),
-              ),
-            );
+            emit(state.copyWith(trailer: trailer, apiFailureOrSuccess: none()));
           },
         );
+        add(const _LoadCastDetails());
       },
       loadCastDetails: (_) async {
-        emit(
-          state.copyWith(
-            isLoadingCastDetails: true,
-            apiFailureOrSuccess: none(),
-          ),
-        );
-
         final failureOrSuccess = await movieDetailsRepository.getMovieCast(
           movieId: state.movieId,
         );
@@ -115,7 +94,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           (failure) {
             emit(
               state.copyWith(
-                isLoadingCastDetails: false,
+                isLoadingMovieDetails: false,
                 apiFailureOrSuccess: optionOf(failureOrSuccess),
               ),
             );
@@ -123,7 +102,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
           (cast) {
             emit(
               state.copyWith(
-                isLoadingCastDetails: false,
+                isLoadingMovieDetails: false,
                 cast: cast,
                 apiFailureOrSuccess: none(),
               ),

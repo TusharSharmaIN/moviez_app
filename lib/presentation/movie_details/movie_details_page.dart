@@ -7,6 +7,7 @@ import 'package:moviez_app/presentation/core/widgets/common/movie_tags.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_app_bar.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_icon_button.dart';
 import 'package:moviez_app/presentation/core/widgets/custom/custom_image_view.dart';
+import 'package:moviez_app/presentation/core/widgets/custom/custom_skeletonizer.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
