@@ -19,15 +19,13 @@ class WatchlistedMovies extends StatelessWidget {
               icon: PhosphorIconsRegular.queue,
             ),
             const SizedBox(height: 12),
-            SizedBox(
-              height: 300,
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: watchlistedMovies.length,
-                itemBuilder: (context, index) {
-                  return RowMovieTile(movie: watchlistedMovies[index]);
-                },
-              ),
+            ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: watchlistedMovies.length,
+              itemBuilder: (context, index) {
+                return RowMovieTile(movie: watchlistedMovies[index]);
+              },
             ),
           ],
         );

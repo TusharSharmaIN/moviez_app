@@ -31,7 +31,15 @@ class _WatchlistPageState extends State<WatchlistPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           spacing: 16,
-          children: [CustomAppBar.backAppBar(), const _WatchlistPageContent()],
+          children: [
+            CustomAppBar.backAppBar(),
+            const Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: _WatchlistPageContent(),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -49,13 +57,7 @@ class _WatchlistPageContent extends StatelessWidget {
       listener: (context, state) {
         context.read<HomeBloc>().add(const HomeEvent.loadWatchlistedMovies());
       },
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [WatchlistedMovies()],
-        ),
-      ),
+      child: const WatchlistedMovies(),
     );
   }
 }
