@@ -1,0 +1,38 @@
+name: Build and Release APK
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+    - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Starting workflow for releasing build"
+      - uses: actions/checkout@v5
+
+      - name: Setup Flutter & build APK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.7'
+          channel: 'stable'
+      - run: flutter --version
+      - run: flutter clean
+      - run: flutter pub get
+      - run: flutter build apk --release --flavor prod -t lib/main_prod.dart
+
+      - name: Upload apk build as an Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tortoise-assignment.apk
+          path: build/app/outputs/flutter-apk/app-prod-release.apk
+      
+      - name: Create a Release APK
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: build/app/outputs/flutter-apk/app-prod-release.apk
+          token: ${{ secrets.GITHUB_TOKEN }}
