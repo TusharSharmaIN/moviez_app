@@ -7,14 +7,29 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, this.title, this.padding});
+  const CustomAppBar({
+    super.key,
+    this.title,
+    this.padding,
+    this.trailing,
+    this.iconColor,
+  });
   final Widget? title;
   final EdgeInsets? padding;
+  final Widget? trailing;
+  final Color? iconColor;
 
   factory CustomAppBar.menuAppBar() => const CustomAppBar(title: AppTitle());
 
   factory CustomAppBar.backAppBar({EdgeInsets? padding}) =>
       CustomAppBar(padding: padding);
+
+  factory CustomAppBar.backAppBarWithTrailing({
+    EdgeInsets? padding,
+    Widget? trailing,
+    Color? iconColor,
+  }) =>
+      CustomAppBar(padding: padding, trailing: trailing, iconColor: iconColor);
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +52,29 @@ class CustomAppBar extends StatelessWidget {
         ),
       );
     }
+
+    if (trailing != null) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          AppBarBackCTA(
+            padding:
+                padding ??
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
+            iconColor: iconColor,
+          ),
+          trailing!,
+        ],
+      );
+    }
+
     return Align(
       alignment: Alignment.centerLeft,
       child: AppBarBackCTA(
         padding:
             padding ??
             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
+        iconColor: iconColor,
       ),
     );
   }
@@ -90,7 +122,7 @@ class AppBarBackCTA extends StatelessWidget {
   });
   final EdgeInsets padding;
   final VoidCallback? onPressed;
-  final Color iconColor;
+  final Color? iconColor;
 
   void _onPressed(BuildContext context) {
     if (onPressed != null) {

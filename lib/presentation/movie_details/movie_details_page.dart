@@ -11,6 +11,8 @@ import 'package:moviez_app/presentation/core/widgets/custom/custom_skeletonizer.
 import 'package:moviez_app/presentation/theme/base_colors.dart';
 import 'package:moviez_app/presentation/theme/base_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'widgets/trailer_thumbnail.dart';
@@ -50,14 +52,30 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
               TrailerThumbnail(height: screenSize.height * 0.4),
               Column(
                 children: [
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: AppBarBackCTA(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    child: CustomAppBar.backAppBarWithTrailing(
+                      padding: EdgeInsets.zero,
                       iconColor: BaseColors.white,
+                      trailing: CustomIconButton(
+                        onPressed: () {
+                          final movie = context
+                              .read<MovieDetailsBloc>()
+                              .state
+                              .movieDetails;
+                          final shareText = movie.deeplink;
+                          SharePlus.instance.share(
+                            ShareParams(uri: Uri.parse(shareText)),
+                          );
+                        },
+                        icon: const Icon(
+                          PhosphorIconsFill.shareNetwork,
+                          color: BaseColors.white,
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(height: screenSize.height * 0.25),
@@ -92,7 +110,6 @@ class MovieDetailsContent extends StatelessWidget {
           spacing: 12,
           children: [
             TitleAndWatchlistCTA(),
-            // MovieRatings(),
             MovieTags(),
             _MovieMetaData(),
             MovieDescription(),

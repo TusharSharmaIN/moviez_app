@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:moviez_app/bloc/search/search_bloc.dart';
 
 import 'package:moviez_app/config.dart';
+import 'package:moviez_app/infrastructure/core/deeplink/app_link_service.dart';
 import 'package:moviez_app/infrastructure/home/datasource/home_local.dart';
 import 'package:moviez_app/infrastructure/watchlist/datasource/watchlist_local.dart';
 import 'package:moviez_app/locator.dart';
@@ -22,6 +23,7 @@ Future<void> initialSetup({required Flavor flavor}) async {
   config.appFlavor = flavor;
   await locator<HomeLocalDataSource>().init();
   await locator<WatchlistLocalDataSource>().init();
+  await locator<AppLinksService>().init();
 }
 
 void runAppWith() {

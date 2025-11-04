@@ -28,6 +28,8 @@ dependencies:
   url_launcher: ^6.3.2
   intl: ^0.20.2
   skeletonizer: ^2.1.0
+  app_links: ^6.4.1
+  share_plus: ^12.0.1
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +39,15 @@ dev_dependencies:
   json_serializable: ^6.11.1
   freezed: ^3.2.0
   hive_ce_generator: ^1.9.2
+  flutter_launcher_icons: "^0.14.4"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/images/app_icon.png"
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true

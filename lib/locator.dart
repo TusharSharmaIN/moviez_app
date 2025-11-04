@@ -4,6 +4,7 @@ import 'package:moviez_app/bloc/movie_details/movie_details_bloc.dart';
 import 'package:moviez_app/bloc/search/search_bloc.dart';
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/exception_handler.dart';
+import 'package:moviez_app/infrastructure/core/deeplink/app_link_service.dart';
 import 'package:moviez_app/infrastructure/core/http/http.dart';
 import 'package:moviez_app/infrastructure/core/http/interceptor/auth_interceptor.dart';
 import 'package:moviez_app/infrastructure/home/datasource/home_local.dart';
@@ -15,6 +16,7 @@ import 'package:moviez_app/infrastructure/search/datasource/search_remote.dart';
 import 'package:moviez_app/infrastructure/search/repository/search_repository.dart';
 import 'package:moviez_app/infrastructure/watchlist/datasource/watchlist_local.dart';
 import 'package:moviez_app/infrastructure/watchlist/repository/watchlist_repository.dart';
+import 'package:moviez_app/presentation/router/route.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -31,6 +33,7 @@ void setupLocator() {
       interceptors: [locator<AuthInterceptor>()],
     ),
   );
+  locator.registerLazySingleton(() => AppLinksService(goRouter));
 
   // Home
   locator.registerLazySingleton(() => HomeLocalDataSource());
