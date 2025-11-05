@@ -28,6 +28,8 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+
     }
 
     buildTypes {

@@ -1,0 +1,7 @@
+-keep class retrofit2.** { *; }
+-keep class com.google.gson.** { *; }
+-keep class okhttp3.** { *; }
+-keep class dio.** { *; }
+-keep class com.squareup.okhttp.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
