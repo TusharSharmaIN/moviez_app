@@ -5,6 +5,7 @@ import 'package:moviez_app/bloc/search/search_bloc.dart';
 import 'package:moviez_app/config.dart';
 import 'package:moviez_app/domain/core/error/exception_handler.dart';
 import 'package:moviez_app/infrastructure/core/deeplink/app_link_service.dart';
+import 'package:moviez_app/infrastructure/core/http/api_client.dart';
 import 'package:moviez_app/infrastructure/core/http/http.dart';
 import 'package:moviez_app/infrastructure/core/http/interceptor/auth_interceptor.dart';
 import 'package:moviez_app/infrastructure/home/datasource/home_local.dart';
@@ -33,15 +34,20 @@ void setupLocator() {
       interceptors: [locator<AuthInterceptor>()],
     ),
   );
+  locator.registerLazySingleton(() {
+    return ApiClient(
+      locator<HttpService>().dio(),
+      baseUrl: locator<Config>().baseUrl,
+    );
+  });
   locator.registerLazySingleton(() => AppLinksService(goRouter));
 
   // Home
   locator.registerLazySingleton(() => HomeLocalDataSource());
   locator.registerLazySingleton(
     () => HomeRemoteDataSource(
-      config: locator<Config>(),
+      apiClient: locator<ApiClient>(),
       dataSourceExceptionHandler: locator<DataSourceExceptionHandler>(),
-      httpService: locator<HttpService>(),
     ),
   );
   locator.registerLazySingleton(
@@ -67,9 +73,8 @@ void setupLocator() {
 
   locator.registerLazySingleton(
     () => MovieDetailsRemoteDataSource(
-      config: locator<Config>(),
+      apiClient: locator<ApiClient>(),
       dataSourceExceptionHandler: locator<DataSourceExceptionHandler>(),
-      httpService: locator<HttpService>(),
     ),
   );
   locator.registerLazySingleton(
@@ -88,9 +93,8 @@ void setupLocator() {
   // Search
   locator.registerLazySingleton(
     () => SearchRemoteDataSource(
-      config: locator<Config>(),
+      apiClient: locator<ApiClient>(),
       dataSourceExceptionHandler: locator<DataSourceExceptionHandler>(),
-      httpService: locator<HttpService>(),
     ),
   );
   locator.registerLazySingleton(
