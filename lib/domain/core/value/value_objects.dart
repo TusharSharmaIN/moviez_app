@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:moviez_app/domain/core/error/value_error.dart';
 import 'package:moviez_app/domain/core/error/value_failure.dart';
 import 'package:moviez_app/domain/core/value/value_validator.dart';
-import 'package:moviez_app/domain/core/value_objects/value_transformer.dart';
+import 'package:moviez_app/domain/core/value/value_transformer.dart';
 
 @immutable
 abstract class ValueObject<T> {
